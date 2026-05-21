@@ -1,230 +1,1468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Terms of Service — Matteria Technologies</title>
-<meta name="description" content="Terms of Service for Matteria Technologies LLC and its products, including KIBO."/>
-<link rel="canonical" href="https://matteriatech.com/terms-of-service"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="../assets/styles.css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Matteria Technologies > Engineering imagination into reality</title>
+<meta name="description" content="Matteria Technologies LLC — A technology studio building intelligent tools for design, visualization and education." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@200;300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f2f2f2;
+    --bg-mid: #e5e5e5;
+    --bg-dark: #000000;
+    --ink: #000000;
+    --ink-soft: #333333;
+    --ink-dim: #6b6b6b;
+    --ink-faint: #b3b3b3;
+    --line: #d9d9d9;
+    --line-soft: #ececec;
+    --accent: #f50537;
+    --accent-dark: #cc0029;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* === SCROLL PROGRESS BAR === */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    z-index: 200;
+    transition: width 0.1s ease-out;
+  }
+
+  /* === TOP UTILITY BAR === */
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: #0a0a0a;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    z-index: 150;
+  }
+
+  .top-bar-left, .top-bar-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .top-bar a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  .top-bar a:hover { opacity: 1; }
+
+  .top-bar .dot {
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--accent);
+    animation: blink 2s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* === MAIN NAV === */
+  nav.main-nav {
+    position: fixed;
+    top: 32px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line-soft);
+    height: 64px;
+  }
+
+  .nav-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    max-width: none;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  /* M with orbiting dot logo */
+  .logo-mark {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-mark .m-char {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+  }
+
+  .logo-mark .orbit-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    animation: orbitSpin 8s linear infinite;
+  }
+
+  .logo-mark .orbit-ring::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--accent);
+  }
+
+  @keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .logo-text {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .nav-center {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-center a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+  }
+
+  .nav-center a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-center a:hover::after { width: 100%; }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-search, .nav-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .nav-menu-btn {
+    border-left: 1px solid var(--line);
+    padding-left: 20px;
+  }
+
+  .nav-menu-btn .lines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav-menu-btn .lines span {
+    width: 18px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: all 0.3s;
+  }
+
+  /* === HERO === */
+  .hero {
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+    min-height: 640px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-dark);
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 50%, rgba(245, 5, 55, 0.15) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #000 100%);
+  }
+
+  .hero-mesh {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: linear-gradient(180deg, transparent 0%, black 30%, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 30%, black 70%, transparent 100%);
+  }
+
+  .hero-geo {
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 700px;
+    height: 700px;
+    opacity: 0.6;
+    animation: floatGeo 20s ease-in-out infinite;
+  }
+
+  .hero-geo svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes floatGeo {
+    0%, 100% { transform: translateY(-50%) rotate(0deg); }
+    50% { transform: translateY(-48%) rotate(8deg); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 48px 80px;
+    color: #fff;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+    opacity: 0;
+    animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
+  }
+
+  .hero-eyebrow .bar {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 300;
+    font-size: clamp(60px, 11vw, 180px);
+    line-height: 0.88;
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+    color: #fff;
+    opacity: 0;
+    animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.35s;
+  }
+
+  .hero-title .light {
+    font-weight: 200;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .hero-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .hero-title-num {
+    font-size: 0.15em;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    align-self: flex-start;
+    padding-top: 0.4em;
+  }
+
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: end;
+    margin-top: 24px;
+    opacity: 0;
+    animation: slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.55s;
+  }
+
+  .hero-sub {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: clamp(16px, 1.3vw, 19px);
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+    line-height: 1.5;
+  }
+
+  .btn-audi {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid #fff;
+    transition: all 0.3s ease;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    cursor: pointer;
+  }
+
+  .btn-audi:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .btn-audi .chev {
+    display: inline-flex;
+    transition: transform 0.3s ease;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+  }
+
+  .btn-audi:hover .chev {
+    transform: translateX(8px);
+    color: var(--accent);
+  }
+
+  .btn-audi.dark {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+
+  .btn-audi.dark:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    right: 48px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    writing-mode: vertical-rl;
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--accent);
+    animation: scrollLine 2.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { top: -60px; }
+    100% { top: 60px; }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === SECTION DIVIDER === */
+  .section-divider {
+    padding: 24px 48px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-dim);
+    background: var(--bg);
+  }
+
+  .section-divider .left {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .section-divider .num {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .section-divider .right {
+    color: var(--ink-faint);
+  }
+
+  /* === VENTURES === */
+  .ventures {
+    background: var(--bg);
+    padding: 120px 48px;
+  }
+
+  .ventures-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+
+  .intro-meta {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-dim);
+  }
+
+  .intro-meta .bar {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+    margin-right: 16px;
+    vertical-align: middle;
+  }
+
+  .ventures-title {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 300;
+    font-size: clamp(40px, 6vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .ventures-title em {
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .venture-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .venture-card {
+    background: var(--bg-alt);
+    aspect-ratio: 3 / 4;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .venture-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .venture-card-visual {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .venture-card:hover .venture-card-visual {
+    transform: scale(1.05);
+  }
+
+  .venture-card-visual svg {
+    width: 70%;
+    height: 70%;
+    opacity: 0.9;
+  }
+
+  .venture-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.85) 100%);
+    z-index: 2;
+  }
+
+  .venture-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px;
+    color: #fff;
+    z-index: 3;
+  }
+
+  .venture-card-num {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .venture-card-num .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .venture-card-num .status-dot.idle {
+    background: rgba(255,255,255,0.4);
+  }
+
+  .venture-card-name {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .venture-card-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.8);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 0;
+  }
+
+  .venture-card:hover .venture-card-desc {
+    max-height: 200px;
+    opacity: 1;
+    margin-bottom: 20px;
+  }
+
+  .venture-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    transition: all 0.3s;
+  }
+
+  .venture-card:hover .venture-card-link {
+    border-bottom-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* === PHILOSOPHY === */
+  .philosophy {
+    background: var(--bg-alt);
+    padding: 120px 48px;
+  }
+
+  .philosophy-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 100px;
+    align-items: start;
+  }
+
+  .philosophy-quote {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 300;
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .philosophy-quote .accent {
+    color: var(--accent);
+  }
+
+  .philosophy-meta {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.7;
+    max-width: 440px;
+  }
+
+  .philosophy-meta .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .philosophy-meta .label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+  }
+
+  .pillar {
+    padding: 48px 32px 48px 0;
+    border-right: 1px solid var(--line);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .pillar:last-child {
+    border-right: none;
+  }
+
+  .pillar:not(:first-child) {
+    padding-left: 32px;
+  }
+
+  .pillar-num {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.15em;
+    margin-bottom: 32px;
+  }
+
+  .pillar-num span {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .pillar-name {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: clamp(24px, 2.4vw, 32px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .pillar-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* === COMPANY INFO === */
+  .company-info {
+    background: var(--bg);
+    padding: 120px 48px;
+  }
+
+  .company-header {
+    margin-bottom: 64px;
+  }
+
+  .company-title {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+  }
+
+  .company-subtitle {
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    color: var(--ink-dim);
+    max-width: 600px;
+  }
+
+  .spec-sheet {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .spec-cell {
+    padding: 32px 28px 32px 0;
+    border-right: 1px solid var(--line);
+  }
+
+  .spec-cell:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .spec-cell:not(:first-child) {
+    padding-left: 28px;
+  }
+
+  .spec-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .spec-value {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+  }
+
+  /* === CTA BAND === */
+  .cta-band {
+    background: var(--bg-dark);
+    color: #fff;
+    padding: 140px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-band-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(245, 5, 55, 0.15) 0%, transparent 40%);
+  }
+
+  .cta-band-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .cta-title {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .cta-title .accent {
+    color: var(--accent);
+  }
+
+  .cta-right p {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+
+  /* === FOOTER === */
+  footer {
+    background: #0a0a0a;
+    color: rgba(255,255,255,0.7);
+    padding: 80px 48px 32px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-brand-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-rings {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-rings .m-char {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #fff;
+  }
+
+  .footer-rings .orbit-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    animation: orbitSpin 10s linear infinite;
+  }
+
+  .footer-rings .orbit-ring::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .footer-tagline {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+  }
+
+  .footer-col h4 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: #fff;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  .footer-col ul {
+    list-style: none;
+  }
+
+  .footer-col li {
+    margin-bottom: 12px;
+  }
+
+  .footer-col a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-col a:hover {
+    color: #fff;
+  }
+
+  .footer-col a::before {
+    content: '›';
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .footer-col a:hover::before {
+    opacity: 1;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-bottom .legal {
+    display: flex;
+    gap: 32px;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .nav-center { display: none; }
+    .hero-content { padding: 0 24px 60px; }
+    .ventures, .philosophy, .company-info, .cta-band { padding: 80px 24px; }
+    .ventures-intro, .philosophy-header, .cta-band-content {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .venture-cards { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: repeat(2, 1fr); }
+    .pillar:nth-child(2) { border-right: none; }
+    .pillar:nth-child(3), .pillar:nth-child(4) {
+      border-top: 1px solid var(--line);
+    }
+    .pillar:nth-child(3) { padding-left: 0; }
+    .spec-sheet { grid-template-columns: repeat(2, 1fr); }
+    .spec-cell:nth-child(2) { border-right: none; }
+    .spec-cell:nth-child(3), .spec-cell:nth-child(4) {
+      border-top: 1px solid var(--line);
+    }
+    .spec-cell:nth-child(3) { padding-left: 0; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
+    .hero-scroll { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .top-bar { padding: 0 16px; font-size: 10px; }
+    .top-bar-right .hide-mobile { display: none; }
+    .nav-inner { padding: 0 16px; }
+    .logo-text { font-size: 13px; }
+    .hero-content { padding: 0 16px 40px; }
+    .ventures, .philosophy, .company-info, .cta-band, footer {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .pillars, .spec-sheet { grid-template-columns: 1fr; }
+    .pillar, .spec-cell {
+      border-right: none !important;
+      border-bottom: 1px solid var(--line);
+      padding: 32px 0 !important;
+    }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .footer-bottom .legal { flex-wrap: wrap; gap: 16px; }
+    .section-divider { padding: 16px; flex-wrap: wrap; gap: 8px; }
+  }
+</style>
 </head>
 <body>
 
-<!-- red scroll-progress -->
-<div class="scroll-progress" id="progress"></div>
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- top utility bar -->
-<div class="topbar">
-  <span class="left"><span class="dot"></span>Matteria Technologies LLC</span>
-  <span class="right">Miami, Florida — USA</span>
+<!-- Top Utility Bar -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <span class="dot"></span>
+    <span>Matteria Technologies LLC</span>
+  </div>
+  <div class="top-bar-right">
+    <a href="#" class="hide-mobile">EN</a>
+    <a href="#" class="hide-mobile">Miami, FL</a>
+    <a href="mailto:hello@matteriatech.com">hello@matteriatech.com</a>
+  </div>
 </div>
 
-<!-- main nav  (reconcile links with the live index.html nav) -->
-<nav class="nav">
-  <a class="logo" href="/" aria-label="Matteria Technologies — Home">
-    <span class="logo-mark"><span class="ring"></span><span class="orbit"></span><span class="m">M</span></span>
-    <span class="logo-word hide-sm">Matteria</span>
-  </a>
-  <div class="nav-links">
-    <a href="/kibo">Kibo</a>
-    <a href="/" class="hide-sm">Company</a>
-    <a href="mailto:hello@matteriatech.com">Contact</a>
+<!-- Main Nav -->
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <span class="m-char">M</span>
+        <span class="orbit-ring"></span>
+      </div>
+      <span class="logo-text">Matteria Technologies</span>
+    </a>
+
+    <ul class="nav-center">
+      <li><a href="#ventures">Ventures</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#company">Company</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="nav-search" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+      </button>
+      <button class="nav-menu-btn" aria-label="Menu">
+        <span>Menu</span>
+        <div class="lines">
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
   </div>
 </nav>
 
-<main class="page">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-image"></div>
+  <div class="hero-mesh"></div>
 
-  <!-- dark compact header -->
-  <header class="head">
-    <div class="inner">
-      <div class="eyebrow">Legal</div>
-      <h1>Terms of<br/>Service</h1>
-      <div class="meta">Effective May 21, 2026 · Matteria Technologies LLC</div>
+  <div class="hero-geo">
+    <svg viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="350" cy="350" r="340" stroke="rgba(245,5,55,0.4)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="280" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="220" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="160" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+      <circle cx="350" cy="350" r="100" stroke="rgba(245,5,55,0.3)" stroke-width="0.5"/>
+      <circle cx="350" cy="10" r="3" fill="#f50537"/>
+      <circle cx="690" cy="350" r="2" fill="rgba(255,255,255,0.6)"/>
+      <line x1="350" y1="350" x2="350" y2="10" stroke="rgba(245,5,55,0.2)" stroke-width="0.5"/>
+      <line x1="350" y1="350" x2="690" y2="350" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="bar"></span>
+      <span>A Technology Studio › Est. 2025</span>
     </div>
-  </header>
 
-  <article class="legal">
-    <p class="lead">
-      These Terms of Service ("Terms") govern your use of the websites, apps, and
-      services operated by Matteria Technologies LLC ("Matteria", "we", "our", or
-      "us"), including the KIBO homework-tutor app for children in grades K–6. By
-      downloading or using our services, you agree to these Terms.
-    </p>
-
-    <section class="sec">
-      <div class="num">01</div>
-      <div>
-        <h2>Acceptance</h2>
-        <p>By downloading or using our services, you agree to these Terms. KIBO is intended for use by children under the supervision of a parent or guardian. If the user is under 13, a parent or guardian must accept these Terms on the child's behalf and supervise their use.</p>
+    <h1 class="hero-title">
+      <div class="hero-title-row">
+        <span class="hero-title-num">N°01</span>
+        <span class="light">Engineering</span>
       </div>
-    </section>
+      <div>imagination</div>
+      <div>into reality.</div>
+    </h1>
 
-    <section class="sec">
-      <div class="num">02</div>
-      <div>
-        <h2>Description of Service</h2>
-        <p>KIBO is an AI-powered educational app for K–6 students. It provides personalized practice questions, homework scanning, a guided learning path, and progress tracking across core subjects — Math, English Language Arts, Science, Social Studies, and ESOL.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">03</div>
-      <div>
-        <h2>Free Trial</h2>
-        <p>New users receive <strong>15 days of full access to KIBO Pro at no cost and with no payment method required</strong>. No charge is made during the trial. When the 15-day trial ends, the app continues on a free tier with daily practice limits; to keep unlimited access you may subscribe to KIBO Pro.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">04</div>
-      <div>
-        <h2>Subscriptions &amp; Billing</h2>
-        <p>KIBO Pro is offered as an auto-renewing subscription:</p>
-        <div class="spec">
-          <div class="spec-row"><span class="k">Monthly</span><span class="v">$7.99 / month</span></div>
-          <div class="spec-row"><span class="k">Annual</span><span class="v">$59.99 / year</span></div>
-        </div>
-        <p><strong>Payment.</strong> Subscriptions are purchased and processed entirely through your Apple ID and the Apple App Store. We never receive or store your payment details.</p>
-        <p><strong>Auto-renewal.</strong> Your subscription renews automatically at the end of each billing period and your Apple ID is charged for the renewal, unless you cancel at least 24 hours before the end of the current period.</p>
-        <p><strong>Managing your subscription.</strong> You can manage or cancel at any time in your device's Settings → Apple ID → Subscriptions. Cancelling stops future renewals; you keep Pro access until the end of the period you already paid for.</p>
-        <p><strong>Refunds.</strong> Unused portions of a billing period are non-refundable except as required by applicable law or Apple's refund policies. Refund requests are handled by Apple.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">05</div>
-      <div>
-        <h2>Free Tier Limits</h2>
-        <p>After the trial, the free tier includes a limited number of practice questions per day and a limited number of homework scans per week. These limits may change over time. KIBO Pro removes the daily and weekly limits.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">06</div>
-      <div>
-        <h2>Accounts &amp; Profiles</h2>
-        <p>You are responsible for the device and Apple ID used with our services. The free tier supports one learner profile; KIBO Pro supports up to three learner profiles within a single household. Do not share your subscription outside your household.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">07</div>
-      <div>
-        <h2>Acceptable Use</h2>
-        <p>You agree not to:</p>
-        <ul>
-          <li>Attempt to bypass content filters or use the homework-scan feature to generate inappropriate content.</li>
-          <li>Reverse-engineer, copy, or resell any part of our services.</li>
-          <li>Use our services for any purpose other than personal, non-commercial education.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">08</div>
-      <div>
-        <h2>Content &amp; AI</h2>
-        <p>KIBO uses AI to generate practice questions and to interpret homework photos. AI-generated content may occasionally contain errors. Do not rely on the app as the sole source of academic instruction. Always verify important information with a teacher or qualified professional.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">09</div>
-      <div>
-        <h2>Intellectual Property</h2>
-        <p>All software, content, branding, and design of our services are owned by Matteria Technologies LLC and protected by applicable intellectual-property laws. We grant you a limited, non-exclusive, non-transferable license to use the services for personal, non-commercial purposes.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">10</div>
-      <div>
-        <h2>Disclaimer of Warranties</h2>
-        <p>Our services are provided "as is" and "as available" without warranties of any kind. We do not guarantee uninterrupted service, error-free content, or that the services will meet your specific educational requirements.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">11</div>
-      <div>
-        <h2>Limitation of Liability</h2>
-        <p>To the maximum extent permitted by law, Matteria Technologies LLC shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of, or inability to use, our services.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">12</div>
-      <div>
-        <h2>Governing Law</h2>
-        <p>These Terms are governed by the laws of the State of Florida, USA, without regard to its conflict-of-laws principles. Any dispute shall be resolved in the state or federal courts located in Miami-Dade County, Florida.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">13</div>
-      <div>
-        <h2>Changes to These Terms</h2>
-        <p>We may update these Terms from time to time. We will indicate material changes by updating the effective date above. Continued use of our services after changes are posted constitutes acceptance of the updated Terms.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <div class="num">14</div>
-      <div>
-        <h2>Contact</h2>
-        <p>For questions about these Terms, your subscription, or billing:</p>
-        <p>
-          <strong>Matteria Technologies LLC</strong><br/>
-          Miami, Florida — USA · DUNS 146138580<br/>
-          <a href="mailto:hello@matteriatech.com">hello@matteriatech.com</a>
-        </p>
-        <p>For privacy questions, see our <a href="/privacy-policy">Privacy Policy</a>.</p>
-      </div>
-    </section>
-  </article>
-</main>
-
-<!-- footer -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div class="brand">
-      <span class="logo-mark"><span class="ring"></span><span class="orbit"></span><span class="m">M</span></span>
-      <div class="tagline">Engineering imagination into reality.</div>
-    </div>
-    <div class="col">
-      <h4>Ventures</h4>
-      <a href="/kibo">Kibo</a>
-    </div>
-    <div class="col">
-      <h4>Company</h4>
-      <a href="/">Home</a>
-      <a href="mailto:hello@matteriatech.com">Contact</a>
-    </div>
-    <div class="col">
-      <h4>Legal</h4>
-      <a href="/terms-of-service" aria-current="page">Terms of Service</a>
-      <a href="/privacy-policy">Privacy Policy</a>
+    <div class="hero-bottom">
+      <p class="hero-sub">
+        We build intelligent software at the intersection of design, visualization and learning. A small studio with a precise method, headquartered in Miami.
+      </p>
+      <a href="#ventures" class="btn-audi">
+        Discover Ventures
+        <span class="chev">››</span>
+      </a>
     </div>
   </div>
-  <div class="footer-base">
-    <span>© 2026 Matteria Technologies LLC</span>
-    <span>Miami, Florida — USA · DUNS 146138580</span>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider">
+  <div class="left">
+    <span class="num">01 / 03</span>
+    <span>Ventures</span>
+  </div>
+  <div class="right">Three active products</div>
+</div>
+
+<!-- VENTURES -->
+<section id="ventures" class="ventures">
+  <div class="ventures-intro">
+    <div class="intro-meta">
+      <span class="bar"></span>
+      <span>Our Portfolio</span>
+    </div>
+    <h2 class="ventures-title">
+      Intentional<br/>
+      technology, <em>engineered</em><br/>
+      for purpose.
+    </h2>
+  </div>
+
+  <div class="venture-cards">
+    <!-- Card 1: Matter.ia -->
+    <div class="venture-card">
+      <div class="venture-card-visual" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2520 100%);">
+        <svg viewBox="0 0 200 200" fill="none">
+          <rect x="20" y="60" width="160" height="100" stroke="#d4b896" stroke-width="0.8" opacity="0.6"/>
+          <rect x="40" y="80" width="120" height="60" stroke="#d4b896" stroke-width="0.5" opacity="0.4"/>
+          <rect x="60" y="100" width="80" height="20" fill="#d4b896" opacity="0.15"/>
+          <line x1="20" y1="60" x2="180" y2="40" stroke="#d4b896" stroke-width="0.5" opacity="0.4"/>
+          <line x1="180" y1="60" x2="180" y2="40" stroke="#d4b896" stroke-width="0.5" opacity="0.4"/>
+          <circle cx="100" cy="170" r="2" fill="#f50537"/>
+        </svg>
+      </div>
+      <div class="venture-card-overlay"></div>
+      <div class="venture-card-content">
+        <div class="venture-card-num">
+          <span class="status-dot"></span>
+          <span>01 — Active</span>
+        </div>
+        <div class="venture-card-name">Matter.ia</div>
+        <div class="venture-card-desc">
+          Photorealistic rendering platform for architects and interior designers. Generates immersive spaces through fine-tuned visual intelligence.
+        </div>
+        <a href="#" class="venture-card-link">
+          Learn more <span>››</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: Kibo -->
+    <div class="venture-card">
+      <div class="venture-card-visual" style="background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);">
+        <svg viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="60" stroke="#4a90e2" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="100" cy="100" r="40" stroke="#4a90e2" stroke-width="0.5" opacity="0.4"/>
+          <circle cx="100" cy="100" r="20" stroke="#4a90e2" stroke-width="0.5" opacity="0.3"/>
+          <circle cx="100" cy="40" r="3" fill="#4a90e2"/>
+          <circle cx="160" cy="100" r="2" fill="#4a90e2" opacity="0.7"/>
+          <circle cx="100" cy="160" r="2" fill="#4a90e2" opacity="0.5"/>
+          <circle cx="40" cy="100" r="2" fill="#4a90e2" opacity="0.7"/>
+          <circle cx="100" cy="100" r="3" fill="#f50537"/>
+        </svg>
+      </div>
+      <div class="venture-card-overlay"></div>
+      <div class="venture-card-content">
+        <div class="venture-card-num">
+          <span class="status-dot"></span>
+          <span>02 — Active</span>
+        </div>
+        <div class="venture-card-name">Kibo</div>
+        <div class="venture-card-desc">
+          Educational companion that transforms how children learn. Built on a cognitive architecture that adapts to each student.
+        </div>
+        <a href="#" class="venture-card-link">
+          Learn more <span>››</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3: Research -->
+    <div class="venture-card">
+      <div class="venture-card-visual" style="background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);">
+        <svg viewBox="0 0 200 200" fill="none">
+          <line x1="20" y1="100" x2="180" y2="100" stroke="#fff" stroke-width="0.4" opacity="0.3"/>
+          <line x1="100" y1="20" x2="100" y2="180" stroke="#fff" stroke-width="0.4" opacity="0.3"/>
+          <path d="M 30 130 Q 70 60, 100 90 T 170 70" stroke="#f50537" stroke-width="1" fill="none"/>
+          <circle cx="30" cy="130" r="2" fill="#fff"/>
+          <circle cx="70" cy="80" r="2" fill="#fff" opacity="0.7"/>
+          <circle cx="100" cy="90" r="2" fill="#fff" opacity="0.8"/>
+          <circle cx="130" cy="60" r="2" fill="#fff" opacity="0.7"/>
+          <circle cx="170" cy="70" r="3" fill="#f50537"/>
+        </svg>
+      </div>
+      <div class="venture-card-overlay"></div>
+      <div class="venture-card-content">
+        <div class="venture-card-num">
+          <span class="status-dot idle"></span>
+          <span>03 — Continuous</span>
+        </div>
+        <div class="venture-card-name">Research</div>
+        <div class="venture-card-desc">
+          Exploration in generative systems, autonomous agents and human-centered AI interfaces. The lab where futures take shape.
+        </div>
+        <a href="#" class="venture-card-link">
+          Learn more <span>››</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider">
+  <div class="left">
+    <span class="num">02 / 03</span>
+    <span>Philosophy</span>
+  </div>
+  <div class="right">Four guiding principles</div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy" class="philosophy">
+  <div class="philosophy-header">
+    <h2 class="philosophy-quote">
+      At its best, technology is an unmistakable combination of <span class="accent">clarity, precision, intelligence and craft.</span>
+    </h2>
+    <div class="philosophy-meta">
+      <div class="label">Our Method</div>
+      <p>
+        Four principles guide every decision we make — from the first line of code to the last detail of a product. They define how we build, what we accept, and what we refuse to compromise.
+      </p>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num"><span>01</span> — Principle</div>
+      <div class="pillar-name">Clarity</div>
+      <div class="pillar-desc">Every interface reveals its purpose. We strip away noise until only meaning remains.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num"><span>02</span> — Principle</div>
+      <div class="pillar-name">Precision</div>
+      <div class="pillar-desc">Pixel-level rigor. Millisecond-level performance. Engineering is craft taken seriously.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num"><span>03</span> — Principle</div>
+      <div class="pillar-name">Intelligence</div>
+      <div class="pillar-desc">Software that thinks alongside you — never replaces you. AI as augmentation, not abstraction.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num"><span>04</span> — Principle</div>
+      <div class="pillar-name">Craft</div>
+      <div class="pillar-desc">Details others overlook become the moments users remember. Quality is a stance, not a feature.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider">
+  <div class="left">
+    <span class="num">03 / 03</span>
+    <span>Company</span>
+  </div>
+  <div class="right">Matteria Technologies LLC</div>
+</div>
+
+<!-- COMPANY INFO -->
+<section id="company" class="company-info">
+  <div class="company-header">
+    <h2 class="company-title">Specification.</h2>
+    <p class="company-subtitle">A small studio operating from Miami with a global perspective and a precise method.</p>
+  </div>
+
+  <div class="spec-sheet">
+    <div class="spec-cell">
+      <div class="spec-label">Legal Entity</div>
+      <div class="spec-value">Matteria<br/>Technologies LLC</div>
+    </div>
+    <div class="spec-cell">
+      <div class="spec-label">Headquarters</div>
+      <div class="spec-value">Miami<br/>Florida — USA</div>
+    </div>
+    <div class="spec-cell">
+      <div class="spec-label">Founded</div>
+      <div class="spec-value">2025</div>
+    </div>
+    <div class="spec-cell">
+      <div class="spec-label">Focus Areas</div>
+      <div class="spec-value">AI · Design<br/>Education</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="contact">
+  <div class="cta-band-bg"></div>
+  <div class="cta-band-content">
+    <h2 class="cta-title">
+      Building something<br/>
+      <span class="accent">extraordinary?</span><br/>
+      Let's talk.
+    </h2>
+    <div class="cta-right">
+      <p>We collaborate selectively with founders, brands and institutions who share our standards. If your project demands more than software-as-usual, we want to hear about it.</p>
+      <a href="mailto:hello@matteriatech.com" class="btn-audi">
+        hello@matteriatech.com
+        <span class="chev">››</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand-block">
+      <div class="footer-rings">
+        <span class="m-char">M</span>
+        <span class="orbit-ring"></span>
+      </div>
+      <div class="footer-tagline">
+        Engineering<br/>
+        imagination<br/>
+        into reality.
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Ventures</h4>
+      <ul>
+        <li><a href="#ventures">Matter.ia</a></li>
+        <li><a href="#ventures">Kibo</a></li>
+        <li><a href="#ventures">Research</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#company">Specification</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Imprint</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 Matteria Technologies LLC · All rights reserved</div>
+    <div class="legal">
+      <span>DUNS · 146138580</span>
+      <span>Miami · Florida</span>
+    </div>
   </div>
 </footer>
 
 <script>
-  (function(){
-    var bar=document.getElementById('progress');
-    function onScroll(){
-      var h=document.documentElement;
-      var max=h.scrollHeight-h.clientHeight;
-      bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
-    }
-    document.addEventListener('scroll',onScroll,{passive:true});
-    onScroll();
-  })();
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('scrollProgress').style.width = scrolled + '%';
+  });
 </script>
+
 </body>
 </html>
