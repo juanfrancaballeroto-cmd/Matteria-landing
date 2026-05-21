@@ -34,6 +34,11 @@
   .nav-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
   .nav .logo{height:30px}
   .nav .logo img{height:100%}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .lang-switch{display:flex;gap:2px;background:rgba(44,40,32,.06);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang-switch button{border:none;background:none;cursor:pointer;font-family:inherit;font-weight:700;font-size:.78rem;color:var(--mid);padding:5px 9px;border-radius:999px;line-height:1;transition:background .15s ease,color .15s ease}
+  .lang-switch button:hover{color:var(--ink)}
+  .lang-switch button.on{background:var(--terra);color:#fff}
   .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:1rem;border-radius:999px;padding:13px 22px;cursor:pointer;border:none;transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
   .btn:active{transform:scale(.97)}
   .btn-primary{background:var(--terra);color:#fff;box-shadow:0 8px 22px rgba(212,120,90,.38)}
@@ -80,6 +85,21 @@
   .step .num{width:56px;height:56px;border-radius:50%;background:var(--sage);color:#fff;font-weight:900;font-size:1.5rem;display:grid;place-items:center;margin:0 auto 16px}
   .step h3{font-weight:800;font-size:1.2rem}
   .step p{color:var(--mid);font-weight:500;margin-top:6px}
+
+  /* Loved by families */
+  .loved .h2{max-width:20ch}
+  .testi{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px;box-shadow:0 16px 40px rgba(44,40,32,.06);max-width:660px}
+  .quote{font-size:clamp(1.2rem,2.4vw,1.5rem);font-weight:700;line-height:1.42;letter-spacing:-.01em}
+  .quote::before{content:"\201C";color:var(--terra);margin-right:3px}
+  .quote::after{content:"\201D";color:var(--terra);margin-left:2px}
+  .who{display:flex;align-items:center;gap:12px;margin-top:20px}
+  .ava{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--terra),#FF7A1A);color:#fff;font-weight:800;display:grid;place-items:center;flex-shrink:0}
+  .who-name{font-weight:700}
+  .who-role{color:var(--mid);font-size:.9rem}
+  .stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}
+  .stat{background:rgba(212,120,90,.08);border:1px solid rgba(212,120,90,.18);border-radius:16px;padding:14px 20px}
+  .sn{font-size:1.6rem;font-weight:800;color:var(--terra-deep);letter-spacing:-.02em;line-height:1}
+  .sl{font-size:.76rem;color:var(--mid);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
 
   /* Pricing */
   .price-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin-top:38px}
@@ -140,7 +160,15 @@
 <header class="nav">
   <div class="nav-in">
     <a class="logo" href="/kibo" aria-label="KIBO"><img src="/kibo/assets/kibo-logo-ink.svg" alt="KIBO"/></a>
-    <a class="btn btn-primary btn-sm" href="#get"><span class="cta-text">Get the app</span><span aria-hidden="true">→</span></a>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#get"><span class="cta-text" data-i18n="nav_cta">Get the app</span><span aria-hidden="true">→</span></a>
+    </div>
   </div>
 </header>
 
@@ -149,12 +177,12 @@
   <div class="hero-in">
     <div>
       <img class="hero-logo" src="/kibo/assets/kibo-logo.svg" alt="KIBO"/>
-      <h1>Homework that <em>feels like play.</em></h1>
-      <p class="sub">An AI tutor for kids in grades K–6. Snap a photo of any worksheet and KIBO turns it into fun, personalized practice.</p>
+      <h1 data-i18n="hero_h1">Homework that <em>feels like play.</em></h1>
+      <p class="sub" data-i18n="hero_sub">An AI tutor for kids in grades K–6. Snap a photo of any worksheet and KIBO turns it into fun, personalized practice.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#get">Download on the App Store</a>
+        <a class="btn btn-primary" href="#get" data-i18n="dl_appstore">Download on the App Store</a>
       </div>
-      <div class="trial-note"><span class="dot"></span>15 days of KIBO Pro free — no card needed</div>
+      <div class="trial-note"><span class="dot"></span><span data-i18n="hero_trial">15 days of KIBO Pro free — no card needed</span></div>
     </div>
     <div class="hero-art">
       <svg class="kibo-mockup" viewBox="0 0 660 620" role="img"
@@ -307,39 +335,39 @@
 <!-- Value props -->
 <section id="features">
   <div class="wrap">
-    <div class="eyebrow">Why KIBO</div>
-    <h2 class="h2">Everything homework help should be</h2>
-    <p class="lead">Calm, colorful, and built around real classroom skills — so a few minutes a day actually add up.</p>
+    <div class="eyebrow" data-i18n="feat_eyebrow">Why KIBO</div>
+    <h2 class="h2" data-i18n="feat_h2">Everything homework help should be</h2>
+    <p class="lead" data-i18n="feat_lead">Calm, colorful, and built around real classroom skills — so a few minutes a day actually add up.</p>
     <div class="cards">
       <div class="vcard">
         <div class="ico" style="background:var(--terra)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
-        <h3>Scan any homework</h3>
-        <p>Take a photo of a worksheet and KIBO instantly creates similar practice at your child's level — so they learn the skill, not just the answer.</p>
+        <h3 data-i18n="f1_t">Scan any homework</h3>
+        <p data-i18n="f1_d">Take a photo of a worksheet and KIBO instantly creates similar practice at your child's level — so they learn the skill, not just the answer.</p>
       </div>
       <div class="vcard">
         <div class="ico" style="background:var(--sage)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div>
-        <h3>A guided learning path</h3>
-        <p>Day by day through Math, Reading, Science and Social Studies — bite-sized questions with friendly explanations and visuals.</p>
+        <h3 data-i18n="f2_t">A guided learning path</h3>
+        <p data-i18n="f2_d">Day by day through Math, Reading, Science and Social Studies — bite-sized questions with friendly explanations and visuals.</p>
       </div>
       <div class="vcard">
         <div class="ico" style="background:var(--sky)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 13l2 2 4-4"/></svg></div>
-        <h3>Exam-ready practice</h3>
-        <p>F.A.S.T.-style practice tests build test-day confidence, aligned to grade-level standards.</p>
+        <h3 data-i18n="f3_t">Exam-ready practice</h3>
+        <p data-i18n="f3_d">F.A.S.T.-style practice tests build test-day confidence, aligned to grade-level standards.</p>
       </div>
       <div class="vcard">
         <div class="ico" style="background:#9B7BD4"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></div>
-        <h3>Bilingual ESOL support</h3>
-        <p>Full support in English, Spanish, French and German — a bridge for kids still learning English.</p>
+        <h3 data-i18n="f4_t">Bilingual ESOL support</h3>
+        <p data-i18n="f4_d">Full support in English, Spanish, French and German — a bridge for kids still learning English.</p>
       </div>
       <div class="vcard">
         <div class="ico" style="background:var(--sun);color:#3a2e00"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c.8 3.5 4.5 4.8 4.5 9a4.5 4.5 0 0 1-9 0c0-1.6.8-2.7 1.6-3.5C10.5 9.5 10 6.5 12 2z"/><path d="M12 21a2.6 2.6 0 0 0 2.6-2.6c0-1.6-2.6-3.4-2.6-3.4s-2.6 1.8-2.6 3.4A2.6 2.6 0 0 0 12 21z"/></svg></div>
-        <h3>Streaks &amp; badges</h3>
-        <p>Daily goals, streaks and a cast of encouraging characters make practice something kids want to come back to.</p>
+        <h3 data-i18n="f5_t">Streaks &amp; badges</h3>
+        <p data-i18n="f5_d">Daily goals, streaks and a cast of encouraging characters make practice something kids want to come back to.</p>
       </div>
       <div class="vcard">
         <div class="ico" style="background:#2C2820"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Calm &amp; kid-safe</h3>
-        <p>No ads, no chat, no links out. Progress stays on the device. Designed for focus, not for screen time.</p>
+        <h3 data-i18n="f6_t">Calm &amp; kid-safe</h3>
+        <p data-i18n="f6_d">No ads, no chat, no links out. Progress stays on the device. Designed for focus, not for screen time.</p>
       </div>
     </div>
   </div>
@@ -348,12 +376,35 @@
 <!-- How it works -->
 <section class="how">
   <div class="wrap" style="padding-top:60px;padding-bottom:60px">
-    <div class="eyebrow">How it works</div>
-    <h2 class="h2">Three taps to practice</h2>
+    <div class="eyebrow" data-i18n="how_eyebrow">How it works</div>
+    <h2 class="h2" data-i18n="how_h2">Three taps to practice</h2>
     <div class="steps">
-      <div class="step"><div class="num">1</div><h3>Snap a photo</h3><p>Point the camera at any worksheet or homework page.</p></div>
-      <div class="step"><div class="num">2</div><h3>KIBO makes practice</h3><p>It builds fun questions at the right level, with hints and visuals.</p></div>
-      <div class="step"><div class="num">3</div><h3>Learn a little daily</h3><p>Short sessions, streaks and progress your child can see.</p></div>
+      <div class="step"><div class="num">1</div><h3 data-i18n="s1_t">Snap a photo</h3><p data-i18n="s1_d">Point the camera at any worksheet or homework page.</p></div>
+      <div class="step"><div class="num">2</div><h3 data-i18n="s2_t">KIBO makes practice</h3><p data-i18n="s2_d">It builds fun questions at the right level, with hints and visuals.</p></div>
+      <div class="step"><div class="num">3</div><h3 data-i18n="s3_t">Learn a little daily</h3><p data-i18n="s3_d">Short sessions, streaks and progress your child can see.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Loved by families -->
+<section class="loved">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="loved_eyebrow">Loved by families</div>
+    <h2 class="h2" data-i18n="loved_h2">From homework battles to &ldquo;can I do one more?&rdquo;</h2>
+    <div class="testi">
+      <blockquote class="quote" data-i18n="loved_quote">My daughter used to cry over math homework. Now she asks to practice after dinner.</blockquote>
+      <div class="who">
+        <div class="ava">M</div>
+        <div>
+          <div class="who-name">María G.</div>
+          <div class="who-role" data-i18n="loved_role">Parent · 3rd grade · Miami-Dade</div>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="sn">K–6</div><div class="sl" data-i18n="stat1_l">All grades</div></div>
+      <div class="stat"><div class="sn">5</div><div class="sl" data-i18n="stat2_l">Subjects</div></div>
+      <div class="stat"><div class="sn">4</div><div class="sl" data-i18n="stat3_l">Languages</div></div>
     </div>
   </div>
 </section>
@@ -361,24 +412,24 @@
 <!-- Pricing / trial -->
 <section id="get">
   <div class="wrap">
-    <div class="eyebrow">Simple pricing</div>
-    <h2 class="h2">Try everything free for 15 days</h2>
-    <p class="lead">Every new family gets full KIBO Pro for 15 days — no credit card required. After that, keep a free amount of daily practice, or go Pro.</p>
+    <div class="eyebrow" data-i18n="price_eyebrow">Simple pricing</div>
+    <h2 class="h2" data-i18n="price_h2">Try everything free for 15 days</h2>
+    <p class="lead" data-i18n="price_lead">Every new family gets full KIBO Pro for 15 days — no credit card required. After that, keep a free amount of daily practice, or go Pro.</p>
     <div class="price-wrap">
       <div class="price-card">
-        <span class="free">✓ 15 days free · no card</span>
+        <span class="free" data-i18n="price_free">✓ 15 days free · no card</span>
         <div style="margin-top:18px">
-          <div class="price-row"><span class="k">Monthly</span><span class="v">$7.99<small>/month</small></span></div>
-          <div class="price-row"><span class="k">Annual <strong style="color:var(--sage-deep)">· best value</strong></span><span class="v">$59.99<small>/year</small></span></div>
+          <div class="price-row"><span class="k" data-i18n="price_monthly">Monthly</span><span class="v">$7.99<small data-i18n="per_month">/month</small></span></div>
+          <div class="price-row"><span class="k" data-i18n="price_annual">Annual <strong style="color:var(--sage-deep)">· best value</strong></span><span class="v">$59.99<small data-i18n="per_year">/year</small></span></div>
         </div>
-        <a class="btn btn-primary" style="width:100%;justify-content:center;margin-top:22px" href="https://apps.apple.com/app/kibo/id0000000000">Download on the App Store</a>
-        <p style="text-align:center;color:var(--faint);font-size:.85rem;margin-top:12px">Auto-renews · Cancel anytime in Settings</p>
+        <a class="btn btn-primary" style="width:100%;justify-content:center;margin-top:22px" href="https://apps.apple.com/app/kibo/id0000000000" data-i18n="dl_appstore">Download on the App Store</a>
+        <p style="text-align:center;color:var(--faint);font-size:.85rem;margin-top:12px" data-i18n="price_autoren">Auto-renews · Cancel anytime in Settings</p>
       </div>
       <ul class="price-list">
-        <li><span class="ck">✓</span><div><strong>Unlimited practice &amp; AI questions</strong><br/><span style="color:var(--mid)">across every subject, new each time</span></div></li>
-        <li><span class="ck">✓</span><div><strong>Unlimited homework scans</strong></div></li>
-        <li><span class="ck">✓</span><div><strong>Up to 3 learner profiles</strong></div></li>
-        <li><span class="ck">✓</span><div><strong>Gifted mode &amp; F.A.S.T. results</strong></div></li>
+        <li><span class="ck">✓</span><div><strong data-i18n="pl1_t">Unlimited practice &amp; AI questions</strong><br/><span style="color:var(--mid)" data-i18n="pl1_s">across every subject, new each time</span></div></li>
+        <li><span class="ck">✓</span><div><strong data-i18n="pl2">Unlimited homework scans</strong></div></li>
+        <li><span class="ck">✓</span><div><strong data-i18n="pl3">Up to 3 learner profiles</strong></div></li>
+        <li><span class="ck">✓</span><div><strong data-i18n="pl4">Gifted mode &amp; F.A.S.T. results</strong></div></li>
       </ul>
     </div>
   </div>
@@ -387,19 +438,19 @@
 <!-- Families band -->
 <section class="fam">
   <div class="wrap" style="padding-top:60px;padding-bottom:60px">
-    <div class="eyebrow" style="color:#F2B705">Made for families</div>
-    <h2 class="h2">Peace of mind, built in</h2>
-    <p class="lead">Up to three kids, four languages, and a calm experience with nothing to worry about.</p>
+    <div class="eyebrow" style="color:#F2B705" data-i18n="fam_eyebrow">Made for families</div>
+    <h2 class="h2" data-i18n="fam_h2">Peace of mind, built in</h2>
+    <p class="lead" data-i18n="fam_lead">Up to three kids, four languages, and a calm experience with nothing to worry about.</p>
     <img class="fam-friends" src="/kibo/assets/kibo-friends.svg" alt="The KIBO characters" loading="lazy"/>
     <div class="chips">
-      <span class="chip">No ads</span>
-      <span class="chip">No chat</span>
-      <span class="chip">On-device progress</span>
+      <span class="chip" data-i18n="chip1">No ads</span>
+      <span class="chip" data-i18n="chip2">No chat</span>
+      <span class="chip" data-i18n="chip3">On-device progress</span>
       <span class="chip">English</span>
       <span class="chip">Español</span>
       <span class="chip">Français</span>
       <span class="chip">Deutsch</span>
-      <span class="chip">Grades K–6</span>
+      <span class="chip" data-i18n="chip_grades">Grades K–6</span>
     </div>
   </div>
 </section>
@@ -408,9 +459,9 @@
 <section class="cta-band">
   <div class="wrap">
     <div class="box">
-      <h2>Ready when they are.</h2>
-      <p>15 days of KIBO Pro, free. No card needed.</p>
-      <a class="btn btn-ghost" style="border-color:#fff;color:#fff" href="https://apps.apple.com/app/kibo/id0000000000">Get KIBO →</a>
+      <h2 data-i18n="cta_h2">Ready when they are.</h2>
+      <p data-i18n="cta_p">15 days of KIBO Pro, free. No card needed.</p>
+      <a class="btn btn-ghost" style="border-color:#fff;color:#fff" href="https://apps.apple.com/app/kibo/id0000000000" data-i18n="cta_btn">Get KIBO →</a>
     </div>
   </div>
 </section>
@@ -421,14 +472,14 @@
     <div class="footer-top">
       <div>
         <a class="logo" href="/kibo" aria-label="KIBO"><img src="/kibo/assets/kibo-logo.svg" alt="KIBO"/></a>
-        <div class="by">A product of <a href="/">Matteria Technologies</a> — engineering imagination into reality.</div>
+        <div class="by" data-i18n="foot_by">A product of <a href="/">Matteria Technologies</a> — engineering imagination into reality.</div>
       </div>
       <nav>
-        <a href="#features">Features</a>
-        <a href="#get">Pricing</a>
-        <a href="/kibo/privacy">Privacy</a>
-        <a href="/kibo/terms">Terms</a>
-        <a href="mailto:hello@matteriatech.com">Contact</a>
+        <a href="#features" data-i18n="foot_features">Features</a>
+        <a href="#get" data-i18n="foot_pricing">Pricing</a>
+        <a href="/kibo/privacy" data-i18n="foot_privacy">Privacy</a>
+        <a href="/kibo/terms" data-i18n="foot_terms">Terms</a>
+        <a href="mailto:hello@matteriatech.com" data-i18n="foot_contact">Contact</a>
       </nav>
     </div>
     <div class="footer-base">
@@ -437,6 +488,256 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var I18N = {
+    en: {
+      nav_cta:"Get the app",
+      hero_h1:"Homework that <em>feels like play.</em>",
+      hero_sub:"An AI tutor for kids in grades K–6. Snap a photo of any worksheet and KIBO turns it into fun, personalized practice.",
+      dl_appstore:"Download on the App Store",
+      hero_trial:"15 days of KIBO Pro free — no card needed",
+      feat_eyebrow:"Why KIBO",
+      feat_h2:"Everything homework help should be",
+      feat_lead:"Calm, colorful, and built around real classroom skills — so a few minutes a day actually add up.",
+      f1_t:"Scan any homework",
+      f1_d:"Take a photo of a worksheet and KIBO instantly creates similar practice at your child's level — so they learn the skill, not just the answer.",
+      f2_t:"A guided learning path",
+      f2_d:"Day by day through Math, Reading, Science and Social Studies — bite-sized questions with friendly explanations and visuals.",
+      f3_t:"Exam-ready practice",
+      f3_d:"F.A.S.T.-style practice tests build test-day confidence, aligned to grade-level standards.",
+      f4_t:"Bilingual ESOL support",
+      f4_d:"Full support in English, Spanish, French and German — a bridge for kids still learning English.",
+      f5_t:"Streaks &amp; badges",
+      f5_d:"Daily goals, streaks and a cast of encouraging characters make practice something kids want to come back to.",
+      f6_t:"Calm &amp; kid-safe",
+      f6_d:"No ads, no chat, no links out. Progress stays on the device. Designed for focus, not for screen time.",
+      how_eyebrow:"How it works",
+      how_h2:"Three taps to practice",
+      s1_t:"Snap a photo", s1_d:"Point the camera at any worksheet or homework page.",
+      s2_t:"KIBO makes practice", s2_d:"It builds fun questions at the right level, with hints and visuals.",
+      s3_t:"Learn a little daily", s3_d:"Short sessions, streaks and progress your child can see.",
+      loved_eyebrow:"Loved by families",
+      loved_h2:"From homework battles to &ldquo;can I do one more?&rdquo;",
+      loved_quote:"My daughter used to cry over math homework. Now she asks to practice after dinner.",
+      loved_role:"Parent · 3rd grade · Miami-Dade",
+      stat1_l:"All grades", stat2_l:"Subjects", stat3_l:"Languages",
+      price_eyebrow:"Simple pricing",
+      price_h2:"Try everything free for 15 days",
+      price_lead:"Every new family gets full KIBO Pro for 15 days — no credit card required. After that, keep a free amount of daily practice, or go Pro.",
+      price_free:"✓ 15 days free · no card",
+      price_monthly:"Monthly",
+      price_annual:"Annual <strong style='color:var(--sage-deep)'>· best value</strong>",
+      per_month:"/month", per_year:"/year",
+      price_autoren:"Auto-renews · Cancel anytime in Settings",
+      pl1_t:"Unlimited practice &amp; AI questions", pl1_s:"across every subject, new each time",
+      pl2:"Unlimited homework scans",
+      pl3:"Up to 3 learner profiles",
+      pl4:"Gifted mode &amp; F.A.S.T. results",
+      fam_eyebrow:"Made for families",
+      fam_h2:"Peace of mind, built in",
+      fam_lead:"Up to three kids, four languages, and a calm experience with nothing to worry about.",
+      chip1:"No ads", chip2:"No chat", chip3:"On-device progress", chip_grades:"Grades K–6",
+      cta_h2:"Ready when they are.",
+      cta_p:"15 days of KIBO Pro, free. No card needed.",
+      cta_btn:"Get KIBO →",
+      foot_by:"A product of <a href='/'>Matteria Technologies</a> — engineering imagination into reality.",
+      foot_features:"Features", foot_pricing:"Pricing", foot_privacy:"Privacy", foot_terms:"Terms", foot_contact:"Contact",
+      _title:"KIBO — Homework feels like play"
+    },
+    es: {
+      nav_cta:"Descargar la app",
+      hero_h1:"Tareas que <em>parecen un juego.</em>",
+      hero_sub:"Un tutor con IA para niños de K–6. Haz una foto de cualquier ficha y KIBO la convierte en práctica divertida y personalizada.",
+      dl_appstore:"Descargar en el App Store",
+      hero_trial:"15 días de KIBO Pro gratis — sin tarjeta",
+      feat_eyebrow:"Por qué KIBO",
+      feat_h2:"Todo lo que la ayuda con las tareas debería ser",
+      feat_lead:"Tranquila, colorida y basada en las destrezas reales del aula — para que unos minutos al día sí sumen.",
+      f1_t:"Escanea cualquier tarea",
+      f1_d:"Haz una foto de una ficha y KIBO crea al instante práctica similar al nivel de tu hijo — para que aprenda la destreza, no solo la respuesta.",
+      f2_t:"Una ruta de aprendizaje guiada",
+      f2_d:"Día a día por Matemáticas, Lectura, Ciencias y Estudios Sociales — preguntas breves con explicaciones amables y elementos visuales.",
+      f3_t:"Práctica lista para el examen",
+      f3_d:"Exámenes de práctica estilo F.A.S.T. dan confianza para el día del examen, alineados con los estándares del grado.",
+      f4_t:"Apoyo ESOL bilingüe",
+      f4_d:"Apoyo completo en inglés, español, francés y alemán — un puente para los niños que aún aprenden inglés.",
+      f5_t:"Rachas y medallas",
+      f5_d:"Metas diarias, rachas y un elenco de personajes alentadores hacen que practicar sea algo a lo que los niños quieren volver.",
+      f6_t:"Tranquila y segura para niños",
+      f6_d:"Sin anuncios, sin chat, sin enlaces externos. El progreso se queda en el dispositivo. Diseñada para concentrarse, no para el tiempo de pantalla.",
+      how_eyebrow:"Cómo funciona",
+      how_h2:"Tres toques para practicar",
+      s1_t:"Haz una foto", s1_d:"Apunta la cámara a cualquier ficha o página de tarea.",
+      s2_t:"KIBO crea la práctica", s2_d:"Crea preguntas divertidas al nivel adecuado, con pistas y elementos visuales.",
+      s3_t:"Aprende un poco cada día", s3_d:"Sesiones cortas, rachas y un progreso que tu hijo puede ver.",
+      loved_eyebrow:"Las familias lo adoran",
+      loved_h2:"De las peleas por la tarea a &ldquo;¿puedo hacer una más?&rdquo;",
+      loved_quote:"Mi hija lloraba con la tarea de mates. Ahora pide practicar después de cenar.",
+      loved_role:"Madre · 3.º grado · Miami-Dade",
+      stat1_l:"Todos los grados", stat2_l:"Materias", stat3_l:"Idiomas",
+      price_eyebrow:"Precios sencillos",
+      price_h2:"Prueba todo gratis 15 días",
+      price_lead:"Cada familia nueva obtiene KIBO Pro completo durante 15 días — sin tarjeta. Después, conserva una cantidad gratuita de práctica diaria o pásate a Pro.",
+      price_free:"✓ 15 días gratis · sin tarjeta",
+      price_monthly:"Mensual",
+      price_annual:"Anual <strong style='color:var(--sage-deep)'>· mejor valor</strong>",
+      per_month:"/mes", per_year:"/año",
+      price_autoren:"Renovación automática · Cancela cuando quieras en Ajustes",
+      pl1_t:"Práctica y preguntas con IA ilimitadas", pl1_s:"en todas las materias, nuevas cada vez",
+      pl2:"Escaneos de tarea ilimitados",
+      pl3:"Hasta 3 perfiles de estudiante",
+      pl4:"Modo superdotados y resultados F.A.S.T.",
+      fam_eyebrow:"Hecho para familias",
+      fam_h2:"Tranquilidad, de serie",
+      fam_lead:"Hasta tres niños, cuatro idiomas y una experiencia tranquila sin nada de qué preocuparse.",
+      chip1:"Sin anuncios", chip2:"Sin chat", chip3:"Progreso en el dispositivo", chip_grades:"Grados K–6",
+      cta_h2:"Listo cuando ellos lo estén.",
+      cta_p:"15 días de KIBO Pro, gratis. Sin tarjeta.",
+      cta_btn:"Obtener KIBO →",
+      foot_by:"Un producto de <a href='/'>Matteria Technologies</a> — convertimos la imaginación en realidad.",
+      foot_features:"Funciones", foot_pricing:"Precios", foot_privacy:"Privacidad", foot_terms:"Términos", foot_contact:"Contacto",
+      _title:"KIBO — Las tareas se sienten como jugar"
+    },
+    fr: {
+      nav_cta:"Télécharger l'app",
+      hero_h1:"Les devoirs qui <em>deviennent un jeu.</em>",
+      hero_sub:"Un tuteur IA pour les enfants de la maternelle au CM2. Prends en photo n'importe quelle fiche et KIBO la transforme en exercices ludiques et personnalisés.",
+      dl_appstore:"Télécharger dans l'App Store",
+      hero_trial:"15 jours de KIBO Pro gratuits — sans carte",
+      feat_eyebrow:"Pourquoi KIBO",
+      feat_h2:"Tout ce que l'aide aux devoirs devrait être",
+      feat_lead:"Calme, colorée et fondée sur les compétences réelles de la classe — pour que quelques minutes par jour comptent vraiment.",
+      f1_t:"Scanne n'importe quel devoir",
+      f1_d:"Prends une fiche en photo et KIBO crée aussitôt des exercices similaires au niveau de ton enfant — pour qu'il apprenne la compétence, pas seulement la réponse.",
+      f2_t:"Un parcours d'apprentissage guidé",
+      f2_d:"Jour après jour en maths, lecture, sciences et histoire-géo — des questions courtes avec des explications bienveillantes et des visuels.",
+      f3_t:"Préparation aux examens",
+      f3_d:"Des tests d'entraînement de type F.A.S.T. renforcent la confiance le jour J, alignés sur les programmes du niveau.",
+      f4_t:"Soutien ESOL bilingue",
+      f4_d:"Prise en charge complète en anglais, espagnol, français et allemand — un pont pour les enfants qui apprennent encore l'anglais.",
+      f5_t:"Séries et badges",
+      f5_d:"Des objectifs quotidiens, des séries et une bande de personnages encourageants donnent envie aux enfants de revenir s'entraîner.",
+      f6_t:"Calme et sûre pour les enfants",
+      f6_d:"Pas de pub, pas de chat, pas de liens externes. La progression reste sur l'appareil. Conçue pour la concentration, pas pour le temps d'écran.",
+      how_eyebrow:"Comment ça marche",
+      how_h2:"Trois touches pour s'entraîner",
+      s1_t:"Prends une photo", s1_d:"Vise n'importe quelle fiche ou page de devoirs.",
+      s2_t:"KIBO crée les exercices", s2_d:"Il crée des questions amusantes au bon niveau, avec des indices et des visuels.",
+      s3_t:"Apprends un peu chaque jour", s3_d:"Des sessions courtes, des séries et des progrès visibles pour ton enfant.",
+      loved_eyebrow:"Adoré des familles",
+      loved_h2:"Des disputes pour les devoirs à &ldquo;j'en fais une de plus ?&rdquo;",
+      loved_quote:"Ma fille pleurait à cause des devoirs de maths. Maintenant elle demande à s'entraîner après le dîner.",
+      loved_role:"Parent · CE2 · Miami-Dade",
+      stat1_l:"Tous les niveaux", stat2_l:"Matières", stat3_l:"Langues",
+      price_eyebrow:"Tarifs simples",
+      price_h2:"Essaie tout gratuitement pendant 15 jours",
+      price_lead:"Chaque nouvelle famille profite de KIBO Pro complet pendant 15 jours — sans carte. Ensuite, garde une quantité gratuite d'exercices par jour, ou passe à Pro.",
+      price_free:"✓ 15 jours gratuits · sans carte",
+      price_monthly:"Mensuel",
+      price_annual:"Annuel <strong style='color:var(--sage-deep)'>· meilleure offre</strong>",
+      per_month:"/mois", per_year:"/an",
+      price_autoren:"Renouvellement auto · Annule quand tu veux dans Réglages",
+      pl1_t:"Exercices et questions IA illimités", pl1_s:"dans toutes les matières, nouvelles à chaque fois",
+      pl2:"Scans de devoirs illimités",
+      pl3:"Jusqu'à 3 profils d'élève",
+      pl4:"Mode surdoués et résultats F.A.S.T.",
+      fam_eyebrow:"Pensé pour les familles",
+      fam_h2:"La sérénité, intégrée",
+      fam_lead:"Jusqu'à trois enfants, quatre langues et une expérience apaisée, sans souci.",
+      chip1:"Sans pub", chip2:"Sans chat", chip3:"Progression sur l'appareil", chip_grades:"Niveaux K–6",
+      cta_h2:"Prêt quand ils le sont.",
+      cta_p:"15 jours de KIBO Pro, gratuits. Sans carte.",
+      cta_btn:"Obtenir KIBO →",
+      foot_by:"Un produit de <a href='/'>Matteria Technologies</a> — l'imagination devient réalité.",
+      foot_features:"Fonctions", foot_pricing:"Tarifs", foot_privacy:"Confidentialité", foot_terms:"Conditions", foot_contact:"Contact",
+      _title:"KIBO — Les devoirs deviennent un jeu"
+    },
+    de: {
+      nav_cta:"App holen",
+      hero_h1:"Hausaufgaben, die sich <em>wie Spielen anfühlen.</em>",
+      hero_sub:"Ein KI-Tutor für Kinder der Klassen K–6. Fotografiere ein beliebiges Arbeitsblatt und KIBO macht daraus spielerische, persönliche Übungen.",
+      dl_appstore:"Im App Store laden",
+      hero_trial:"15 Tage KIBO Pro gratis — keine Karte nötig",
+      feat_eyebrow:"Warum KIBO",
+      feat_h2:"Alles, was Hausaufgabenhilfe sein sollte",
+      feat_lead:"Ruhig, bunt und an echten Lerninhalten der Schule orientiert — damit ein paar Minuten am Tag wirklich etwas bringen.",
+      f1_t:"Jede Hausaufgabe scannen",
+      f1_d:"Fotografiere ein Arbeitsblatt und KIBO erstellt sofort ähnliche Übungen auf dem Niveau deines Kindes — damit es die Fähigkeit lernt, nicht nur die Antwort.",
+      f2_t:"Ein geführter Lernpfad",
+      f2_d:"Tag für Tag durch Mathe, Lesen, Sachkunde und Gesellschaft — kurze Fragen mit freundlichen Erklärungen und Bildern.",
+      f3_t:"Fit für die Prüfung",
+      f3_d:"Übungstests im F.A.S.T.-Stil geben Sicherheit für den Prüfungstag, abgestimmt auf die Klassenstufe.",
+      f4_t:"Zweisprachige ESOL-Unterstützung",
+      f4_d:"Volle Unterstützung in Englisch, Spanisch, Französisch und Deutsch — eine Brücke für Kinder, die noch Englisch lernen.",
+      f5_t:"Serien &amp; Abzeichen",
+      f5_d:"Tagesziele, Serien und eine Reihe ermutigender Figuren machen Üben zu etwas, zu dem Kinder gern zurückkommen.",
+      f6_t:"Ruhig &amp; kindersicher",
+      f6_d:"Keine Werbung, kein Chat, keine externen Links. Der Fortschritt bleibt auf dem Gerät. Gemacht für Konzentration, nicht für Bildschirmzeit.",
+      how_eyebrow:"So funktioniert's",
+      how_h2:"Drei Tipps bis zur Übung",
+      s1_t:"Foto machen", s1_d:"Richte die Kamera auf ein Arbeitsblatt oder eine Hausaufgabenseite.",
+      s2_t:"KIBO erstellt Übungen", s2_d:"Es erstellt lustige Fragen auf dem richtigen Niveau, mit Tipps und Bildern.",
+      s3_t:"Täglich ein bisschen lernen", s3_d:"Kurze Einheiten, Serien und sichtbarer Fortschritt für dein Kind.",
+      loved_eyebrow:"Von Familien geliebt",
+      loved_h2:"Vom Hausaufgaben-Streit zu &ldquo;darf ich noch eine machen?&rdquo;",
+      loved_quote:"Meine Tochter weinte wegen der Matheaufgaben. Jetzt möchte sie nach dem Abendessen üben.",
+      loved_role:"Mutter · 3. Klasse · Miami-Dade",
+      stat1_l:"Alle Klassen", stat2_l:"Fächer", stat3_l:"Sprachen",
+      price_eyebrow:"Einfache Preise",
+      price_h2:"Alles 15 Tage gratis testen",
+      price_lead:"Jede neue Familie erhält 15 Tage lang das volle KIBO Pro — ohne Karte. Danach bleibt eine kostenlose Menge täglicher Übungen, oder du wechselst zu Pro.",
+      price_free:"✓ 15 Tage gratis · keine Karte",
+      price_monthly:"Monatlich",
+      price_annual:"Jährlich <strong style='color:var(--sage-deep)'>· bester Wert</strong>",
+      per_month:"/Monat", per_year:"/Jahr",
+      price_autoren:"Automatische Verlängerung · Jederzeit in den Einstellungen kündbar",
+      pl1_t:"Unbegrenzte Übungen &amp; KI-Fragen", pl1_s:"in jedem Fach, jedes Mal neu",
+      pl2:"Unbegrenzte Hausaufgaben-Scans",
+      pl3:"Bis zu 3 Lernprofile",
+      pl4:"Begabten-Modus &amp; F.A.S.T.-Ergebnisse",
+      fam_eyebrow:"Für Familien gemacht",
+      fam_h2:"Sorgenfrei von Anfang an",
+      fam_lead:"Bis zu drei Kinder, vier Sprachen und ein ruhiges Erlebnis ohne Sorgen.",
+      chip1:"Keine Werbung", chip2:"Kein Chat", chip3:"Fortschritt auf dem Gerät", chip_grades:"Klassen K–6",
+      cta_h2:"Bereit, wenn sie es sind.",
+      cta_p:"15 Tage KIBO Pro, gratis. Keine Karte nötig.",
+      cta_btn:"KIBO holen →",
+      foot_by:"Ein Produkt von <a href='/'>Matteria Technologies</a> — Vorstellungskraft wird Wirklichkeit.",
+      foot_features:"Funktionen", foot_pricing:"Preise", foot_privacy:"Datenschutz", foot_terms:"AGB", foot_contact:"Kontakt",
+      _title:"KIBO — Hausaufgaben wie Spielen"
+    }
+  };
+  var SUPPORTED = ["en","es","fr","de"];
+  function apply(lang){
+    if(SUPPORTED.indexOf(lang) < 0) lang = "en";
+    var dict = I18N[lang];
+    document.documentElement.lang = lang;
+    if(dict._title) document.title = dict._title;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      if(dict[k] != null) el.innerHTML = dict[k];
+    });
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.classList.toggle("on", b.getAttribute("data-lang") === lang);
+    });
+    try{ localStorage.setItem("kibo_lang", lang); }catch(e){}
+  }
+  function init(){
+    var saved = null;
+    try{ saved = localStorage.getItem("kibo_lang"); }catch(e){}
+    var lang = saved || (navigator.language || "en").slice(0,2).toLowerCase();
+    if(SUPPORTED.indexOf(lang) < 0) lang = "en";
+    apply(lang);
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.addEventListener("click", function(){ apply(b.getAttribute("data-lang")); });
+    });
+  }
+  if(document.readyState !== "loading") init();
+  else document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
 
 </body>
 </html>
