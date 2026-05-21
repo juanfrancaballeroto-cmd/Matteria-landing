@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Matteria Technologies > Engineering imagination into reality</title>
+<title>Matteria Technologies — Engineering imagination into reality</title>
 <meta name="description" content="Matteria Technologies LLC — A technology studio building intelligent tools for design, visualization and education." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,16 +22,20 @@
     <span>Matteria Technologies LLC</span>
   </div>
   <div class="top-bar-right">
-    <a href="#" class="hide-mobile">EN</a>
-    <a href="#" class="hide-mobile">Miami, FL</a>
-    <a href="mailto:hello@matteriatech.com">hello@matteriatech.com</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="es">ES</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
+    </div>
+    <a href="mailto:hello@matteriatech.com" class="hide-mobile">hello@matteriatech.com</a>
   </div>
 </div>
 
 <!-- Main Nav -->
 <nav class="main-nav">
   <div class="nav-inner">
-    <a href="#" class="logo">
+    <a href="/" class="logo">
       <div class="logo-mark">
         <span class="m-char">M</span>
         <span class="orbit-ring"></span>
@@ -40,10 +44,10 @@
     </a>
 
     <ul class="nav-center">
-      <li><a href="#ventures">Ventures</a></li>
-      <li><a href="#philosophy">Philosophy</a></li>
-      <li><a href="#company">Company</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#ventures" data-i18n="nav_ventures">Ventures</a></li>
+      <li><a href="#philosophy" data-i18n="nav_philosophy">Philosophy</a></li>
+      <li><a href="#company" data-i18n="nav_company">Company</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
 
     <div class="nav-right">
@@ -54,7 +58,7 @@
         </svg>
       </button>
       <button class="nav-menu-btn" aria-label="Menu">
-        <span>Menu</span>
+        <span data-i18n="nav_menu">Menu</span>
         <div class="lines">
           <span></span>
           <span></span>
@@ -86,31 +90,31 @@
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="bar"></span>
-      <span>A Technology Studio › Est. 2025</span>
+      <span data-i18n="hero_eyebrow">A Technology Studio › Est. 2025</span>
     </div>
 
     <h1 class="hero-title">
       <div class="hero-title-row">
         <span class="hero-title-num">N°01</span>
-        <span class="light">Engineering</span>
+        <span class="light" data-i18n="hero_t1">Engineering</span>
       </div>
-      <div>imagination</div>
-      <div>into reality.</div>
+      <div data-i18n="hero_t2">imagination</div>
+      <div data-i18n="hero_t3">into reality.</div>
     </h1>
 
     <div class="hero-bottom">
-      <p class="hero-sub">
+      <p class="hero-sub" data-i18n="hero_sub">
         We build intelligent software at the intersection of design, visualization and learning. A small studio with a precise method, headquartered in Miami.
       </p>
       <a href="#ventures" class="btn-audi">
-        Discover Ventures
+        <span data-i18n="hero_cta">Discover Ventures</span>
         <span class="chev">››</span>
       </a>
     </div>
   </div>
 
   <div class="hero-scroll">
-    <span>Scroll</span>
+    <span data-i18n="scroll">Scroll</span>
     <div class="hero-scroll-line"></div>
   </div>
 </section>
@@ -119,9 +123,9 @@
 <div class="section-divider">
   <div class="left">
     <span class="num">01 / 03</span>
-    <span>Ventures</span>
+    <span data-i18n="nav_ventures">Ventures</span>
   </div>
-  <div class="right">Three active products</div>
+  <div class="right" data-i18n="div_ventures">Three active products</div>
 </div>
 
 <!-- VENTURES -->
@@ -129,9 +133,9 @@
   <div class="ventures-intro">
     <div class="intro-meta">
       <span class="bar"></span>
-      <span>Our Portfolio</span>
+      <span data-i18n="ventures_meta">Our Portfolio</span>
     </div>
-    <h2 class="ventures-title">
+    <h2 class="ventures-title" data-i18n="ventures_title">
       Intentional<br/>
       technology, <em>engineered</em><br/>
       for purpose.
@@ -155,14 +159,14 @@
       <div class="venture-card-content">
         <div class="venture-card-num">
           <span class="status-dot"></span>
-          <span>01 — Active</span>
+          <span data-i18n="vc_active1">01 — Active</span>
         </div>
         <div class="venture-card-name">Matter.ia</div>
-        <div class="venture-card-desc">
+        <div class="venture-card-desc" data-i18n="vc1_desc">
           Photorealistic rendering platform for architects and interior designers. Generates immersive spaces through fine-tuned visual intelligence.
         </div>
         <a href="#" class="venture-card-link">
-          Learn more <span>››</span>
+          <span data-i18n="learn_more">Learn more</span> <span>››</span>
         </a>
       </div>
     </div>
@@ -170,20 +174,20 @@
     <!-- Card 2: Kibo -->
     <div class="venture-card">
       <div class="venture-card-visual venture-visual-kibo" style="background: linear-gradient(150deg, #C0633F 0%, #5E2F1B 100%);">
-        <img class="venture-logo" src="/kibo/assets/kibo-logo.svg" alt="KIBO" loading="lazy"/>
+        <img class="venture-logo" src="kibo/assets/kibo-logo.svg" alt="KIBO" loading="lazy"/>
       </div>
       <div class="venture-card-overlay"></div>
       <div class="venture-card-content">
         <div class="venture-card-num">
           <span class="status-dot"></span>
-          <span>02 — Active</span>
+          <span data-i18n="vc_active2">02 — Active</span>
         </div>
         <div class="venture-card-name">Kibo</div>
-        <div class="venture-card-desc">
+        <div class="venture-card-desc" data-i18n="vc2_desc">
           Educational companion that transforms how children learn. Built on a cognitive architecture that adapts to each student.
         </div>
         <a href="/kibo" class="venture-card-link">
-          Learn more <span>››</span>
+          <span data-i18n="learn_more">Learn more</span> <span>››</span>
         </a>
       </div>
     </div>
@@ -206,14 +210,14 @@
       <div class="venture-card-content">
         <div class="venture-card-num">
           <span class="status-dot idle"></span>
-          <span>03 — Continuous</span>
+          <span data-i18n="vc_active3">03 — Continuous</span>
         </div>
         <div class="venture-card-name">Research</div>
-        <div class="venture-card-desc">
+        <div class="venture-card-desc" data-i18n="vc3_desc">
           Exploration in generative systems, autonomous agents and human-centered AI interfaces. The lab where futures take shape.
         </div>
         <a href="#" class="venture-card-link">
-          Learn more <span>››</span>
+          <span data-i18n="learn_more">Learn more</span> <span>››</span>
         </a>
       </div>
     </div>
@@ -224,20 +228,20 @@
 <div class="section-divider">
   <div class="left">
     <span class="num">02 / 03</span>
-    <span>Philosophy</span>
+    <span data-i18n="nav_philosophy">Philosophy</span>
   </div>
-  <div class="right">Four guiding principles</div>
+  <div class="right" data-i18n="div_philosophy">Four guiding principles</div>
 </div>
 
 <!-- PHILOSOPHY -->
 <section id="philosophy" class="philosophy">
   <div class="philosophy-header">
-    <h2 class="philosophy-quote">
+    <h2 class="philosophy-quote" data-i18n="phil_quote">
       At its best, technology is an unmistakable combination of <span class="accent">clarity, precision, intelligence and craft.</span>
     </h2>
     <div class="philosophy-meta">
-      <div class="label">Our Method</div>
-      <p>
+      <div class="label" data-i18n="phil_method">Our Method</div>
+      <p data-i18n="phil_method_p">
         Four principles guide every decision we make — from the first line of code to the last detail of a product. They define how we build, what we accept, and what we refuse to compromise.
       </p>
     </div>
@@ -245,24 +249,24 @@
 
   <div class="pillars">
     <div class="pillar">
-      <div class="pillar-num"><span>01</span> — Principle</div>
-      <div class="pillar-name">Clarity</div>
-      <div class="pillar-desc">Every interface reveals its purpose. We strip away noise until only meaning remains.</div>
+      <div class="pillar-num"><span>01</span> — <span data-i18n="principle">Principle</span></div>
+      <div class="pillar-name" data-i18n="pil1_n">Clarity</div>
+      <div class="pillar-desc" data-i18n="pil1_d">Every interface reveals its purpose. We strip away noise until only meaning remains.</div>
     </div>
     <div class="pillar">
-      <div class="pillar-num"><span>02</span> — Principle</div>
-      <div class="pillar-name">Precision</div>
-      <div class="pillar-desc">Pixel-level rigor. Millisecond-level performance. Engineering is craft taken seriously.</div>
+      <div class="pillar-num"><span>02</span> — <span data-i18n="principle">Principle</span></div>
+      <div class="pillar-name" data-i18n="pil2_n">Precision</div>
+      <div class="pillar-desc" data-i18n="pil2_d">Pixel-level rigor. Millisecond-level performance. Engineering is craft taken seriously.</div>
     </div>
     <div class="pillar">
-      <div class="pillar-num"><span>03</span> — Principle</div>
-      <div class="pillar-name">Intelligence</div>
-      <div class="pillar-desc">Software that thinks alongside you — never replaces you. AI as augmentation, not abstraction.</div>
+      <div class="pillar-num"><span>03</span> — <span data-i18n="principle">Principle</span></div>
+      <div class="pillar-name" data-i18n="pil3_n">Intelligence</div>
+      <div class="pillar-desc" data-i18n="pil3_d">Software that thinks alongside you — never replaces you. AI as augmentation, not abstraction.</div>
     </div>
     <div class="pillar">
-      <div class="pillar-num"><span>04</span> — Principle</div>
-      <div class="pillar-name">Craft</div>
-      <div class="pillar-desc">Details others overlook become the moments users remember. Quality is a stance, not a feature.</div>
+      <div class="pillar-num"><span>04</span> — <span data-i18n="principle">Principle</span></div>
+      <div class="pillar-name" data-i18n="pil4_n">Craft</div>
+      <div class="pillar-desc" data-i18n="pil4_d">Details others overlook become the moments users remember. Quality is a stance, not a feature.</div>
     </div>
   </div>
 </section>
@@ -271,7 +275,7 @@
 <div class="section-divider">
   <div class="left">
     <span class="num">03 / 03</span>
-    <span>Company</span>
+    <span data-i18n="nav_company">Company</span>
   </div>
   <div class="right">Matteria Technologies LLC</div>
 </div>
@@ -279,26 +283,26 @@
 <!-- COMPANY INFO -->
 <section id="company" class="company-info">
   <div class="company-header">
-    <h2 class="company-title">Specification.</h2>
-    <p class="company-subtitle">A small studio operating from Miami with a global perspective and a precise method.</p>
+    <h2 class="company-title" data-i18n="comp_title">Specification.</h2>
+    <p class="company-subtitle" data-i18n="comp_sub">A small studio operating from Miami with a global perspective and a precise method.</p>
   </div>
 
   <div class="spec-sheet">
     <div class="spec-cell">
-      <div class="spec-label">Legal Entity</div>
+      <div class="spec-label" data-i18n="spec_entity">Legal Entity</div>
       <div class="spec-value">Matteria<br/>Technologies LLC</div>
     </div>
     <div class="spec-cell">
-      <div class="spec-label">Headquarters</div>
+      <div class="spec-label" data-i18n="spec_hq">Headquarters</div>
       <div class="spec-value">Miami<br/>Florida — USA</div>
     </div>
     <div class="spec-cell">
-      <div class="spec-label">Founded</div>
+      <div class="spec-label" data-i18n="spec_founded">Founded</div>
       <div class="spec-value">2025</div>
     </div>
     <div class="spec-cell">
-      <div class="spec-label">Focus Areas</div>
-      <div class="spec-value">AI · Design<br/>Education</div>
+      <div class="spec-label" data-i18n="spec_focus">Focus Areas</div>
+      <div class="spec-value" data-i18n="spec_focus_v">AI · Design<br/>Education</div>
     </div>
   </div>
 </section>
@@ -307,13 +311,13 @@
 <section class="cta-band" id="contact">
   <div class="cta-band-bg"></div>
   <div class="cta-band-content">
-    <h2 class="cta-title">
+    <h2 class="cta-title" data-i18n="cta_title">
       Building something<br/>
       <span class="accent">extraordinary?</span><br/>
       Let's talk.
     </h2>
     <div class="cta-right">
-      <p>We collaborate selectively with founders, brands and institutions who share our standards. If your project demands more than software-as-usual, we want to hear about it.</p>
+      <p data-i18n="cta_p">We collaborate selectively with founders, brands and institutions who share our standards. If your project demands more than software-as-usual, we want to hear about it.</p>
       <a href="mailto:hello@matteriatech.com" class="btn-audi">
         hello@matteriatech.com
         <span class="chev">››</span>
@@ -338,7 +342,7 @@
     </div>
 
     <div class="footer-col">
-      <h4>Ventures</h4>
+      <h4 data-i18n="nav_ventures">Ventures</h4>
       <ul>
         <li><a href="#ventures">Matter.ia</a></li>
         <li><a href="/kibo">Kibo</a></li>
@@ -347,26 +351,26 @@
     </div>
 
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4 data-i18n="nav_company">Company</h4>
       <ul>
-        <li><a href="#philosophy">Philosophy</a></li>
-        <li><a href="#company">Specification</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#philosophy" data-i18n="nav_philosophy">Philosophy</a></li>
+        <li><a href="#company" data-i18n="foot_spec">Specification</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h4>Legal</h4>
+      <h4 data-i18n="foot_legal">Legal</h4>
       <ul>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/terms-of-service">Terms of Service</a></li>
-        <li><a href="#">Imprint</a></li>
+        <li><a href="/privacy-policy" data-i18n="foot_privacy">Privacy Policy</a></li>
+        <li><a href="/terms-of-service" data-i18n="foot_terms">Terms of Service</a></li>
+        <li><a href="#" data-i18n="foot_imprint">Imprint</a></li>
       </ul>
     </div>
   </div>
 
   <div class="footer-bottom">
-    <div>© 2026 Matteria Technologies LLC · All rights reserved</div>
+    <div data-i18n="foot_rights">© 2026 Matteria Technologies LLC · All rights reserved</div>
     <div class="legal">
       <span>DUNS · 146138580</span>
       <span>Miami · Florida</span>
@@ -374,5 +378,157 @@
   </div>
 </footer>
 <script src="assets/site.js"></script>
+<script>
+(function(){
+  var I18N = {
+    en: {
+      nav_ventures:"Ventures", nav_philosophy:"Philosophy", nav_company:"Company", nav_contact:"Contact", nav_menu:"Menu",
+      hero_eyebrow:"A Technology Studio › Est. 2025",
+      hero_t1:"Engineering", hero_t2:"imagination", hero_t3:"into reality.",
+      hero_sub:"We build intelligent software at the intersection of design, visualization and learning. A small studio with a precise method, headquartered in Miami.",
+      hero_cta:"Discover Ventures", scroll:"Scroll",
+      div_ventures:"Three active products",
+      ventures_meta:"Our Portfolio",
+      ventures_title:"Intentional<br/>technology, <em>engineered</em><br/>for purpose.",
+      vc_active1:"01 — Active", vc_active2:"02 — Active", vc_active3:"03 — Continuous", learn_more:"Learn more",
+      vc1_desc:"Photorealistic rendering platform for architects and interior designers. Generates immersive spaces through fine-tuned visual intelligence.",
+      vc2_desc:"Educational companion that transforms how children learn. Built on a cognitive architecture that adapts to each student.",
+      vc3_desc:"Exploration in generative systems, autonomous agents and human-centered AI interfaces. The lab where futures take shape.",
+      div_philosophy:"Four guiding principles",
+      phil_quote:"At its best, technology is an unmistakable combination of <span class=\"accent\">clarity, precision, intelligence and craft.</span>",
+      phil_method:"Our Method",
+      phil_method_p:"Four principles guide every decision we make — from the first line of code to the last detail of a product. They define how we build, what we accept, and what we refuse to compromise.",
+      principle:"Principle",
+      pil1_n:"Clarity", pil1_d:"Every interface reveals its purpose. We strip away noise until only meaning remains.",
+      pil2_n:"Precision", pil2_d:"Pixel-level rigor. Millisecond-level performance. Engineering is craft taken seriously.",
+      pil3_n:"Intelligence", pil3_d:"Software that thinks alongside you — never replaces you. AI as augmentation, not abstraction.",
+      pil4_n:"Craft", pil4_d:"Details others overlook become the moments users remember. Quality is a stance, not a feature.",
+      comp_title:"Specification.",
+      comp_sub:"A small studio operating from Miami with a global perspective and a precise method.",
+      spec_entity:"Legal Entity", spec_hq:"Headquarters", spec_founded:"Founded", spec_focus:"Focus Areas", spec_focus_v:"AI · Design<br/>Education",
+      cta_title:"Building something<br/><span class=\"accent\">extraordinary?</span><br/>Let's talk.",
+      cta_p:"We collaborate selectively with founders, brands and institutions who share our standards. If your project demands more than software-as-usual, we want to hear about it.",
+      foot_spec:"Specification", foot_legal:"Legal", foot_privacy:"Privacy Policy", foot_terms:"Terms of Service", foot_imprint:"Imprint",
+      foot_rights:"© 2026 Matteria Technologies LLC · All rights reserved"
+    },
+    es: {
+      nav_ventures:"Proyectos", nav_philosophy:"Filosofía", nav_company:"Empresa", nav_contact:"Contacto", nav_menu:"Menú",
+      hero_eyebrow:"Un estudio tecnológico › Est. 2025",
+      hero_t1:"Convertimos", hero_t2:"la imaginación", hero_t3:"en realidad.",
+      hero_sub:"Creamos software inteligente en la intersección del diseño, la visualización y el aprendizaje. Un estudio pequeño con un método preciso, con sede en Miami.",
+      hero_cta:"Ver proyectos", scroll:"Baja",
+      div_ventures:"Tres productos activos",
+      ventures_meta:"Nuestro portafolio",
+      ventures_title:"Tecnología<br/>intencional, <em>diseñada</em><br/>con propósito.",
+      vc_active1:"01 — Activo", vc_active2:"02 — Activo", vc_active3:"03 — Continuo", learn_more:"Saber más",
+      vc1_desc:"Plataforma de renderizado fotorrealista para arquitectos y diseñadores de interiores. Genera espacios inmersivos mediante inteligencia visual afinada.",
+      vc2_desc:"Compañero educativo que transforma cómo aprenden los niños. Construido sobre una arquitectura cognitiva que se adapta a cada estudiante.",
+      vc3_desc:"Exploración en sistemas generativos, agentes autónomos e interfaces de IA centradas en las personas. El laboratorio donde toman forma los futuros.",
+      div_philosophy:"Cuatro principios guía",
+      phil_quote:"En su mejor versión, la tecnología es una combinación inconfundible de <span class=\"accent\">claridad, precisión, inteligencia y oficio.</span>",
+      phil_method:"Nuestro método",
+      phil_method_p:"Cuatro principios guían cada decisión que tomamos — desde la primera línea de código hasta el último detalle de un producto. Definen cómo construimos, qué aceptamos y en qué no transigimos.",
+      principle:"Principio",
+      pil1_n:"Claridad", pil1_d:"Cada interfaz revela su propósito. Quitamos el ruido hasta que solo queda el significado.",
+      pil2_n:"Precisión", pil2_d:"Rigor al píxel. Rendimiento al milisegundo. La ingeniería es oficio tomado en serio.",
+      pil3_n:"Inteligencia", pil3_d:"Software que piensa contigo — nunca te reemplaza. IA como aumento, no como abstracción.",
+      pil4_n:"Oficio", pil4_d:"Los detalles que otros pasan por alto se vuelven los momentos que el usuario recuerda. La calidad es una postura, no una función.",
+      comp_title:"Especificación.",
+      comp_sub:"Un estudio pequeño que opera desde Miami con perspectiva global y un método preciso.",
+      spec_entity:"Razón social", spec_hq:"Sede", spec_founded:"Fundada", spec_focus:"Áreas de enfoque", spec_focus_v:"IA · Diseño<br/>Educación",
+      cta_title:"¿Construyes algo<br/><span class=\"accent\">extraordinario?</span><br/>Hablemos.",
+      cta_p:"Colaboramos de forma selectiva con fundadores, marcas e instituciones que comparten nuestros estándares. Si tu proyecto exige más que software de siempre, queremos conocerlo.",
+      foot_spec:"Especificación", foot_legal:"Legal", foot_privacy:"Política de privacidad", foot_terms:"Términos del servicio", foot_imprint:"Aviso legal",
+      foot_rights:"© 2026 Matteria Technologies LLC · Todos los derechos reservados"
+    },
+    fr: {
+      nav_ventures:"Projets", nav_philosophy:"Philosophie", nav_company:"Entreprise", nav_contact:"Contact", nav_menu:"Menu",
+      hero_eyebrow:"Un studio technologique › Est. 2025",
+      hero_t1:"L'imagination", hero_t2:"devient", hero_t3:"réalité.",
+      hero_sub:"Nous créons des logiciels intelligents à la croisée du design, de la visualisation et de l'apprentissage. Un petit studio à la méthode précise, basé à Miami.",
+      hero_cta:"Voir les projets", scroll:"Défiler",
+      div_ventures:"Trois produits actifs",
+      ventures_meta:"Notre portfolio",
+      ventures_title:"Une technologie<br/>intentionnelle, <em>conçue</em><br/>avec un but.",
+      vc_active1:"01 — Actif", vc_active2:"02 — Actif", vc_active3:"03 — Continu", learn_more:"En savoir plus",
+      vc1_desc:"Plateforme de rendu photoréaliste pour architectes et designers d'intérieur. Génère des espaces immersifs grâce à une intelligence visuelle affinée.",
+      vc2_desc:"Compagnon éducatif qui transforme la façon dont les enfants apprennent. Bâti sur une architecture cognitive qui s'adapte à chaque élève.",
+      vc3_desc:"Exploration des systèmes génératifs, des agents autonomes et des interfaces d'IA centrées sur l'humain. Le laboratoire où prennent forme les futurs.",
+      div_philosophy:"Quatre principes directeurs",
+      phil_quote:"À son meilleur, la technologie est une combinaison inimitable de <span class=\"accent\">clarté, précision, intelligence et savoir-faire.</span>",
+      phil_method:"Notre méthode",
+      phil_method_p:"Quatre principes guident chacune de nos décisions — de la première ligne de code au dernier détail d'un produit. Ils définissent comment nous bâtissons, ce que nous acceptons et ce sur quoi nous ne transigeons pas.",
+      principle:"Principe",
+      pil1_n:"Clarté", pil1_d:"Chaque interface révèle son intention. Nous retirons le bruit jusqu'à ne garder que le sens.",
+      pil2_n:"Précision", pil2_d:"Rigueur au pixel. Performance à la milliseconde. L'ingénierie est un savoir-faire pris au sérieux.",
+      pil3_n:"Intelligence", pil3_d:"Un logiciel qui pense avec toi — jamais à ta place. L'IA comme augmentation, pas comme abstraction.",
+      pil4_n:"Savoir-faire", pil4_d:"Les détails que d'autres négligent deviennent les moments dont on se souvient. La qualité est une posture, pas une option.",
+      comp_title:"Spécification.",
+      comp_sub:"Un petit studio basé à Miami, avec une perspective mondiale et une méthode précise.",
+      spec_entity:"Entité légale", spec_hq:"Siège", spec_founded:"Fondée", spec_focus:"Domaines", spec_focus_v:"IA · Design<br/>Éducation",
+      cta_title:"Tu construis<br/>quelque chose <span class=\"accent\">d'extraordinaire ?</span><br/>Parlons-en.",
+      cta_p:"Nous collaborons de façon sélective avec des fondateurs, des marques et des institutions qui partagent nos standards. Si ton projet exige plus que du logiciel ordinaire, nous voulons en entendre parler.",
+      foot_spec:"Spécification", foot_legal:"Légal", foot_privacy:"Confidentialité", foot_terms:"Conditions d'utilisation", foot_imprint:"Mentions légales",
+      foot_rights:"© 2026 Matteria Technologies LLC · Tous droits réservés"
+    },
+    de: {
+      nav_ventures:"Projekte", nav_philosophy:"Philosophie", nav_company:"Unternehmen", nav_contact:"Kontakt", nav_menu:"Menü",
+      hero_eyebrow:"Ein Technologie-Studio › Est. 2025",
+      hero_t1:"Vorstellungskraft", hero_t2:"wird", hero_t3:"Wirklichkeit.",
+      hero_sub:"Wir bauen intelligente Software an der Schnittstelle von Design, Visualisierung und Lernen. Ein kleines Studio mit präziser Methode, mit Sitz in Miami.",
+      hero_cta:"Projekte ansehen", scroll:"Scrollen",
+      div_ventures:"Drei aktive Produkte",
+      ventures_meta:"Unser Portfolio",
+      ventures_title:"Bewusste<br/>Technologie, <em>entwickelt</em><br/>mit Zweck.",
+      vc_active1:"01 — Aktiv", vc_active2:"02 — Aktiv", vc_active3:"03 — Laufend", learn_more:"Mehr erfahren",
+      vc1_desc:"Plattform für fotorealistisches Rendering für Architekten und Innenarchitekten. Erzeugt immersive Räume durch fein abgestimmte visuelle Intelligenz.",
+      vc2_desc:"Lernbegleiter, der verändert, wie Kinder lernen. Aufgebaut auf einer kognitiven Architektur, die sich an jedes Kind anpasst.",
+      vc3_desc:"Forschung an generativen Systemen, autonomen Agenten und menschzentrierten KI-Schnittstellen. Das Labor, in dem Zukünfte entstehen.",
+      div_philosophy:"Vier leitende Prinzipien",
+      phil_quote:"Im besten Fall ist Technologie eine unverkennbare Verbindung aus <span class=\"accent\">Klarheit, Präzision, Intelligenz und Handwerk.</span>",
+      phil_method:"Unsere Methode",
+      phil_method_p:"Vier Prinzipien leiten jede Entscheidung — von der ersten Codezeile bis zum letzten Detail eines Produkts. Sie bestimmen, wie wir bauen, was wir akzeptieren und wobei wir keine Kompromisse machen.",
+      principle:"Prinzip",
+      pil1_n:"Klarheit", pil1_d:"Jede Oberfläche zeigt ihren Zweck. Wir entfernen Lärm, bis nur die Bedeutung bleibt.",
+      pil2_n:"Präzision", pil2_d:"Pixelgenaue Sorgfalt. Millisekunden-Performance. Technik ist ernst genommenes Handwerk.",
+      pil3_n:"Intelligenz", pil3_d:"Software, die mit dir denkt — dich nie ersetzt. KI als Erweiterung, nicht als Abstraktion.",
+      pil4_n:"Handwerk", pil4_d:"Details, die andere übersehen, werden zu den Momenten, die man sich merkt. Qualität ist eine Haltung, kein Feature.",
+      comp_title:"Spezifikation.",
+      comp_sub:"Ein kleines Studio aus Miami mit globaler Perspektive und präziser Methode.",
+      spec_entity:"Rechtsträger", spec_hq:"Hauptsitz", spec_founded:"Gegründet", spec_focus:"Schwerpunkte", spec_focus_v:"KI · Design<br/>Bildung",
+      cta_title:"Du baust etwas<br/><span class=\"accent\">Außergewöhnliches?</span><br/>Sprechen wir.",
+      cta_p:"Wir arbeiten selektiv mit Gründern, Marken und Institutionen, die unsere Standards teilen. Wenn dein Projekt mehr als gewöhnliche Software verlangt, möchten wir davon hören.",
+      foot_spec:"Spezifikation", foot_legal:"Rechtliches", foot_privacy:"Datenschutz", foot_terms:"Nutzungsbedingungen", foot_imprint:"Impressum",
+      foot_rights:"© 2026 Matteria Technologies LLC · Alle Rechte vorbehalten"
+    }
+  };
+  var SUPPORTED = ["en","es","fr","de"];
+  function apply(lang){
+    if(SUPPORTED.indexOf(lang) < 0) lang = "en";
+    var dict = I18N[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      if(dict[k] != null) el.innerHTML = dict[k];
+    });
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.classList.toggle("on", b.getAttribute("data-lang") === lang);
+    });
+    try{ localStorage.setItem("mt_lang", lang); }catch(e){}
+  }
+  function init(){
+    var saved = null;
+    try{ saved = localStorage.getItem("mt_lang"); }catch(e){}
+    var lang = saved || (navigator.language || "en").slice(0,2).toLowerCase();
+    if(SUPPORTED.indexOf(lang) < 0) lang = "en";
+    apply(lang);
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.addEventListener("click", function(){ apply(b.getAttribute("data-lang")); });
+    });
+  }
+  if(document.readyState !== "loading") init();
+  else document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
 </body>
 </html>

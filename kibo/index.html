@@ -159,7 +159,7 @@
 <!-- Nav -->
 <header class="nav">
   <div class="nav-in">
-    <a class="logo" href="/kibo" aria-label="KIBO"><img src="/kibo/assets/kibo-logo-ink.svg" alt="KIBO"/></a>
+    <a class="logo" href="/kibo" aria-label="KIBO"><img src="assets/kibo-logo-ink.svg" alt="KIBO"/></a>
     <div class="nav-right">
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-lang="en">EN</button>
@@ -176,7 +176,7 @@
 <section class="hero">
   <div class="hero-in">
     <div>
-      <img class="hero-logo" src="/kibo/assets/kibo-logo.svg" alt="KIBO"/>
+      <img class="hero-logo" src="assets/kibo-logo.svg" alt="KIBO"/>
       <h1 data-i18n="hero_h1">Homework that <em>feels like play.</em></h1>
       <p class="sub" data-i18n="hero_sub">An AI tutor for kids in grades K–6. Snap a photo of any worksheet and KIBO turns it into fun, personalized practice.</p>
       <div class="hero-cta">
@@ -441,7 +441,7 @@
     <div class="eyebrow" style="color:#F2B705" data-i18n="fam_eyebrow">Made for families</div>
     <h2 class="h2" data-i18n="fam_h2">Peace of mind, built in</h2>
     <p class="lead" data-i18n="fam_lead">Up to three kids, four languages, and a calm experience with nothing to worry about.</p>
-    <img class="fam-friends" src="/kibo/assets/kibo-friends.svg" alt="The KIBO characters" loading="lazy"/>
+    <img class="fam-friends" src="assets/kibo-friends.svg" alt="The KIBO characters" loading="lazy"/>
     <div class="chips">
       <span class="chip" data-i18n="chip1">No ads</span>
       <span class="chip" data-i18n="chip2">No chat</span>
@@ -471,7 +471,7 @@
   <div class="footer-in">
     <div class="footer-top">
       <div>
-        <a class="logo" href="/kibo" aria-label="KIBO"><img src="/kibo/assets/kibo-logo.svg" alt="KIBO"/></a>
+        <a class="logo" href="/kibo" aria-label="KIBO"><img src="assets/kibo-logo.svg" alt="KIBO"/></a>
         <div class="by" data-i18n="foot_by">A product of <a href="/">Matteria Technologies</a> — engineering imagination into reality.</div>
       </div>
       <nav>
@@ -722,11 +722,11 @@
     document.querySelectorAll(".lang-switch button").forEach(function(b){
       b.classList.toggle("on", b.getAttribute("data-lang") === lang);
     });
-    try{ localStorage.setItem("kibo_lang", lang); }catch(e){}
+    try{ localStorage.setItem("mt_lang", lang); }catch(e){}
   }
   function init(){
     var saved = null;
-    try{ saved = localStorage.getItem("kibo_lang"); }catch(e){}
+    try{ saved = localStorage.getItem("mt_lang"); }catch(e){}
     var lang = saved || (navigator.language || "en").slice(0,2).toLowerCase();
     if(SUPPORTED.indexOf(lang) < 0) lang = "en";
     apply(lang);
