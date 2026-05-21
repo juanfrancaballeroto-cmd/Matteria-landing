@@ -28,6 +28,11 @@
   .nav-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
   .nav .logo{height:30px}
   .nav .logo img{height:100%}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-switch{display:flex;gap:2px;background:rgba(44,40,32,.06);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang-switch button{border:none;background:none;cursor:pointer;font-family:inherit;font-weight:700;font-size:.78rem;color:var(--mid);padding:5px 9px;border-radius:999px;line-height:1;transition:background .15s ease,color .15s ease}
+  .lang-switch button:hover{color:var(--ink)}
+  .lang-switch button.on{background:var(--terra);color:#fff}
   .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:1rem;border-radius:999px;padding:9px 16px;cursor:pointer;border:none;transition:transform .15s ease, background .15s ease;background:var(--terra);color:#fff;box-shadow:0 8px 22px rgba(212,120,90,.32)}
   .btn:hover{background:var(--terra-deep)}
   .btn:active{transform:scale(.97)}
@@ -64,6 +69,7 @@
   .footer nav a:hover{color:#fff}
   .footer-base{max-width:1080px;margin:28px auto 0;padding:18px 22px 0;border-top:1px solid rgba(255,255,255,.1);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
+  @media(max-width:560px){.nav-in{gap:8px}.nav .btn{padding:8px 12px;font-size:.85rem}.lang-switch button{padding:5px 7px;font-size:.74rem}}
   @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -72,29 +78,37 @@
 <header class="nav">
   <div class="nav-in">
     <a class="logo" href="/kibo" aria-label="KIBO"><img src="../assets/kibo-logo-ink.svg" alt="KIBO"/></a>
-    <a class="btn" href="/kibo">← Back to KIBO</a>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+      <a class="btn" href="/kibo" data-i18n="back">← Back to KIBO</a>
+    </div>
   </div>
 </header>
 
 <header class="legal-hero">
   <div class="legal-hero-in">
-    <div class="eyebrow">Legal · KIBO</div>
-    <h1>Privacy Policy</h1>
-    <div class="meta">Effective May 21, 2026 · Matteria Technologies LLC</div>
+    <div class="eyebrow" data-i18n="eyebrow">Legal · KIBO</div>
+    <h1 data-i18n="title">Privacy Policy</h1>
+    <div class="meta" data-i18n="meta">Effective May 21, 2026 · Matteria Technologies LLC</div>
   </div>
 </header>
 
 <article class="legal-body">
-  <p class="legal-lead">
+  <p class="legal-lead" data-i18n="lead">
     KIBO is an educational app for children in grades K–6, built by Matteria Technologies LLC
     ("Matteria", "we", "our", or "us"). We are committed to protecting the privacy of children and
     their families. This policy explains what information we collect, how we use it, and your rights.
   </p>
 
   <section class="sec">
-    <h2><span class="n">01</span>Information We Collect</h2>
-    <p>KIBO collects the minimal information necessary to provide the service:</p>
-    <ul>
+    <h2><span class="n">01</span><span data-i18n="s1_h">Information We Collect</span></h2>
+    <p data-i18n="s1_p">KIBO collects the minimal information necessary to provide the service:</p>
+    <ul data-i18n="s1_list">
       <li><strong>Child's first name</strong> — entered by the parent, stored only on the device, used to personalize greetings.</li>
       <li><strong>Grade level and subject preferences</strong> — stored only on the device.</li>
       <li><strong>Learning progress and quiz statistics</strong> — stored only on the device (streaks, scores, badges). Never transmitted to our servers.</li>
@@ -104,8 +118,8 @@
   </section>
 
   <section class="sec">
-    <h2><span class="n">02</span>Information We Do NOT Collect</h2>
-    <ul>
+    <h2><span class="n">02</span><span data-i18n="s2_h">Information We Do NOT Collect</span></h2>
+    <ul data-i18n="s2_list">
       <li>We do not collect full names, addresses, phone numbers, or email addresses from children.</li>
       <li>We do not use advertising or tracking SDKs.</li>
       <li>We do not sell or share personal data with third parties for marketing purposes.</li>
@@ -114,14 +128,14 @@
   </section>
 
   <section class="sec">
-    <h2><span class="n">03</span>Children's Privacy (COPPA)</h2>
-    <p>KIBO is designed for use by children under the supervision of a parent or guardian. We comply with the Children's Online Privacy Protection Act (COPPA). We do not knowingly collect personal information from children under 13 without verifiable parental consent. All personally identifiable information (child's name, grade) is stored locally on the device and is never transmitted to our servers.</p>
-    <p>Parents may delete all stored data at any time by deleting the KIBO app from their device.</p>
+    <h2><span class="n">03</span><span data-i18n="s3_h">Children's Privacy (COPPA)</span></h2>
+    <p data-i18n="s3_p1">KIBO is designed for use by children under the supervision of a parent or guardian. We comply with the Children's Online Privacy Protection Act (COPPA). We do not knowingly collect personal information from children under 13 without verifiable parental consent. All personally identifiable information (child's name, grade) is stored locally on the device and is never transmitted to our servers.</p>
+    <p data-i18n="s3_p2">Parents may delete all stored data at any time by deleting the KIBO app from their device.</p>
   </section>
 
   <section class="sec">
-    <h2><span class="n">04</span>How We Use Information</h2>
-    <ul>
+    <h2><span class="n">04</span><span data-i18n="s4_h">How We Use Information</span></h2>
+    <ul data-i18n="s4_list">
       <li>To generate personalized practice questions appropriate for the child's grade.</li>
       <li>To display learning progress, streaks, and badges within the app.</li>
       <li>To improve the quality of questions and the educational experience.</li>
@@ -129,9 +143,9 @@
   </section>
 
   <section class="sec">
-    <h2><span class="n">05</span>Third-Party Services</h2>
-    <p>KIBO uses the following third-party services:</p>
-    <ul>
+    <h2><span class="n">05</span><span data-i18n="s5_h">Third-Party Services</span></h2>
+    <p data-i18n="s5_p">KIBO uses the following third-party services:</p>
+    <ul data-i18n="s5_list">
       <li><strong>Anthropic (Claude AI)</strong> — processes homework photos and generates questions. Data is sent over encrypted HTTPS and not retained beyond the request. <a href="https://www.anthropic.com/privacy">Anthropic Privacy Policy</a>.</li>
       <li><strong>RevenueCat</strong> — manages in-app subscriptions. RevenueCat may collect your Apple ID purchase information to process and validate subscriptions. <a href="https://www.revenuecat.com/privacy">RevenueCat Privacy Policy</a>.</li>
       <li><strong>Apple App Store</strong> — handles all payment processing. We never see your full payment details. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>.</li>
@@ -139,39 +153,39 @@
   </section>
 
   <section class="sec">
-    <h2><span class="n">06</span>Data Storage &amp; Security</h2>
-    <p>All personal data (name, grade, progress) is stored exclusively on your device using local storage. It is not backed up to our servers. We use industry-standard HTTPS encryption for all network requests. Homework photos are transmitted over encrypted connections and immediately discarded after processing.</p>
+    <h2><span class="n">06</span><span data-i18n="s6_h">Data Storage &amp; Security</span></h2>
+    <p data-i18n="s6_p">All personal data (name, grade, progress) is stored exclusively on your device using local storage. It is not backed up to our servers. We use industry-standard HTTPS encryption for all network requests. Homework photos are transmitted over encrypted connections and immediately discarded after processing.</p>
   </section>
 
   <section class="sec">
-    <h2><span class="n">07</span>Subscriptions</h2>
-    <p>KIBO Pro subscriptions are processed entirely by Apple. We receive confirmation of subscription status but do not have access to your payment information. Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your device's Settings → Apple ID → Subscriptions.</p>
+    <h2><span class="n">07</span><span data-i18n="s7_h">Subscriptions</span></h2>
+    <p data-i18n="s7_p">KIBO Pro subscriptions are processed entirely by Apple. We receive confirmation of subscription status but do not have access to your payment information. Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your device's Settings → Apple ID → Subscriptions.</p>
   </section>
 
   <section class="sec">
-    <h2><span class="n">08</span>Data Retention &amp; Deletion</h2>
-    <p>Since all personal data is stored on your device, you can delete it at any time by:</p>
-    <ul>
+    <h2><span class="n">08</span><span data-i18n="s8_h">Data Retention &amp; Deletion</span></h2>
+    <p data-i18n="s8_p1">Since all personal data is stored on your device, you can delete it at any time by:</p>
+    <ul data-i18n="s8_list">
       <li>Deleting the KIBO app from your iPhone or iPad.</li>
       <li>Going to Settings → General → iPhone Storage → KIBO → Delete App.</li>
     </ul>
-    <p>To request deletion of any data we may hold (anonymous usage logs), contact us at the email below.</p>
+    <p data-i18n="s8_p2">To request deletion of any data we may hold (anonymous usage logs), contact us at the email below.</p>
   </section>
 
   <section class="sec">
-    <h2><span class="n">09</span>Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. We will notify users of material changes by updating the effective date above. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+    <h2><span class="n">09</span><span data-i18n="s9_h">Changes to This Policy</span></h2>
+    <p data-i18n="s9_p">We may update this Privacy Policy from time to time. We will notify users of material changes by updating the effective date above. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
   </section>
 
   <section class="sec">
-    <h2><span class="n">10</span>Contact</h2>
-    <p>If you have any questions about this Privacy Policy or your data:</p>
-    <p>
+    <h2><span class="n">10</span><span data-i18n="s10_h">Contact</span></h2>
+    <p data-i18n="s10_p1">If you have any questions about this Privacy Policy or your data:</p>
+    <p data-i18n="s10_addr">
       <strong>Matteria Technologies LLC</strong><br/>
       Miami, Florida — USA · DUNS 146138580<br/>
       <a href="mailto:hello@matteriatech.com">hello@matteriatech.com</a>
     </p>
-    <p>See also our <a href="/kibo/terms">Terms of Service</a>.</p>
+    <p data-i18n="s10_p2">See also our <a href="/kibo/terms">Terms of Service</a>.</p>
   </section>
 </article>
 
@@ -180,14 +194,14 @@
     <div class="footer-top">
       <div>
         <a class="logo" href="/kibo" aria-label="KIBO"><img src="../assets/kibo-logo.svg" alt="KIBO"/></a>
-        <div class="by">A product of <a href="/">Matteria Technologies</a> — engineering imagination into reality.</div>
+        <div class="by" data-i18n="foot_by">A product of <a href="/">Matteria Technologies</a> — engineering imagination into reality.</div>
       </div>
       <nav>
-        <a href="/kibo#features">Features</a>
-        <a href="/kibo#get">Pricing</a>
-        <a href="/kibo/privacy" aria-current="page">Privacy</a>
-        <a href="/kibo/terms">Terms</a>
-        <a href="mailto:hello@matteriatech.com">Contact</a>
+        <a href="/kibo#features" data-i18n="foot_features">Features</a>
+        <a href="/kibo#get" data-i18n="foot_pricing">Pricing</a>
+        <a href="/kibo/privacy" aria-current="page" data-i18n="foot_privacy">Privacy</a>
+        <a href="/kibo/terms" data-i18n="foot_terms">Terms</a>
+        <a href="mailto:hello@matteriatech.com" data-i18n="foot_contact">Contact</a>
       </nav>
     </div>
     <div class="footer-base">
@@ -196,6 +210,102 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var I18N = {
+    en:{ back:"← Back to KIBO", eyebrow:"Legal · KIBO", title:"Privacy Policy", meta:"Effective May 21, 2026 · Matteria Technologies LLC",
+      lead:"KIBO is an educational app for children in grades K–6, built by Matteria Technologies LLC (\"Matteria\", \"we\", \"our\", or \"us\"). We are committed to protecting the privacy of children and their families. This policy explains what information we collect, how we use it, and your rights.",
+      s1_h:"Information We Collect", s1_p:"KIBO collects the minimal information necessary to provide the service:",
+      s1_list:"<li><strong>Child's first name</strong> — entered by the parent, stored only on the device, used to personalize greetings.</li><li><strong>Grade level and subject preferences</strong> — stored only on the device.</li><li><strong>Learning progress and quiz statistics</strong> — stored only on the device (streaks, scores, badges). Never transmitted to our servers.</li><li><strong>Homework photos</strong> — taken by the parent or child for the Scan feature. Sent to our AI service solely to generate practice questions, then immediately discarded. We do not store photos.</li><li><strong>App usage data</strong> — anonymous usage logs (questions answered, modes used) collected without any personally identifiable information.</li>",
+      s2_h:"Information We Do NOT Collect", s2_list:"<li>We do not collect full names, addresses, phone numbers, or email addresses from children.</li><li>We do not use advertising or tracking SDKs.</li><li>We do not sell or share personal data with third parties for marketing purposes.</li><li>We do not build profiles on individual children.</li>",
+      s3_h:"Children's Privacy (COPPA)", s3_p1:"KIBO is designed for use by children under the supervision of a parent or guardian. We comply with the Children's Online Privacy Protection Act (COPPA). We do not knowingly collect personal information from children under 13 without verifiable parental consent. All personally identifiable information (child's name, grade) is stored locally on the device and is never transmitted to our servers.", s3_p2:"Parents may delete all stored data at any time by deleting the KIBO app from their device.",
+      s4_h:"How We Use Information", s4_list:"<li>To generate personalized practice questions appropriate for the child's grade.</li><li>To display learning progress, streaks, and badges within the app.</li><li>To improve the quality of questions and the educational experience.</li>",
+      s5_h:"Third-Party Services", s5_p:"KIBO uses the following third-party services:", s5_list:"<li><strong>Anthropic (Claude AI)</strong> — processes homework photos and generates questions. Data is sent over encrypted HTTPS and not retained beyond the request. <a href=\"https://www.anthropic.com/privacy\">Anthropic Privacy Policy</a>.</li><li><strong>RevenueCat</strong> — manages in-app subscriptions. RevenueCat may collect your Apple ID purchase information to process and validate subscriptions. <a href=\"https://www.revenuecat.com/privacy\">RevenueCat Privacy Policy</a>.</li><li><strong>Apple App Store</strong> — handles all payment processing. We never see your full payment details. <a href=\"https://www.apple.com/legal/privacy/\">Apple Privacy Policy</a>.</li>",
+      s6_h:"Data Storage &amp; Security", s6_p:"All personal data (name, grade, progress) is stored exclusively on your device using local storage. It is not backed up to our servers. We use industry-standard HTTPS encryption for all network requests. Homework photos are transmitted over encrypted connections and immediately discarded after processing.",
+      s7_h:"Subscriptions", s7_p:"KIBO Pro subscriptions are processed entirely by Apple. We receive confirmation of subscription status but do not have access to your payment information. Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your device's Settings → Apple ID → Subscriptions.",
+      s8_h:"Data Retention &amp; Deletion", s8_p1:"Since all personal data is stored on your device, you can delete it at any time by:", s8_list:"<li>Deleting the KIBO app from your iPhone or iPad.</li><li>Going to Settings → General → iPhone Storage → KIBO → Delete App.</li>", s8_p2:"To request deletion of any data we may hold (anonymous usage logs), contact us at the email below.",
+      s9_h:"Changes to This Policy", s9_p:"We may update this Privacy Policy from time to time. We will notify users of material changes by updating the effective date above. Continued use of the app after changes constitutes acceptance of the updated policy.",
+      s10_h:"Contact", s10_p1:"If you have any questions about this Privacy Policy or your data:",
+      s10_addr:"<strong>Matteria Technologies LLC</strong><br/>Miami, Florida — USA · DUNS 146138580<br/><a href=\"mailto:hello@matteriatech.com\">hello@matteriatech.com</a>",
+      s10_p2:"See also our <a href=\"/kibo/terms\">Terms of Service</a>.",
+      foot_by:"A product of <a href=\"/\">Matteria Technologies</a> — engineering imagination into reality.",
+      foot_features:"Features", foot_pricing:"Pricing", foot_privacy:"Privacy", foot_terms:"Terms", foot_contact:"Contact",
+      _title:"KIBO — Privacy Policy" },
+    es:{ back:"← Volver a KIBO", eyebrow:"Legal · KIBO", title:"Política de privacidad", meta:"En vigor el 21 de mayo de 2026 · Matteria Technologies LLC",
+      lead:"KIBO es una app educativa para niños de K–6, creada por Matteria Technologies LLC (\"Matteria\", \"nosotros\"). Nos comprometemos a proteger la privacidad de los niños y sus familias. Esta política explica qué información recopilamos, cómo la usamos y cuáles son tus derechos.",
+      s1_h:"Información que recopilamos", s1_p:"KIBO recopila la información mínima necesaria para prestar el servicio:",
+      s1_list:"<li><strong>Nombre de pila del niño</strong> — introducido por el padre/madre, almacenado solo en el dispositivo, usado para personalizar los saludos.</li><li><strong>Grado y preferencias de materias</strong> — almacenados solo en el dispositivo.</li><li><strong>Progreso de aprendizaje y estadísticas</strong> — almacenados solo en el dispositivo (rachas, puntuaciones, medallas). Nunca se transmiten a nuestros servidores.</li><li><strong>Fotos de tareas</strong> — tomadas por el padre/madre o el niño para la función de escaneo. Se envían a nuestro servicio de IA únicamente para generar preguntas de práctica y luego se descartan de inmediato. No almacenamos fotos.</li><li><strong>Datos de uso de la app</strong> — registros de uso anónimos (preguntas respondidas, modos usados) sin información que permita identificar a una persona.</li>",
+      s2_h:"Información que NO recopilamos", s2_list:"<li>No recopilamos nombres completos, direcciones, teléfonos ni correos de los niños.</li><li>No usamos SDK de publicidad ni de seguimiento.</li><li>No vendemos ni compartimos datos personales con terceros con fines de marketing.</li><li>No creamos perfiles de niños individuales.</li>",
+      s3_h:"Privacidad infantil (COPPA)", s3_p1:"KIBO está diseñada para que la usen niños bajo la supervisión de un padre, madre o tutor. Cumplimos con la Ley de Protección de la Privacidad Infantil en Línea (COPPA). No recopilamos a sabiendas información personal de menores de 13 años sin el consentimiento verificable de los padres. Toda la información identificable (nombre del niño, grado) se almacena localmente en el dispositivo y nunca se transmite a nuestros servidores.", s3_p2:"Los padres pueden eliminar todos los datos almacenados en cualquier momento borrando la app KIBO de su dispositivo.",
+      s4_h:"Cómo usamos la información", s4_list:"<li>Para generar preguntas de práctica personalizadas y apropiadas para el grado del niño.</li><li>Para mostrar el progreso, las rachas y las medallas dentro de la app.</li><li>Para mejorar la calidad de las preguntas y la experiencia educativa.</li>",
+      s5_h:"Servicios de terceros", s5_p:"KIBO utiliza los siguientes servicios de terceros:", s5_list:"<li><strong>Anthropic (Claude AI)</strong> — procesa las fotos de tareas y genera preguntas. Los datos se envían por HTTPS cifrado y no se conservan más allá de la solicitud. <a href=\"https://www.anthropic.com/privacy\">Política de privacidad de Anthropic</a>.</li><li><strong>RevenueCat</strong> — gestiona las suscripciones in-app. RevenueCat puede recopilar la información de compra de tu Apple ID para procesar y validar las suscripciones. <a href=\"https://www.revenuecat.com/privacy\">Política de privacidad de RevenueCat</a>.</li><li><strong>App Store de Apple</strong> — gestiona todos los pagos. Nunca vemos tus datos de pago completos. <a href=\"https://www.apple.com/legal/privacy/\">Política de privacidad de Apple</a>.</li>",
+      s6_h:"Almacenamiento y seguridad de los datos", s6_p:"Todos los datos personales (nombre, grado, progreso) se almacenan exclusivamente en tu dispositivo mediante almacenamiento local. No se respaldan en nuestros servidores. Usamos cifrado HTTPS estándar del sector para todas las solicitudes de red. Las fotos de tareas se transmiten por conexiones cifradas y se descartan de inmediato tras procesarlas.",
+      s7_h:"Suscripciones", s7_p:"Las suscripciones a KIBO Pro las gestiona íntegramente Apple. Recibimos la confirmación del estado de la suscripción, pero no tenemos acceso a tu información de pago. Las suscripciones se renuevan automáticamente salvo que se cancelen al menos 24 horas antes del final del periodo en curso. Puedes gestionarla o cancelarla en Ajustes → Apple ID → Suscripciones de tu dispositivo.",
+      s8_h:"Conservación y eliminación de datos", s8_p1:"Como todos los datos personales se almacenan en tu dispositivo, puedes eliminarlos en cualquier momento:", s8_list:"<li>Borrando la app KIBO de tu iPhone o iPad.</li><li>Yendo a Ajustes → General → Almacenamiento del iPhone → KIBO → Eliminar app.</li>", s8_p2:"Para solicitar la eliminación de cualquier dato que podamos conservar (registros de uso anónimos), escríbenos al correo de abajo.",
+      s9_h:"Cambios en esta política", s9_p:"Podemos actualizar esta Política de privacidad de vez en cuando. Avisaremos de los cambios importantes actualizando la fecha de entrada en vigor anterior. El uso continuado de la app tras los cambios constituye la aceptación de la política actualizada.",
+      s10_h:"Contacto", s10_p1:"Si tienes alguna pregunta sobre esta Política de privacidad o tus datos:",
+      s10_addr:"<strong>Matteria Technologies LLC</strong><br/>Miami, Florida — EE. UU. · DUNS 146138580<br/><a href=\"mailto:hello@matteriatech.com\">hello@matteriatech.com</a>",
+      s10_p2:"Consulta también nuestros <a href=\"/kibo/terms\">Términos del servicio</a>.",
+      foot_by:"Un producto de <a href=\"/\">Matteria Technologies</a> — convertimos la imaginación en realidad.",
+      foot_features:"Funciones", foot_pricing:"Precios", foot_privacy:"Privacidad", foot_terms:"Términos", foot_contact:"Contacto",
+      _title:"KIBO — Política de privacidad" },
+    fr:{ back:"← Retour à KIBO", eyebrow:"Légal · KIBO", title:"Politique de confidentialité", meta:"En vigueur le 21 mai 2026 · Matteria Technologies LLC",
+      lead:"KIBO est une app éducative pour les enfants de la maternelle au CM2, créée par Matteria Technologies LLC (\"Matteria\", \"nous\"). Nous nous engageons à protéger la vie privée des enfants et de leurs familles. Cette politique explique quelles informations nous collectons, comment nous les utilisons et quels sont tes droits.",
+      s1_h:"Informations que nous collectons", s1_p:"KIBO collecte le minimum d'informations nécessaire pour fournir le service :",
+      s1_list:"<li><strong>Prénom de l'enfant</strong> — saisi par le parent, stocké uniquement sur l'appareil, utilisé pour personnaliser les messages.</li><li><strong>Niveau et préférences de matières</strong> — stockés uniquement sur l'appareil.</li><li><strong>Progrès et statistiques</strong> — stockés uniquement sur l'appareil (séries, scores, badges). Jamais transmis à nos serveurs.</li><li><strong>Photos de devoirs</strong> — prises par le parent ou l'enfant pour la fonction de scan. Envoyées à notre service d'IA uniquement pour générer des exercices, puis immédiatement supprimées. Nous ne stockons pas les photos.</li><li><strong>Données d'usage</strong> — journaux d'utilisation anonymes (questions répondues, modes utilisés) sans aucune information personnellement identifiable.</li>",
+      s2_h:"Informations que nous NE collectons PAS", s2_list:"<li>Nous ne collectons ni noms complets, ni adresses, ni numéros de téléphone, ni e-mails des enfants.</li><li>Nous n'utilisons pas de SDK de publicité ou de suivi.</li><li>Nous ne vendons ni ne partageons de données personnelles avec des tiers à des fins marketing.</li><li>Nous ne créons pas de profils d'enfants individuels.</li>",
+      s3_h:"Vie privée des enfants (COPPA)", s3_p1:"KIBO est conçue pour être utilisée par des enfants sous la supervision d'un parent ou tuteur. Nous respectons le Children's Online Privacy Protection Act (COPPA). Nous ne collectons pas sciemment d'informations personnelles d'enfants de moins de 13 ans sans consentement parental vérifiable. Toute information identifiable (prénom de l'enfant, niveau) est stockée localement sur l'appareil et n'est jamais transmise à nos serveurs.", s3_p2:"Les parents peuvent supprimer toutes les données stockées à tout moment en supprimant l'app KIBO de leur appareil.",
+      s4_h:"Comment nous utilisons les informations", s4_list:"<li>Pour générer des exercices personnalisés adaptés au niveau de l'enfant.</li><li>Pour afficher les progrès, les séries et les badges dans l'app.</li><li>Pour améliorer la qualité des questions et l'expérience éducative.</li>",
+      s5_h:"Services tiers", s5_p:"KIBO utilise les services tiers suivants :", s5_list:"<li><strong>Anthropic (Claude AI)</strong> — traite les photos de devoirs et génère des questions. Les données sont envoyées via HTTPS chiffré et ne sont pas conservées au-delà de la requête. <a href=\"https://www.anthropic.com/privacy\">Politique de confidentialité d'Anthropic</a>.</li><li><strong>RevenueCat</strong> — gère les abonnements intégrés. RevenueCat peut collecter les informations d'achat de ton identifiant Apple pour traiter et valider les abonnements. <a href=\"https://www.revenuecat.com/privacy\">Politique de confidentialité de RevenueCat</a>.</li><li><strong>App Store d'Apple</strong> — gère tous les paiements. Nous ne voyons jamais tes coordonnées de paiement complètes. <a href=\"https://www.apple.com/legal/privacy/\">Politique de confidentialité d'Apple</a>.</li>",
+      s6_h:"Stockage et sécurité des données", s6_p:"Toutes les données personnelles (prénom, niveau, progrès) sont stockées exclusivement sur ton appareil via le stockage local. Elles ne sont pas sauvegardées sur nos serveurs. Nous utilisons le chiffrement HTTPS standard du secteur pour toutes les requêtes réseau. Les photos de devoirs sont transmises par des connexions chiffrées et immédiatement supprimées après traitement.",
+      s7_h:"Abonnements", s7_p:"Les abonnements KIBO Pro sont entièrement gérés par Apple. Nous recevons la confirmation du statut d'abonnement mais n'avons pas accès à tes informations de paiement. Les abonnements se renouvellent automatiquement sauf annulation au moins 24 heures avant la fin de la période en cours. Tu peux les gérer ou les annuler dans Réglages → Identifiant Apple → Abonnements de ton appareil.",
+      s8_h:"Conservation et suppression des données", s8_p1:"Comme toutes les données personnelles sont stockées sur ton appareil, tu peux les supprimer à tout moment :", s8_list:"<li>En supprimant l'app KIBO de ton iPhone ou iPad.</li><li>En allant dans Réglages → Général → Stockage iPhone → KIBO → Supprimer l'app.</li>", s8_p2:"Pour demander la suppression de données que nous pourrions détenir (journaux d'usage anonymes), écris-nous à l'adresse ci-dessous.",
+      s9_h:"Modifications de cette politique", s9_p:"Nous pouvons mettre à jour cette Politique de confidentialité de temps à autre. Nous informerons les utilisateurs des changements importants en mettant à jour la date d'entrée en vigueur ci-dessus. L'utilisation continue de l'app après les changements vaut acceptation de la politique mise à jour.",
+      s10_h:"Contact", s10_p1:"Pour toute question sur cette Politique de confidentialité ou tes données :",
+      s10_addr:"<strong>Matteria Technologies LLC</strong><br/>Miami, Floride — États-Unis · DUNS 146138580<br/><a href=\"mailto:hello@matteriatech.com\">hello@matteriatech.com</a>",
+      s10_p2:"Consulte aussi nos <a href=\"/kibo/terms\">Conditions d'utilisation</a>.",
+      foot_by:"Un produit de <a href=\"/\">Matteria Technologies</a> — l'imagination devient réalité.",
+      foot_features:"Fonctions", foot_pricing:"Tarifs", foot_privacy:"Confidentialité", foot_terms:"Conditions", foot_contact:"Contact",
+      _title:"KIBO — Politique de confidentialité" },
+    de:{ back:"← Zurück zu KIBO", eyebrow:"Rechtliches · KIBO", title:"Datenschutzerklärung", meta:"Gültig ab 21. Mai 2026 · Matteria Technologies LLC",
+      lead:"KIBO ist eine Lern-App für Kinder der Klassen K–6, entwickelt von Matteria Technologies LLC (\"Matteria\", \"wir\"). Wir setzen uns für den Schutz der Privatsphäre von Kindern und ihren Familien ein. Diese Erklärung beschreibt, welche Daten wir erheben, wie wir sie nutzen und welche Rechte du hast.",
+      s1_h:"Daten, die wir erheben", s1_p:"KIBO erhebt nur die zur Bereitstellung des Dienstes notwendigen Mindestdaten:",
+      s1_list:"<li><strong>Vorname des Kindes</strong> — vom Elternteil eingegeben, nur auf dem Gerät gespeichert, zur Personalisierung der Begrüßung.</li><li><strong>Klassenstufe und Fächervorlieben</strong> — nur auf dem Gerät gespeichert.</li><li><strong>Lernfortschritt und Statistiken</strong> — nur auf dem Gerät gespeichert (Serien, Punkte, Abzeichen). Nie an unsere Server übertragen.</li><li><strong>Hausaufgaben-Fotos</strong> — vom Elternteil oder Kind für die Scan-Funktion aufgenommen. Werden ausschließlich zur Erstellung von Übungen an unseren KI-Dienst gesendet und danach sofort verworfen. Wir speichern keine Fotos.</li><li><strong>Nutzungsdaten</strong> — anonyme Nutzungsprotokolle (beantwortete Fragen, genutzte Modi) ohne personenbezogene Daten.</li>",
+      s2_h:"Daten, die wir NICHT erheben", s2_list:"<li>Wir erheben keine vollständigen Namen, Adressen, Telefonnummern oder E-Mail-Adressen von Kindern.</li><li>Wir verwenden keine Werbe- oder Tracking-SDKs.</li><li>Wir verkaufen oder teilen keine personenbezogenen Daten zu Marketingzwecken mit Dritten.</li><li>Wir erstellen keine Profile einzelner Kinder.</li>",
+      s3_h:"Datenschutz für Kinder (COPPA)", s3_p1:"KIBO ist für die Nutzung durch Kinder unter Aufsicht eines Elternteils oder Erziehungsberechtigten bestimmt. Wir halten den Children's Online Privacy Protection Act (COPPA) ein. Wir erheben wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren ohne nachprüfbare elterliche Einwilligung. Alle identifizierenden Daten (Name des Kindes, Klasse) werden lokal auf dem Gerät gespeichert und nie an unsere Server übertragen.", s3_p2:"Eltern können alle gespeicherten Daten jederzeit löschen, indem sie die KIBO-App von ihrem Gerät entfernen.",
+      s4_h:"Wie wir Daten nutzen", s4_list:"<li>Um personalisierte Übungsfragen passend zur Klassenstufe des Kindes zu erstellen.</li><li>Um Fortschritt, Serien und Abzeichen in der App anzuzeigen.</li><li>Um die Qualität der Fragen und das Lernerlebnis zu verbessern.</li>",
+      s5_h:"Drittanbieter-Dienste", s5_p:"KIBO nutzt die folgenden Drittanbieter-Dienste:", s5_list:"<li><strong>Anthropic (Claude AI)</strong> — verarbeitet Hausaufgaben-Fotos und erzeugt Fragen. Daten werden über verschlüsseltes HTTPS gesendet und nicht über die Anfrage hinaus gespeichert. <a href=\"https://www.anthropic.com/privacy\">Datenschutz von Anthropic</a>.</li><li><strong>RevenueCat</strong> — verwaltet In-App-Abonnements. RevenueCat kann deine Apple-ID-Kaufinformationen zur Verarbeitung und Validierung erfassen. <a href=\"https://www.revenuecat.com/privacy\">Datenschutz von RevenueCat</a>.</li><li><strong>Apple App Store</strong> — wickelt alle Zahlungen ab. Wir sehen deine vollständigen Zahlungsdaten nie. <a href=\"https://www.apple.com/legal/privacy/\">Datenschutz von Apple</a>.</li>",
+      s6_h:"Datenspeicherung &amp; Sicherheit", s6_p:"Alle personenbezogenen Daten (Name, Klasse, Fortschritt) werden ausschließlich auf deinem Gerät im lokalen Speicher abgelegt. Sie werden nicht auf unseren Servern gesichert. Wir verwenden branchenübliche HTTPS-Verschlüsselung für alle Netzwerkanfragen. Hausaufgaben-Fotos werden über verschlüsselte Verbindungen übertragen und nach der Verarbeitung sofort verworfen.",
+      s7_h:"Abonnements", s7_p:"KIBO-Pro-Abonnements werden vollständig von Apple abgewickelt. Wir erhalten die Bestätigung des Abo-Status, haben aber keinen Zugriff auf deine Zahlungsdaten. Abos verlängern sich automatisch, sofern nicht mindestens 24 Stunden vor Ende des laufenden Zeitraums gekündigt wird. Du kannst dein Abo unter Einstellungen → Apple-ID → Abonnements verwalten oder kündigen.",
+      s8_h:"Aufbewahrung &amp; Löschung", s8_p1:"Da alle personenbezogenen Daten auf deinem Gerät gespeichert sind, kannst du sie jederzeit löschen:", s8_list:"<li>Indem du die KIBO-App von deinem iPhone oder iPad löschst.</li><li>Über Einstellungen → Allgemein → iPhone-Speicher → KIBO → App löschen.</li>", s8_p2:"Um die Löschung etwaiger von uns gehaltener Daten (anonyme Nutzungsprotokolle) anzufordern, schreib uns an die unten stehende E-Mail.",
+      s9_h:"Änderungen dieser Erklärung", s9_p:"Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Wir informieren über wesentliche Änderungen, indem wir das oben genannte Datum aktualisieren. Die fortgesetzte Nutzung der App nach Änderungen gilt als Annahme der aktualisierten Erklärung.",
+      s10_h:"Kontakt", s10_p1:"Bei Fragen zu dieser Datenschutzerklärung oder deinen Daten:",
+      s10_addr:"<strong>Matteria Technologies LLC</strong><br/>Miami, Florida — USA · DUNS 146138580<br/><a href=\"mailto:hello@matteriatech.com\">hello@matteriatech.com</a>",
+      s10_p2:"Siehe auch unsere <a href=\"/kibo/terms\">Nutzungsbedingungen</a>.",
+      foot_by:"Ein Produkt von <a href=\"/\">Matteria Technologies</a> — Vorstellungskraft wird Wirklichkeit.",
+      foot_features:"Funktionen", foot_pricing:"Preise", foot_privacy:"Datenschutz", foot_terms:"AGB", foot_contact:"Kontakt",
+      _title:"KIBO — Datenschutzerklärung" }
+  };
+  var SUPPORTED=["en","es","fr","de"];
+  function apply(lang){
+    if(SUPPORTED.indexOf(lang)<0) lang="en";
+    var d=I18N[lang]; document.documentElement.lang=lang;
+    if(d._title) document.title=d._title;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n"); if(d[k]!=null) el.innerHTML=d[k];});
+    document.querySelectorAll(".lang-switch button").forEach(function(b){b.classList.toggle("on", b.getAttribute("data-lang")===lang);});
+    try{localStorage.setItem("mt_lang",lang);}catch(e){}
+  }
+  function init(){
+    var s=null; try{s=localStorage.getItem("mt_lang");}catch(e){}
+    var lang=s||(navigator.language||"en").slice(0,2).toLowerCase();
+    if(SUPPORTED.indexOf(lang)<0) lang="en";
+    apply(lang);
+    document.querySelectorAll(".lang-switch button").forEach(function(b){b.addEventListener("click",function(){apply(b.getAttribute("data-lang"));});});
+  }
+  if(document.readyState!=="loading") init(); else document.addEventListener("DOMContentLoaded",init);
+})();
+</script>
 
 </body>
 </html>
