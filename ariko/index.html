@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ariko — Homework feels like play</title>
+<meta name="description" content="Ariko is an AI homework tutor for kids in grades K–6. Snap a photo of any worksheet for instant practice, follow a guided learning path, and learn a little every day. 15 days of Pro free — no card." />
+<meta name="theme-color" content="#D4785A" />
+<link rel="canonical" href="https://matteriatech.com/ariko" />
+<meta property="og:title" content="Ariko — Homework feels like play" />
+<meta property="og:description" content="An AI homework tutor for grades K–6. Scan homework into instant practice. 15 days free." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#F0EDE8; --card:#FAF8F5; --ink:#2C2820; --mid:#7A7060; --faint:#B5AFA5;
+    --line:rgba(44,40,32,.10); --sage:#7BA394; --sage-deep:#5E8676; --terra:#D4785A; --terra-deep:#C0633F;
+    --sun:#F2B705; --sky:#5BA3D0;
+    --sans:'Poppins',-apple-system,system-ui,sans-serif;
+    --r:26px; --rs:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  ::selection{background:var(--terra);color:#fff}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(240,237,232,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+  .nav .logo{height:30px}
+  .nav .logo img{height:100%}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .lang-switch{display:flex;gap:2px;background:rgba(44,40,32,.06);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang-switch button{border:none;background:none;cursor:pointer;font-family:inherit;font-weight:700;font-size:.78rem;color:var(--mid);padding:5px 9px;border-radius:999px;line-height:1;transition:background .15s ease,color .15s ease}
+  .lang-switch button:hover{color:var(--ink)}
+  .lang-switch button.on{background:var(--terra);color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:1rem;border-radius:999px;padding:13px 22px;cursor:pointer;border:none;transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:var(--terra);color:#fff;box-shadow:0 8px 22px rgba(212,120,90,.38)}
+  .btn-primary:hover{background:var(--terra-deep)}
+  .btn-ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--bg)}
+  .btn-sm{padding:9px 16px;font-size:.92rem}
+
+  /* Hero */
+  .hero{background:radial-gradient(120% 90% at 80% 10%, #E08A66 0%, var(--terra) 45%, var(--terra-deep) 100%);color:#fff;border-radius:0 0 36px 36px;overflow:hidden;position:relative}
+  .hero-in{max-width:1080px;margin:0 auto;padding:54px 22px 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+  .hero-logo{height:46px;margin-bottom:26px}
+  .hero h1{font-size:clamp(2.4rem,5.6vw,4rem);font-weight:900;line-height:1.04;letter-spacing:-.02em}
+  .hero h1 em{font-style:normal;color:#FFE7B0}
+  .hero p.sub{font-size:clamp(1.05rem,2.2vw,1.3rem);font-weight:500;color:rgba(255,255,255,.92);margin:18px 0 26px;max-width:30ch}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .hero .trial-note{margin-top:16px;font-size:.95rem;font-weight:600;color:rgba(255,255,255,.9);display:inline-flex;align-items:center;gap:8px}
+  .hero .trial-note .dot{width:8px;height:8px;border-radius:50%;background:#7BD389;box-shadow:0 0 0 4px rgba(123,211,137,.25)}
+  .hero-art{position:relative}
+  .hero-art .card{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:18px;backdrop-filter:blur(6px)}
+  .hero-art img{width:100%;border-radius:20px}
+  .hero-art .ariko-mockup{width:100%;height:auto;display:block;overflow:visible;animation:kmFloat 7s ease-in-out infinite}
+  @keyframes kmFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+  /* Section scaffolding */
+  section{padding:64px 0}
+  .eyebrow{font-weight:800;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+  .h2{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-.015em;line-height:1.12;margin:10px 0 0}
+  .lead{font-size:1.12rem;color:var(--mid);font-weight:500;max-width:60ch;margin-top:14px}
+
+  /* Value cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;transition:transform .18s ease, box-shadow .18s ease}
+  .vcard:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(44,40,32,.10)}
+  .vcard .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:16px;color:#fff;font-size:26px}
+  .vcard h3{font-size:1.22rem;font-weight:800;letter-spacing:-.01em}
+  .vcard p{color:var(--mid);font-weight:500;margin-top:7px;font-size:1rem}
+
+  /* How it works */
+  .how{background:var(--card);border-radius:36px;margin:0 22px}
+  .how .wrap{padding-top:0;padding-bottom:0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  .step{text-align:center;padding:10px}
+  .step .num{width:56px;height:56px;border-radius:50%;background:var(--sage);color:#fff;font-weight:900;font-size:1.5rem;display:grid;place-items:center;margin:0 auto 16px}
+  .step h3{font-weight:800;font-size:1.2rem}
+  .step p{color:var(--mid);font-weight:500;margin-top:6px}
+
+  /* Loved by families */
+  .loved .h2{max-width:20ch}
+  .testi{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px;box-shadow:0 16px 40px rgba(44,40,32,.06);max-width:660px}
+  .quote{font-size:clamp(1.2rem,2.4vw,1.5rem);font-weight:700;line-height:1.42;letter-spacing:-.01em}
+  .quote::before{content:"\201C";color:var(--terra);margin-right:3px}
+  .quote::after{content:"\201D";color:var(--terra);margin-left:2px}
+  .who{display:flex;align-items:center;gap:12px;margin-top:20px}
+  .ava{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--terra),#FF7A1A);color:#fff;font-weight:800;display:grid;place-items:center;flex-shrink:0}
+  .who-name{font-weight:700}
+  .who-role{color:var(--mid);font-size:.9rem}
+  .stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}
+  .stat{background:rgba(212,120,90,.08);border:1px solid rgba(212,120,90,.18);border-radius:16px;padding:14px 20px}
+  .sn{font-size:1.6rem;font-weight:800;color:var(--terra-deep);letter-spacing:-.02em;line-height:1}
+  .sl{font-size:.76rem;color:var(--mid);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+
+  /* Pricing */
+  .price-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin-top:38px}
+  .price-card{background:linear-gradient(150deg,#FFFDFA,#F6EFE7);border:1px solid var(--line);border-radius:var(--r);padding:30px}
+  .price-card .free{display:inline-flex;align-items:center;gap:8px;background:rgba(123,163,148,.16);color:var(--sage-deep);font-weight:800;border-radius:999px;padding:7px 14px;font-size:.92rem}
+  .price-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+  .price-row:last-child{border-bottom:none}
+  .price-row .k{font-weight:600;color:var(--mid)}
+  .price-row .v{font-weight:800;font-size:1.25rem}
+  .price-row .v small{font-weight:600;color:var(--mid);font-size:.85rem}
+  .price-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .price-list li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+  .price-list .ck{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--sage);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:900}
+
+  /* Families band */
+  .fam{background:var(--ink);color:#F4EFE7;border-radius:36px;margin:0 22px;text-align:center}
+  .fam .h2{color:#fff}
+  .fam .lead{color:rgba(244,239,231,.7);margin-left:auto;margin-right:auto}
+  .fam-friends{width:100%;max-width:440px;height:auto;display:block;margin:32px auto 0;filter:drop-shadow(0 18px 40px rgba(0,0,0,.35))}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+  .chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:9px 16px;font-weight:600;font-size:.95rem}
+
+  /* CTA band */
+  .cta-band{text-align:center}
+  .cta-band .box{background:radial-gradient(120% 120% at 50% 0%, #E08A66, var(--terra) 60%);color:#fff;border-radius:36px;padding:56px 24px}
+  .cta-band h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.02em}
+  .cta-band p{font-weight:500;color:rgba(255,255,255,.92);margin:12px 0 24px;font-size:1.1rem}
+
+  /* Footer */
+  .footer{background:var(--ink);color:rgba(244,239,231,.66);margin-top:8px;border-radius:36px 36px 0 0}
+  .footer-in{max-width:1080px;margin:0 auto;padding:48px 22px 30px}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:flex-start}
+  .footer .logo img{height:30px}
+  .footer .by{margin-top:12px;font-weight:500;font-size:.92rem;max-width:34ch}
+  .footer .by a{color:#fff;font-weight:700;border-bottom:1px solid var(--terra)}
+  .footer nav{display:flex;gap:28px;flex-wrap:wrap}
+  .footer nav a{font-weight:600;color:rgba(244,239,231,.8)}
+  .footer nav a:hover{color:#fff}
+  .footer-base{max-width:1080px;margin:30px auto 0;padding:18px 22px 0;border-top:1px solid rgba(255,255,255,.1);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media(max-width:860px){
+    .hero-in{grid-template-columns:1fr;gap:24px}
+    .hero-art{order:-1;max-width:360px;margin:0 auto}
+    .cards,.steps{grid-template-columns:1fr 1fr}
+    .price-wrap{grid-template-columns:1fr}
+  }
+  @media(max-width:540px){
+    .cards,.steps{grid-template-columns:1fr}
+    .nav .cta-text{display:none}
+    section{padding:48px 0}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.ariko-mockup{animation:none!important}}
+  /* Curriculum tabs */
+  .cur-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+  .cur-tab{border:1.5px solid var(--line);background:var(--card);color:var(--mid);font-family:inherit;font-weight:700;font-size:.9rem;padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .15s ease}
+  .cur-tab:hover{color:var(--ink)}
+  .cur-tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .cur-panels{margin-top:22px}
+  .cur-panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 22px;box-shadow:0 14px 36px rgba(44,40,32,.05)}
+  .cur-panel.on{display:block;animation:curfade .3s ease both}
+  @keyframes curfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .cur-panel h3{font-size:1.2rem;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+  .cur-panel ul{list-style:none;margin-top:12px;display:grid;gap:9px}
+  .cur-panel li{position:relative;padding-left:26px;font-size:.98rem;color:var(--mid);font-weight:500;line-height:1.5}
+  .cur-panel li::before{content:"✓";position:absolute;left:0;top:1px;color:var(--sage-deep);font-weight:900}
+  .cur-panel li strong{color:var(--ink);font-weight:700}
+  .cur-note{margin-top:16px;font-size:.85rem;color:var(--faint);font-weight:500}
+
+  /* FAQ accordion */
+  .faq-list{margin-top:28px;display:grid;gap:10px;max-width:820px}
+  .faq-item{background:var(--card);border:1px solid var(--line);border-radius:var(--rs);overflow:hidden}
+  .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:left;background:none;border:none;cursor:pointer;font-family:inherit;font-weight:700;font-size:1.02rem;color:var(--ink);padding:18px 20px;line-height:1.4}
+  .faq-q .ico{flex-shrink:0;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:1.15rem;font-weight:700;color:var(--terra);transition:transform .2s ease;line-height:1}
+  .faq-item.open .faq-q .ico{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-item.open .faq-a{max-height:800px}
+  .faq-a-in{padding:0 20px 18px;font-size:.98rem;color:var(--mid);font-weight:500;line-height:1.6}
+  .faq-a-in strong{color:var(--ink);font-weight:700}
+  .faq-a-in a{color:var(--terra-deep);font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="/ariko" aria-label="Ariko"><img src="assets/ariko-logo-ink.svg" alt="Ariko"/></a>
+    <div class="nav-right">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#get"><span class="cta-text" data-i18n="nav_cta">Get the app</span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <img class="hero-logo" src="assets/ariko-logo.svg" alt="Ariko"/>
+      <h1 data-i18n="hero_h1">Homework that <em>feels like play.</em></h1>
+      <p class="sub" data-i18n="hero_sub">An AI tutor for kids in grades K–6. Snap a photo of any worksheet and Ariko turns it into fun, personalized practice.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#get" data-i18n="dl_appstore">Download on the App Store</a>
+      </div>
+      <div class="trial-note"><span class="dot"></span><span data-i18n="hero_trial">15 days of Ariko Pro free — no card needed</span></div>
+    </div>
+    <div class="hero-art">
+      <svg class="ariko-mockup" viewBox="0 0 660 620" role="img"
+           aria-label="A phone running the Ariko app, surrounded by homework worksheets, pencils and markers"
+           xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="kmShadow" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="22" stdDeviation="26" flood-color="#3a1606" flood-opacity="0.32"/>
+          </filter>
+          <filter id="kmPaper" x="-40%" y="-40%" width="180%" height="180%">
+            <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#4d2110" flood-opacity="0.22"/>
+          </filter>
+          <linearGradient id="kmScreen" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFFDFA"/>
+            <stop offset="1" stop-color="#F3EDE3"/>
+          </linearGradient>
+          <linearGradient id="kmXP" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#F2B705"/>
+            <stop offset="1" stop-color="#E0852E"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Worksheet · back-left -->
+        <g transform="rotate(-8 200 330)" filter="url(#kmPaper)">
+          <rect x="58" y="148" width="252" height="334" rx="12" fill="#FFFDF7"/>
+          <rect x="58" y="148" width="252" height="334" rx="12" fill="none" stroke="#ECDBC8" stroke-width="1.5"/>
+          <line x1="98" y1="158" x2="98" y2="472" stroke="#E8B3A1" stroke-width="2"/>
+          <text x="112" y="190" font-family="'Poppins',sans-serif" font-weight="700" font-size="17" fill="#7A6650">Math homework</text>
+          <g stroke="#E3DED2" stroke-width="2.5" stroke-linecap="round">
+            <line x1="112" y1="232" x2="292" y2="232"/>
+            <line x1="112" y1="270" x2="240" y2="270"/>
+            <line x1="112" y1="346" x2="292" y2="346"/>
+            <line x1="112" y1="384" x2="266" y2="384"/>
+            <line x1="112" y1="422" x2="248" y2="422"/>
+          </g>
+          <text x="112" y="312" font-family="'Poppins',sans-serif" font-weight="600" font-size="22" fill="#8A7257">3 × 4 = 12</text>
+          <ellipse cx="222" cy="305" rx="30" ry="20" fill="none" stroke="#D14B3A" stroke-width="2.6" transform="rotate(-7 222 305)"/>
+          <path d="M118 458 q14 -12 26 0 t26 0 t26 0" fill="none" stroke="#C9C2B4" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+
+        <!-- Worksheet · back-right -->
+        <g transform="rotate(9 470 250)" filter="url(#kmPaper)">
+          <rect x="360" y="104" width="226" height="286" rx="12" fill="#FFFFFF"/>
+          <rect x="360" y="104" width="226" height="286" rx="12" fill="none" stroke="#E7DECF" stroke-width="1.5"/>
+          <g stroke="#E6E1D6" stroke-width="2.5" stroke-linecap="round">
+            <line x1="384" y1="156" x2="560" y2="156"/>
+            <line x1="384" y1="194" x2="560" y2="194"/>
+            <line x1="384" y1="232" x2="528" y2="232"/>
+            <line x1="384" y1="304" x2="560" y2="304"/>
+            <line x1="384" y1="342" x2="540" y2="342"/>
+          </g>
+          <!-- little sun doodle -->
+          <circle cx="500" cy="262" r="15" fill="none" stroke="#F2B705" stroke-width="3"/>
+          <g stroke="#F2B705" stroke-width="3" stroke-linecap="round">
+            <line x1="500" y1="232" x2="500" y2="240"/>
+            <line x1="500" y1="284" x2="500" y2="292"/>
+            <line x1="470" y1="262" x2="478" y2="262"/>
+            <line x1="522" y1="262" x2="530" y2="262"/>
+          </g>
+          <!-- green check -->
+          <path d="M398 268 l12 13 22 -26" fill="none" stroke="#5E8676" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+
+        <!-- Marker · blue (behind, top-right) -->
+        <g transform="translate(470 86) rotate(22)">
+          <rect x="0" y="0" width="150" height="26" rx="13" fill="#5BA3D0"/>
+          <rect x="0" y="0" width="40" height="26" rx="13" fill="#3F86B4"/>
+          <rect x="150" y="6" width="16" height="14" rx="3" fill="#2C2820"/>
+          <rect x="56" y="6" width="80" height="5" rx="2.5" fill="#FFFFFF" opacity="0.3"/>
+        </g>
+
+        <!-- Marker · green (behind, left, vertical-ish) -->
+        <g transform="translate(40 372) rotate(-64)">
+          <rect x="0" y="0" width="140" height="24" rx="12" fill="#7BA394"/>
+          <rect x="0" y="0" width="36" height="24" rx="12" fill="#5E8676"/>
+          <rect x="140" y="6" width="15" height="12" rx="3" fill="#2C2820"/>
+          <rect x="52" y="5" width="72" height="4.5" rx="2.5" fill="#FFFFFF" opacity="0.3"/>
+        </g>
+
+        <!-- Phone -->
+        <g filter="url(#kmShadow)">
+          <rect x="231" y="64" width="208" height="452" rx="38" fill="#272320"/>
+          <rect x="239" y="72" width="192" height="436" rx="32" fill="url(#kmScreen)"/>
+          <rect x="305" y="84" width="60" height="13" rx="6.5" fill="#272320"/>
+
+          <!-- app: wordmark -->
+          <text x="335" y="138" text-anchor="middle" font-family="'Poppins',sans-serif" font-weight="800" font-size="19" letter-spacing="1" fill="#D4785A">Ariko</text>
+
+          <!-- question card -->
+          <rect x="259" y="156" width="152" height="186" rx="18" fill="#FFFFFF" stroke="#EFE7DB" stroke-width="1.5"/>
+          <circle cx="277" cy="180" r="5" fill="#D4785A"/>
+          <text x="289" y="184" font-family="'Poppins',sans-serif" font-weight="700" font-size="9" letter-spacing="0.6" fill="#9A8B78">MATHEMATICS</text>
+          <text x="275" y="212" font-family="'Poppins',sans-serif" font-weight="600" font-size="12" fill="#2C2820">Emma has 3 groups</text>
+          <text x="275" y="229" font-family="'Poppins',sans-serif" font-weight="600" font-size="12" fill="#2C2820">of 4 apples. How</text>
+          <text x="275" y="246" font-family="'Poppins',sans-serif" font-weight="600" font-size="12" fill="#2C2820">many in total?</text>
+
+          <!-- answer: correct -->
+          <rect x="271" y="262" width="128" height="30" rx="11" fill="#DCF0E6" stroke="#5E8676" stroke-width="1.6"/>
+          <path d="M285 277 l5 5 9 -10" fill="none" stroke="#5E8676" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="308" y="281" font-family="'Poppins',sans-serif" font-weight="700" font-size="11" fill="#3F6657">12 apples</text>
+
+          <!-- answer: neutral -->
+          <rect x="271" y="300" width="128" height="30" rx="11" fill="#F3EFE8" stroke="#E6DFD2" stroke-width="1.4"/>
+          <text x="285" y="319" font-family="'Poppins',sans-serif" font-weight="600" font-size="11" fill="#9A8B78">7 apples</text>
+
+          <!-- XP badge -->
+          <rect x="291" y="360" width="88" height="30" rx="15" fill="url(#kmXP)"/>
+          <text x="335" y="380" text-anchor="middle" font-family="'Poppins',sans-serif" font-weight="800" font-size="13" fill="#3A2E00">+5 XP</text>
+
+          <!-- progress dots -->
+          <circle cx="318" cy="424" r="4" fill="#D4785A"/>
+          <circle cx="335" cy="424" r="4" fill="#E9D2C6"/>
+          <circle cx="352" cy="424" r="4" fill="#E9D2C6"/>
+        </g>
+
+        <!-- Pencil · yellow (front, bottom-left) -->
+        <g transform="translate(70 472) rotate(-31)">
+          <rect x="40" y="0" width="150" height="26" fill="#F2B705"/>
+          <rect x="40" y="0" width="150" height="9" fill="#FFFFFF" opacity="0.28"/>
+          <path d="M40 0 L10 13 L40 26 Z" fill="#E8C99A"/>
+          <path d="M22 6 L10 13 L22 20 Z" fill="#3A3A3A"/>
+          <rect x="190" y="0" width="18" height="26" fill="#BFA9C9"/>
+          <rect x="208" y="2" width="20" height="22" rx="9" fill="#F4A7B9"/>
+        </g>
+
+        <!-- Marker · purple (front, bottom-right) -->
+        <g transform="translate(404 470) rotate(26)">
+          <rect x="0" y="0" width="160" height="30" rx="15" fill="#9B7BD4"/>
+          <rect x="0" y="0" width="44" height="30" rx="15" fill="#7E5FB8"/>
+          <rect x="160" y="8" width="18" height="14" rx="3.5" fill="#2C2820"/>
+          <rect x="60" y="7" width="84" height="5.5" rx="2.75" fill="#FFFFFF" opacity="0.3"/>
+        </g>
+
+        <!-- Eraser -->
+        <g transform="translate(150 540) rotate(-12)">
+          <rect x="0" y="0" width="58" height="30" rx="7" fill="#F4A7B9"/>
+          <rect x="0" y="0" width="58" height="11" rx="7" fill="#FFFFFF" opacity="0.32"/>
+        </g>
+
+        <!-- sparkles -->
+        <g fill="#FFE7B0">
+          <path d="M250 60 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z"/>
+          <path d="M598 430 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Value props -->
+<section id="features">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="feat_eyebrow">Why Ariko</div>
+    <h2 class="h2" data-i18n="feat_h2">Everything homework help should be</h2>
+    <p class="lead" data-i18n="feat_lead">Calm, colorful, and built around real classroom skills — so a few minutes a day actually add up.</p>
+    <div class="cards">
+      <div class="vcard">
+        <div class="ico" style="background:var(--terra)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+        <h3 data-i18n="f1_t">Scan any homework</h3>
+        <p data-i18n="f1_d">Take a photo of a worksheet and Ariko instantly creates similar practice at your child's level — so they learn the skill, not just the answer.</p>
+      </div>
+      <div class="vcard">
+        <div class="ico" style="background:var(--sage)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div>
+        <h3 data-i18n="f2_t">A guided learning path</h3>
+        <p data-i18n="f2_d">Day by day through Math, Reading, Science and Social Studies — bite-sized questions with friendly explanations and visuals.</p>
+      </div>
+      <div class="vcard">
+        <div class="ico" style="background:var(--sky)"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 13l2 2 4-4"/></svg></div>
+        <h3 data-i18n="f3_t">Exam-ready practice</h3>
+        <p data-i18n="f3_d">F.A.S.T.-style practice tests build test-day confidence, aligned to grade-level standards.</p>
+      </div>
+      <div class="vcard">
+        <div class="ico" style="background:#9B7BD4"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></div>
+        <h3 data-i18n="f4_t">Bilingual ESOL support</h3>
+        <p data-i18n="f4_d">Full support in English, Spanish, French and German — a bridge for kids still learning English.</p>
+      </div>
+      <div class="vcard">
+        <div class="ico" style="background:var(--sun);color:#3a2e00"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c.8 3.5 4.5 4.8 4.5 9a4.5 4.5 0 0 1-9 0c0-1.6.8-2.7 1.6-3.5C10.5 9.5 10 6.5 12 2z"/><path d="M12 21a2.6 2.6 0 0 0 2.6-2.6c0-1.6-2.6-3.4-2.6-3.4s-2.6 1.8-2.6 3.4A2.6 2.6 0 0 0 12 21z"/></svg></div>
+        <h3 data-i18n="f5_t">Streaks &amp; badges</h3>
+        <p data-i18n="f5_d">Daily goals, streaks and a cast of encouraging characters make practice something kids want to come back to.</p>
+      </div>
+      <div class="vcard">
+        <div class="ico" style="background:#2C2820"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3 data-i18n="f6_t">Calm &amp; kid-safe</h3>
+        <p data-i18n="f6_d">No ads, no chat, no links out. Progress stays on the device. Designed for focus, not for screen time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how">
+  <div class="wrap" style="padding-top:60px;padding-bottom:60px">
+    <div class="eyebrow" data-i18n="how_eyebrow">How it works</div>
+    <h2 class="h2" data-i18n="how_h2">Three taps to practice</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3 data-i18n="s1_t">Snap a photo</h3><p data-i18n="s1_d">Point the camera at any worksheet or homework page.</p></div>
+      <div class="step"><div class="num">2</div><h3 data-i18n="s2_t">Ariko makes practice</h3><p data-i18n="s2_d">It builds fun questions at the right level, with hints and visuals.</p></div>
+      <div class="step"><div class="num">3</div><h3 data-i18n="s3_t">Learn a little daily</h3><p data-i18n="s3_d">Short sessions, streaks and progress your child can see.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Loved by families -->
+<section class="loved">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="loved_eyebrow">Loved by families</div>
+    <h2 class="h2" data-i18n="loved_h2">From homework battles to &ldquo;can I do one more?&rdquo;</h2>
+    <div class="testi">
+      <blockquote class="quote" data-i18n="loved_quote">My daughter used to cry over math homework. Now she asks to practice after dinner.</blockquote>
+      <div class="who">
+        <div class="ava">M</div>
+        <div>
+          <div class="who-name">María G.</div>
+          <div class="who-role" data-i18n="loved_role">Parent · 3rd grade · Miami-Dade</div>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="sn">K–6</div><div class="sl" data-i18n="stat1_l">All grades</div></div>
+      <div class="stat"><div class="sn">5</div><div class="sl" data-i18n="stat2_l">Subjects</div></div>
+      <div class="stat"><div class="sn">4</div><div class="sl" data-i18n="stat3_l">Languages</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing / trial -->
+<section id="get">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="price_eyebrow">Simple pricing</div>
+    <h2 class="h2" data-i18n="price_h2">Try everything free for 15 days</h2>
+    <p class="lead" data-i18n="price_lead">Every new family gets full Ariko Pro for 15 days — no credit card required. After that, keep a free amount of daily practice, or go Pro.</p>
+    <div class="price-wrap">
+      <div class="price-card">
+        <span class="free" data-i18n="price_free">✓ 15 days free · no card</span>
+        <div style="margin-top:18px">
+          <div class="price-row"><span class="k" data-i18n="price_monthly">Monthly</span><span class="v">$7.99<small data-i18n="per_month">/month</small></span></div>
+          <div class="price-row"><span class="k" data-i18n="price_annual">Annual <strong style="color:var(--sage-deep)">· best value</strong></span><span class="v">$59.99<small data-i18n="per_year">/year</small></span></div>
+        </div>
+        <a class="btn btn-primary" style="width:100%;justify-content:center;margin-top:22px" href="https://apps.apple.com/app/ariko/id0000000000" data-i18n="dl_appstore">Download on the App Store</a>
+        <p style="text-align:center;color:var(--faint);font-size:.85rem;margin-top:12px" data-i18n="price_autoren">Auto-renews · Cancel anytime in Settings</p>
+      </div>
+      <ul class="price-list">
+        <li><span class="ck">✓</span><div><strong data-i18n="pl1_t">Unlimited practice &amp; AI questions</strong><br/><span style="color:var(--mid)" data-i18n="pl1_s">across every subject, new each time</span></div></li>
+        <li><span class="ck">✓</span><div><strong data-i18n="pl2">Unlimited homework scans</strong></div></li>
+        <li><span class="ck">✓</span><div><strong data-i18n="pl3">Up to 3 learner profiles</strong></div></li>
+        <li><span class="ck">✓</span><div><strong data-i18n="pl4">Gifted mode &amp; F.A.S.T. results</strong></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Families band -->
+<section class="fam">
+  <div class="wrap" style="padding-top:60px;padding-bottom:60px">
+    <div class="eyebrow" style="color:#F2B705" data-i18n="fam_eyebrow">Made for families</div>
+    <h2 class="h2" data-i18n="fam_h2">Peace of mind, built in</h2>
+    <p class="lead" data-i18n="fam_lead">Up to three kids, four languages, and a calm experience with nothing to worry about.</p>
+    <img class="fam-friends" src="assets/ariko-friends.svg" alt="The Ariko characters" loading="lazy"/>
+    <div class="chips">
+      <span class="chip" data-i18n="chip1">No ads</span>
+      <span class="chip" data-i18n="chip2">No chat</span>
+      <span class="chip" data-i18n="chip3">On-device progress</span>
+      <span class="chip">English</span>
+      <span class="chip">Español</span>
+      <span class="chip">Français</span>
+      <span class="chip">Deutsch</span>
+      <span class="chip" data-i18n="chip_grades">Grades K–6</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="box">
+      <h2 data-i18n="cta_h2">Ready when they are.</h2>
+      <p data-i18n="cta_p">15 days of Ariko Pro, free. No card needed.</p>
+      <a class="btn btn-ghost" style="border-color:#fff;color:#fff" href="https://apps.apple.com/app/ariko/id0000000000" data-i18n="cta_btn">Get Ariko →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Curriculum by country -->
+<section id="curriculum">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="cur_eyebrow">Curriculum</div>
+    <h2 class="h2" data-i18n="cur_h2">What Ariko covers in your country</h2>
+    <p class="lead" data-i18n="cur_lead">Ariko adapts grade names, subjects and standards to where your child goes to school. We detect your country automatically — pick another below to compare.</p>
+    <div class="cur-tabs" role="tablist" aria-label="Country">
+      <button class="cur-tab" type="button" data-country="us" data-i18n="cur_tab_us">United States</button>
+      <button class="cur-tab" type="button" data-country="gb" data-i18n="cur_tab_gb">United Kingdom</button>
+      <button class="cur-tab" type="button" data-country="ca" data-i18n="cur_tab_ca">Canada</button>
+      <button class="cur-tab" type="button" data-country="au" data-i18n="cur_tab_au">Australia</button>
+      <button class="cur-tab" type="button" data-country="es" data-i18n="cur_tab_es">Spain</button>
+    </div>
+    <div class="cur-panels">
+      <div class="cur-panel" data-country="us"><div data-i18n="cur_us">—</div></div>
+      <div class="cur-panel" data-country="gb"><div data-i18n="cur_gb">—</div></div>
+      <div class="cur-panel" data-country="ca"><div data-i18n="cur_ca">—</div></div>
+      <div class="cur-panel" data-country="au"><div data-i18n="cur_au">—</div></div>
+      <div class="cur-panel" data-country="es"><div data-i18n="cur_es">—</div></div>
+    </div>
+    <p class="cur-note" data-i18n="cur_note">Ariko's practice is aligned to and modeled on these frameworks; it is an independent study aid, not affiliated with or endorsed by any ministry, department of education or exam board.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="faq_eyebrow">FAQ</div>
+    <h2 class="h2" data-i18n="faq_h2">Questions parents ask</h2>
+    <p class="lead" data-i18n="faq_lead">Everything about progress, privacy, curriculum and pricing — in one place.</p>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q1">Will my child lose their progress if I delete the app or change phones?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a1">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q2">Do I need to create an account or log in?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a2">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q3">What ages and grades is Ariko for?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a3">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q4">Is it aligned with my country's curriculum?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a4">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q5">What languages does Ariko support?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a5">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q6">Is it safe for kids? What data do you collect?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a6">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q7">How does the free trial and pricing work?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a7">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q8">How many children can I add?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a8">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q9">How does scanning homework work?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a9">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q10">Can I change my child's grade? Do they lose progress?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a10">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q11">What stops a child from changing settings?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a11">—</div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button"><span data-i18n="faq_q12">Does it work offline? Which devices?</span><span class="ico" aria-hidden="true">+</span></button><div class="faq-a"><div class="faq-a-in" data-i18n="faq_a12">—</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-top">
+      <div>
+        <a class="logo" href="/ariko" aria-label="Ariko"><img src="assets/ariko-logo.svg" alt="Ariko"/></a>
+        <div class="by" data-i18n="foot_by">A product of <a href="/">Matteria Technologies</a> — engineering imagination into reality.</div>
+      </div>
+      <nav>
+        <a href="#features" data-i18n="foot_features">Features</a>
+        <a href="#curriculum" data-i18n="foot_curriculum">Curriculum</a>
+        <a href="#faq" data-i18n="foot_faq">FAQ</a>
+        <a href="#get" data-i18n="foot_pricing">Pricing</a>
+        <a href="/ariko/privacy" data-i18n="foot_privacy">Privacy</a>
+        <a href="/ariko/terms" data-i18n="foot_terms">Terms</a>
+        <a href="mailto:hello@matteriatech.com" data-i18n="foot_contact">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Matteria Technologies LLC</span>
+      <span>Miami, Florida — USA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var I18N = {
+    en: {
+      nav_cta:"Get the app",
+      hero_h1:"Homework that <em>feels like play.</em>",
+      hero_sub:"An AI tutor for kids in grades K–6. Snap a photo of any worksheet and Ariko turns it into fun, personalized practice.",
+      dl_appstore:"Download on the App Store",
+      hero_trial:"15 days of Ariko Pro free — no card needed",
+      feat_eyebrow:"Why Ariko",
+      feat_h2:"Everything homework help should be",
+      feat_lead:"Calm, colorful, and built around real classroom skills — so a few minutes a day actually add up.",
+      f1_t:"Scan any homework",
+      f1_d:"Take a photo of a worksheet and Ariko instantly creates similar practice at your child's level — so they learn the skill, not just the answer.",
+      f2_t:"A guided learning path",
+      f2_d:"Day by day through Math, Reading, Science and Social Studies — bite-sized questions with friendly explanations and visuals.",
+      f3_t:"Exam-ready practice",
+      f3_d:"F.A.S.T.-style practice tests build test-day confidence, aligned to grade-level standards.",
+      f4_t:"Bilingual ESOL support",
+      f4_d:"Full support in English, Spanish, French and German — a bridge for kids still learning English.",
+      f5_t:"Streaks &amp; badges",
+      f5_d:"Daily goals, streaks and a cast of encouraging characters make practice something kids want to come back to.",
+      f6_t:"Calm &amp; kid-safe",
+      f6_d:"No ads, no chat, no links out. Progress stays on the device. Designed for focus, not for screen time.",
+      how_eyebrow:"How it works",
+      how_h2:"Three taps to practice",
+      s1_t:"Snap a photo", s1_d:"Point the camera at any worksheet or homework page.",
+      s2_t:"Ariko makes practice", s2_d:"It builds fun questions at the right level, with hints and visuals.",
+      s3_t:"Learn a little daily", s3_d:"Short sessions, streaks and progress your child can see.",
+      loved_eyebrow:"Loved by families",
+      loved_h2:"From homework battles to &ldquo;can I do one more?&rdquo;",
+      loved_quote:"My daughter used to cry over math homework. Now she asks to practice after dinner.",
+      loved_role:"Parent · 3rd grade · Miami-Dade",
+      stat1_l:"All grades", stat2_l:"Subjects", stat3_l:"Languages",
+      price_eyebrow:"Simple pricing",
+      price_h2:"Try everything free for 15 days",
+      price_lead:"Every new family gets full Ariko Pro for 15 days — no credit card required. After that, keep a free amount of daily practice, or go Pro.",
+      price_free:"✓ 15 days free · no card",
+      price_monthly:"Monthly",
+      price_annual:"Annual <strong style='color:var(--sage-deep)'>· best value</strong>",
+      per_month:"/month", per_year:"/year",
+      price_autoren:"Auto-renews · Cancel anytime in Settings",
+      pl1_t:"Unlimited practice &amp; AI questions", pl1_s:"across every subject, new each time",
+      pl2:"Unlimited homework scans",
+      pl3:"Up to 3 learner profiles",
+      pl4:"Gifted mode &amp; F.A.S.T. results",
+      fam_eyebrow:"Made for families",
+      fam_h2:"Peace of mind, built in",
+      fam_lead:"Up to three kids, four languages, and a calm experience with nothing to worry about.",
+      chip1:"No ads", chip2:"No chat", chip3:"On-device progress", chip_grades:"Grades K–6",
+      cta_h2:"Ready when they are.",
+      cta_p:"15 days of Ariko Pro, free. No card needed.",
+      cta_btn:"Get Ariko →",
+      foot_by:"A product of <a href='/'>Matteria Technologies</a> — engineering imagination into reality.",
+      foot_features:"Features", foot_pricing:"Pricing", foot_privacy:"Privacy", foot_terms:"Terms", foot_contact:"Contact",
+      nav_faq:"FAQ", foot_curriculum:"Curriculum", foot_faq:"FAQ",
+      cur_eyebrow:"Curriculum",
+      cur_h2:"What Ariko covers in your country",
+      cur_lead:"Ariko adapts grade names, subjects and standards to where your child goes to school. We detect your country automatically — pick another below to compare.",
+      cur_tab_us:"United States", cur_tab_gb:"United Kingdom", cur_tab_ca:"Canada", cur_tab_au:"Australia", cur_tab_es:"Spain",
+      cur_us:"<h3>United States</h3><ul><li><strong>Grades K–6</strong> — Kindergarten through 6th Grade.</li><li>Built around <strong>state standards</strong>, with exam-style practice modeled on <strong>F.A.S.T.</strong> (Florida), <strong>STAAR</strong> (Texas) and other state tests.</li><li>Math, Reading (ELA), Science and Social Studies.</li><li>English, with bilingual support in Spanish, French and German.</li></ul>",
+      cur_gb:"<h3>United Kingdom</h3><ul><li><strong>Reception + Years 1–6</strong>.</li><li>Aligned to the <strong>National Curriculum</strong> (Key Stages 1–2).</li><li>Maths, English and Science.</li><li>English interface.</li></ul>",
+      cur_ca:"<h3>Canada</h3><ul><li><strong>Kindergarten + Grades 1–6</strong>.</li><li>Core skills aligned to <strong>provincial curricula</strong>.</li><li>Math, Reading, Science and Social Studies.</li><li>English interface (French available).</li></ul>",
+      cur_au:"<h3>Australia</h3><ul><li><strong>Foundation + Years 1–6</strong>.</li><li>Aligned to the <strong>Australian Curriculum (v9)</strong>.</li><li>Maths, English and Science.</li><li>English interface.</li></ul>",
+      cur_es:"<h3>Spain</h3><ul><li><strong>Infantil + 1.º–6.º de Primaria</strong> (<strong>LOMLOE</strong>).</li><li>Adapted <strong>by autonomous community</strong> (Catalonia, Galicia, Valencia, Basque Country, and more).</li><li>Co-official languages: <strong>català, galego, valencià</strong> as the language of content; <strong>euskara and aranés</strong> as a language subject.</li><li>Matemáticas, Lengua, Conocimiento del Medio and English.</li></ul>",
+      cur_note:"Ariko's practice is aligned to and modeled on these frameworks. It is an independent study aid, not affiliated with or endorsed by any ministry, department of education or exam board.",
+      faq_eyebrow:"FAQ",
+      faq_h2:"Questions parents ask",
+      faq_lead:"Everything about progress, privacy, curriculum and pricing — in one place.",
+      faq_q1:"Will my child lose their progress if I delete the app or change phones?",
+      faq_a1:"<strong>No.</strong> Ariko automatically backs up each child's progress to your family's iCloud — no login needed. If you delete and reinstall the app, or set up a new iPhone/iPad signed into the same Apple ID, your child's path, levels and history come back. Progress also syncs across the family's devices.",
+      faq_q2:"Do I need to create an account or log in?",
+      faq_a2:"No. There are no usernames or passwords. Ariko works right away and uses your device's iCloud (when available) to keep progress safe.",
+      faq_q3:"What ages and grades is Ariko for?",
+      faq_a3:"Children from <strong>Kindergarten/Infantil through 6th grade</strong> (about ages 5–12). Ariko adapts the difficulty to each child, and you set their grade in the profile.",
+      faq_q4:"Is it aligned with my country's curriculum?",
+      faq_a4:"Yes — Ariko adapts grade names, subjects and standards to your country. See the <a href='#curriculum'>Curriculum by country</a> section above (US state standards, UK National Curriculum, Australian Curriculum, Spain's LOMLOE by autonomous community, and more).",
+      faq_q5:"What languages does Ariko support?",
+      faq_a5:"The interface is in <strong>English, Spanish, French and German</strong>. In Spain, content is also available in the co-official languages — <strong>català, galego and valencià</strong> — and <strong>euskara and aranés</strong> are offered as a language subject.",
+      faq_q6:"Is it safe for kids? What data do you collect?",
+      faq_a6:"Ariko is built kid-safe: <strong>no ads, no chat, no links out</strong>. Progress stays on the device and in your private iCloud. We don't sell data or build advertising profiles, and sensitive settings sit behind an adult check.",
+      faq_q7:"How does the free trial and pricing work?",
+      faq_a7:"Every family gets <strong>15 days of Ariko Pro free — no credit card</strong>. After that, keep a free amount of daily practice, or subscribe monthly or annually. Cancel anytime in Settings.",
+      faq_q8:"How many children can I add?",
+      faq_a8:"Up to <strong>3 learner profiles</strong> with Pro — each with its own grade, progress and language.",
+      faq_q9:"How does scanning homework work?",
+      faq_a9:"Snap a photo of any worksheet. Ariko reads it and creates <strong>similar practice at your child's level</strong> — so they learn the skill, not just copy the answer.",
+      faq_q10:"Can I change my child's grade? Do they lose progress?",
+      faq_a10:"Yes, and <strong>no progress is lost</strong>. Each grade keeps its own learning path — what they did in 1st grade is saved if you move to 2nd, and it's all there if you switch back. A quick confirmation appears when you change grade.",
+      faq_q11:"What stops a child from changing settings?",
+      faq_a11:"Sensitive settings (country, grade, language, subscription, reset) sit behind an <strong>adult check</strong> — a quick maths problem plus an adult's birth year — so kids can't change them on their own.",
+      faq_q12:"Does it work offline? Which devices?",
+      faq_a12:"Core practice works <strong>offline</strong>; scanning homework and live AI help need a connection. Ariko runs on <strong>iPhone and iPad</strong>, with more platforms on the way.",
+      _title:"Ariko — Homework feels like play"
+    },
+    es: {
+      nav_cta:"Descargar la app",
+      hero_h1:"Tareas que <em>parecen un juego.</em>",
+      hero_sub:"Un tutor con IA para niños de K–6. Haz una foto de cualquier ficha y Ariko la convierte en práctica divertida y personalizada.",
+      dl_appstore:"Descargar en el App Store",
+      hero_trial:"15 días de Ariko Pro gratis — sin tarjeta",
+      feat_eyebrow:"Por qué Ariko",
+      feat_h2:"Todo lo que la ayuda con las tareas debería ser",
+      feat_lead:"Tranquila, colorida y basada en las destrezas reales del aula — para que unos minutos al día sí sumen.",
+      f1_t:"Escanea cualquier tarea",
+      f1_d:"Haz una foto de una ficha y Ariko crea al instante práctica similar al nivel de tu hijo — para que aprenda la destreza, no solo la respuesta.",
+      f2_t:"Una ruta de aprendizaje guiada",
+      f2_d:"Día a día por Matemáticas, Lectura, Ciencias y Estudios Sociales — preguntas breves con explicaciones amables y elementos visuales.",
+      f3_t:"Práctica lista para el examen",
+      f3_d:"Exámenes de práctica estilo F.A.S.T. dan confianza para el día del examen, alineados con los estándares del grado.",
+      f4_t:"Apoyo ESOL bilingüe",
+      f4_d:"Apoyo completo en inglés, español, francés y alemán — un puente para los niños que aún aprenden inglés.",
+      f5_t:"Rachas y medallas",
+      f5_d:"Metas diarias, rachas y un elenco de personajes alentadores hacen que practicar sea algo a lo que los niños quieren volver.",
+      f6_t:"Tranquila y segura para niños",
+      f6_d:"Sin anuncios, sin chat, sin enlaces externos. El progreso se queda en el dispositivo. Diseñada para concentrarse, no para el tiempo de pantalla.",
+      how_eyebrow:"Cómo funciona",
+      how_h2:"Tres toques para practicar",
+      s1_t:"Haz una foto", s1_d:"Apunta la cámara a cualquier ficha o página de tarea.",
+      s2_t:"Ariko crea la práctica", s2_d:"Crea preguntas divertidas al nivel adecuado, con pistas y elementos visuales.",
+      s3_t:"Aprende un poco cada día", s3_d:"Sesiones cortas, rachas y un progreso que tu hijo puede ver.",
+      loved_eyebrow:"Las familias lo adoran",
+      loved_h2:"De las peleas por la tarea a &ldquo;¿puedo hacer una más?&rdquo;",
+      loved_quote:"Mi hija lloraba con la tarea de mates. Ahora pide practicar después de cenar.",
+      loved_role:"Madre · 3.º grado · Miami-Dade",
+      stat1_l:"Todos los grados", stat2_l:"Materias", stat3_l:"Idiomas",
+      price_eyebrow:"Precios sencillos",
+      price_h2:"Prueba todo gratis 15 días",
+      price_lead:"Cada familia nueva obtiene Ariko Pro completo durante 15 días — sin tarjeta. Después, conserva una cantidad gratuita de práctica diaria o pásate a Pro.",
+      price_free:"✓ 15 días gratis · sin tarjeta",
+      price_monthly:"Mensual",
+      price_annual:"Anual <strong style='color:var(--sage-deep)'>· mejor valor</strong>",
+      per_month:"/mes", per_year:"/año",
+      price_autoren:"Renovación automática · Cancela cuando quieras en Ajustes",
+      pl1_t:"Práctica y preguntas con IA ilimitadas", pl1_s:"en todas las materias, nuevas cada vez",
+      pl2:"Escaneos de tarea ilimitados",
+      pl3:"Hasta 3 perfiles de estudiante",
+      pl4:"Modo superdotados y resultados F.A.S.T.",
+      fam_eyebrow:"Hecho para familias",
+      fam_h2:"Tranquilidad, de serie",
+      fam_lead:"Hasta tres niños, cuatro idiomas y una experiencia tranquila sin nada de qué preocuparse.",
+      chip1:"Sin anuncios", chip2:"Sin chat", chip3:"Progreso en el dispositivo", chip_grades:"Grados K–6",
+      cta_h2:"Listo cuando ellos lo estén.",
+      cta_p:"15 días de Ariko Pro, gratis. Sin tarjeta.",
+      cta_btn:"Obtener Ariko →",
+      foot_by:"Un producto de <a href='/'>Matteria Technologies</a> — convertimos la imaginación en realidad.",
+      foot_features:"Funciones", foot_pricing:"Precios", foot_privacy:"Privacidad", foot_terms:"Términos", foot_contact:"Contacto",
+      nav_faq:"FAQ", foot_curriculum:"Currículo", foot_faq:"Preguntas",
+      cur_eyebrow:"Currículo",
+      cur_h2:"Qué cubre Ariko en tu país",
+      cur_lead:"Ariko adapta los nombres de curso, las asignaturas y los estándares al sistema donde estudia tu hijo. Detectamos tu país automáticamente — elige otro abajo para comparar.",
+      cur_tab_us:"Estados Unidos", cur_tab_gb:"Reino Unido", cur_tab_ca:"Canadá", cur_tab_au:"Australia", cur_tab_es:"España",
+      cur_us:"<h3>Estados Unidos</h3><ul><li><strong>Cursos K–6</strong> — de Kindergarten a 6.º grado.</li><li>Basado en los <strong>estándares estatales</strong>, con práctica tipo examen modelada en <strong>F.A.S.T.</strong> (Florida), <strong>STAAR</strong> (Texas) y otros tests estatales.</li><li>Matemáticas, Lectura (ELA), Ciencias y Estudios Sociales.</li><li>Inglés, con apoyo bilingüe en español, francés y alemán.</li></ul>",
+      cur_gb:"<h3>Reino Unido</h3><ul><li><strong>Reception + Years 1–6</strong>.</li><li>Alineado con el <strong>National Curriculum</strong> (Key Stages 1–2).</li><li>Matemáticas, Inglés y Ciencias.</li><li>Interfaz en inglés.</li></ul>",
+      cur_ca:"<h3>Canadá</h3><ul><li><strong>Kindergarten + Grados 1–6</strong>.</li><li>Destrezas básicas alineadas con los <strong>currículos provinciales</strong>.</li><li>Matemáticas, Lectura, Ciencias y Estudios Sociales.</li><li>Interfaz en inglés (francés disponible).</li></ul>",
+      cur_au:"<h3>Australia</h3><ul><li><strong>Foundation + Years 1–6</strong>.</li><li>Alineado con el <strong>Australian Curriculum (v9)</strong>.</li><li>Matemáticas, Inglés y Ciencias.</li><li>Interfaz en inglés.</li></ul>",
+      cur_es:"<h3>España</h3><ul><li><strong>Infantil + 1.º–6.º de Primaria</strong> (<strong>LOMLOE</strong>).</li><li>Adaptado <strong>por comunidad autónoma</strong> (Cataluña, Galicia, C. Valenciana, País Vasco y más).</li><li>Lenguas cooficiales: <strong>català, galego, valencià</strong> como lengua del contenido; <strong>euskara y aranés</strong> como asignatura de lengua.</li><li>Matemáticas, Lengua, Conocimiento del Medio e Inglés.</li></ul>",
+      cur_note:"La práctica de Ariko está alineada y modelada según estos marcos. Es un recurso de estudio independiente, sin afiliación ni respaldo de ningún ministerio, consejería de educación o entidad examinadora.",
+      faq_eyebrow:"Preguntas frecuentes",
+      faq_h2:"Lo que preguntan los padres",
+      faq_lead:"Todo sobre el progreso, la privacidad, el currículo y el precio — en un solo sitio.",
+      faq_q1:"¿Mi hijo pierde el progreso si borro la app o cambio de móvil?",
+      faq_a1:"<strong>No.</strong> Ariko guarda automáticamente el progreso de cada niño en el iCloud de tu familia — sin necesidad de iniciar sesión. Si borras y reinstalas la app, o configuras un iPhone/iPad nuevo con el mismo Apple ID, vuelven el camino, los niveles y el historial de tu hijo. El progreso también se sincroniza entre los dispositivos de la familia.",
+      faq_q2:"¿Necesito crear una cuenta o iniciar sesión?",
+      faq_a2:"No. No hay usuarios ni contraseñas. Ariko funciona al instante y usa el iCloud de tu dispositivo (cuando está disponible) para mantener el progreso a salvo.",
+      faq_q3:"¿Para qué edades y cursos es Ariko?",
+      faq_a3:"Niños desde <strong>Infantil/Kindergarten hasta 6.º de Primaria</strong> (aprox. 5–12 años). Ariko adapta la dificultad a cada niño, y tú eliges su curso en el perfil.",
+      faq_q4:"¿Está alineado con el currículo de mi país?",
+      faq_a4:"Sí — Ariko adapta los nombres de curso, las asignaturas y los estándares a tu país. Mira la sección <a href='#curriculum'>Currículo por país</a> de arriba (estándares estatales de EE. UU., National Curriculum del Reino Unido, Australian Curriculum, LOMLOE de España por comunidad autónoma, y más).",
+      faq_q5:"¿En qué idiomas está Ariko?",
+      faq_a5:"La interfaz está en <strong>inglés, español, francés y alemán</strong>. En España, el contenido también está disponible en las lenguas cooficiales — <strong>català, galego y valencià</strong> — y <strong>euskara y aranés</strong> se ofrecen como asignatura de lengua.",
+      faq_q6:"¿Es seguro para niños? ¿Qué datos recogéis?",
+      faq_a6:"Ariko es seguro para niños: <strong>sin anuncios, sin chat, sin enlaces externos</strong>. El progreso se queda en el dispositivo y en tu iCloud privado. No vendemos datos ni creamos perfiles publicitarios, y los ajustes sensibles están detrás de una verificación de adulto.",
+      faq_q7:"¿Cómo funciona la prueba gratis y el precio?",
+      faq_a7:"Cada familia recibe <strong>15 días de Ariko Pro gratis — sin tarjeta</strong>. Después, mantienes una cantidad gratuita de práctica diaria, o te suscribes (mensual o anual). Puedes cancelar cuando quieras en Ajustes.",
+      faq_q8:"¿Cuántos hijos puedo añadir?",
+      faq_a8:"Hasta <strong>3 perfiles de alumno</strong> con Pro — cada uno con su curso, su progreso y su idioma.",
+      faq_q9:"¿Cómo funciona el escaneo de la tarea?",
+      faq_a9:"Haz una foto de cualquier ficha. Ariko la lee y crea <strong>práctica similar al nivel de tu hijo</strong> — para que aprenda la destreza, no que copie la respuesta.",
+      faq_q10:"¿Puedo cambiar el curso de mi hijo? ¿Pierde el progreso?",
+      faq_a10:"Sí, y <strong>no se pierde nada</strong>. Cada curso conserva su propio camino de aprendizaje — lo que hizo en 1.º se guarda al pasar a 2.º, y sigue ahí si vuelves. Aparece una confirmación rápida al cambiar de curso.",
+      faq_q11:"¿Qué impide que un niño cambie los ajustes?",
+      faq_a11:"Los ajustes sensibles (país, curso, idioma, suscripción, reinicio) están tras una <strong>verificación de adulto</strong> — una operación matemática y el año de nacimiento de un adulto — para que los niños no los cambien solos.",
+      faq_q12:"¿Funciona sin conexión? ¿En qué dispositivos?",
+      faq_a12:"La práctica principal funciona <strong>sin conexión</strong>; escanear la tarea y la ayuda con IA en directo necesitan conexión. Ariko funciona en <strong>iPhone y iPad</strong>, con más plataformas en camino.",
+      _title:"Ariko — Las tareas se sienten como jugar"
+    },
+    fr: {
+      nav_cta:"Télécharger l'app",
+      hero_h1:"Les devoirs qui <em>deviennent un jeu.</em>",
+      hero_sub:"Un tuteur IA pour les enfants de la maternelle au CM2. Prends en photo n'importe quelle fiche et Ariko la transforme en exercices ludiques et personnalisés.",
+      dl_appstore:"Télécharger dans l'App Store",
+      hero_trial:"15 jours de Ariko Pro gratuits — sans carte",
+      feat_eyebrow:"Pourquoi Ariko",
+      feat_h2:"Tout ce que l'aide aux devoirs devrait être",
+      feat_lead:"Calme, colorée et fondée sur les compétences réelles de la classe — pour que quelques minutes par jour comptent vraiment.",
+      f1_t:"Scanne n'importe quel devoir",
+      f1_d:"Prends une fiche en photo et Ariko crée aussitôt des exercices similaires au niveau de ton enfant — pour qu'il apprenne la compétence, pas seulement la réponse.",
+      f2_t:"Un parcours d'apprentissage guidé",
+      f2_d:"Jour après jour en maths, lecture, sciences et histoire-géo — des questions courtes avec des explications bienveillantes et des visuels.",
+      f3_t:"Préparation aux examens",
+      f3_d:"Des tests d'entraînement de type F.A.S.T. renforcent la confiance le jour J, alignés sur les programmes du niveau.",
+      f4_t:"Soutien ESOL bilingue",
+      f4_d:"Prise en charge complète en anglais, espagnol, français et allemand — un pont pour les enfants qui apprennent encore l'anglais.",
+      f5_t:"Séries et badges",
+      f5_d:"Des objectifs quotidiens, des séries et une bande de personnages encourageants donnent envie aux enfants de revenir s'entraîner.",
+      f6_t:"Calme et sûre pour les enfants",
+      f6_d:"Pas de pub, pas de chat, pas de liens externes. La progression reste sur l'appareil. Conçue pour la concentration, pas pour le temps d'écran.",
+      how_eyebrow:"Comment ça marche",
+      how_h2:"Trois touches pour s'entraîner",
+      s1_t:"Prends une photo", s1_d:"Vise n'importe quelle fiche ou page de devoirs.",
+      s2_t:"Ariko crée les exercices", s2_d:"Il crée des questions amusantes au bon niveau, avec des indices et des visuels.",
+      s3_t:"Apprends un peu chaque jour", s3_d:"Des sessions courtes, des séries et des progrès visibles pour ton enfant.",
+      loved_eyebrow:"Adoré des familles",
+      loved_h2:"Des disputes pour les devoirs à &ldquo;j'en fais une de plus ?&rdquo;",
+      loved_quote:"Ma fille pleurait à cause des devoirs de maths. Maintenant elle demande à s'entraîner après le dîner.",
+      loved_role:"Parent · CE2 · Miami-Dade",
+      stat1_l:"Tous les niveaux", stat2_l:"Matières", stat3_l:"Langues",
+      price_eyebrow:"Tarifs simples",
+      price_h2:"Essaie tout gratuitement pendant 15 jours",
+      price_lead:"Chaque nouvelle famille profite de Ariko Pro complet pendant 15 jours — sans carte. Ensuite, garde une quantité gratuite d'exercices par jour, ou passe à Pro.",
+      price_free:"✓ 15 jours gratuits · sans carte",
+      price_monthly:"Mensuel",
+      price_annual:"Annuel <strong style='color:var(--sage-deep)'>· meilleure offre</strong>",
+      per_month:"/mois", per_year:"/an",
+      price_autoren:"Renouvellement auto · Annule quand tu veux dans Réglages",
+      pl1_t:"Exercices et questions IA illimités", pl1_s:"dans toutes les matières, nouvelles à chaque fois",
+      pl2:"Scans de devoirs illimités",
+      pl3:"Jusqu'à 3 profils d'élève",
+      pl4:"Mode surdoués et résultats F.A.S.T.",
+      fam_eyebrow:"Pensé pour les familles",
+      fam_h2:"La sérénité, intégrée",
+      fam_lead:"Jusqu'à trois enfants, quatre langues et une expérience apaisée, sans souci.",
+      chip1:"Sans pub", chip2:"Sans chat", chip3:"Progression sur l'appareil", chip_grades:"Niveaux K–6",
+      cta_h2:"Prêt quand ils le sont.",
+      cta_p:"15 jours de Ariko Pro, gratuits. Sans carte.",
+      cta_btn:"Obtenir Ariko →",
+      foot_by:"Un produit de <a href='/'>Matteria Technologies</a> — l'imagination devient réalité.",
+      foot_features:"Fonctions", foot_pricing:"Tarifs", foot_privacy:"Confidentialité", foot_terms:"Conditions", foot_contact:"Contact",
+      nav_faq:"FAQ", foot_curriculum:"Programme", foot_faq:"FAQ",
+      cur_eyebrow:"Programme",
+      cur_h2:"Ce que couvre Ariko dans ton pays",
+      cur_lead:"Ariko adapte les noms de niveau, les matières et les standards au système scolaire de ton enfant. Nous détectons ton pays automatiquement — choisis-en un autre ci-dessous pour comparer.",
+      cur_tab_us:"États-Unis", cur_tab_gb:"Royaume-Uni", cur_tab_ca:"Canada", cur_tab_au:"Australie", cur_tab_es:"Espagne",
+      cur_us:"<h3>États-Unis</h3><ul><li><strong>Niveaux K–6</strong> — du Kindergarten au 6e grade.</li><li>Basé sur les <strong>standards des États</strong>, avec un entraînement de type examen inspiré de <strong>F.A.S.T.</strong> (Floride), <strong>STAAR</strong> (Texas) et d'autres tests.</li><li>Maths, Lecture (ELA), Sciences et Études sociales.</li><li>Anglais, avec soutien bilingue en espagnol, français et allemand.</li></ul>",
+      cur_gb:"<h3>Royaume-Uni</h3><ul><li><strong>Reception + Years 1–6</strong>.</li><li>Aligné sur le <strong>National Curriculum</strong> (Key Stages 1–2).</li><li>Maths, Anglais et Sciences.</li><li>Interface en anglais.</li></ul>",
+      cur_ca:"<h3>Canada</h3><ul><li><strong>Kindergarten + niveaux 1–6</strong>.</li><li>Compétences clés alignées sur les <strong>programmes provinciaux</strong>.</li><li>Maths, Lecture, Sciences et Études sociales.</li><li>Interface en anglais (français disponible).</li></ul>",
+      cur_au:"<h3>Australie</h3><ul><li><strong>Foundation + Years 1–6</strong>.</li><li>Aligné sur l'<strong>Australian Curriculum (v9)</strong>.</li><li>Maths, Anglais et Sciences.</li><li>Interface en anglais.</li></ul>",
+      cur_es:"<h3>Espagne</h3><ul><li><strong>Infantil + 1.º–6.º de Primaria</strong> (<strong>LOMLOE</strong>).</li><li>Adapté <strong>par communauté autonome</strong> (Catalogne, Galice, Valence, Pays basque, etc.).</li><li>Langues co-officielles : <strong>català, galego, valencià</strong> comme langue du contenu ; <strong>euskara et aranés</strong> comme matière de langue.</li><li>Maths, Langue, Connaissance du milieu et Anglais.</li></ul>",
+      cur_note:"L'entraînement de Ariko est aligné et inspiré de ces cadres. C'est une aide à l'étude indépendante, sans affiliation ni approbation d'un ministère, d'une autorité éducative ou d'un organisme d'examen.",
+      faq_eyebrow:"FAQ",
+      faq_h2:"Les questions des parents",
+      faq_lead:"Tout sur les progrès, la confidentialité, le programme et les tarifs — au même endroit.",
+      faq_q1:"Mon enfant perd-il ses progrès si je supprime l'app ou change de téléphone ?",
+      faq_a1:"<strong>Non.</strong> Ariko sauvegarde automatiquement les progrès de chaque enfant dans l'iCloud de la famille — sans connexion. Si tu supprimes puis réinstalles l'app, ou configures un nouvel iPhone/iPad avec le même identifiant Apple, le parcours, les niveaux et l'historique reviennent. Les progrès se synchronisent aussi entre les appareils de la famille.",
+      faq_q2:"Dois-je créer un compte ou me connecter ?",
+      faq_a2:"Non. Aucun identifiant ni mot de passe. Ariko fonctionne tout de suite et utilise l'iCloud de l'appareil (si disponible) pour protéger les progrès.",
+      faq_q3:"Pour quels âges et niveaux est Ariko ?",
+      faq_a3:"Les enfants du <strong>Kindergarten/Infantil jusqu'au 6e grade</strong> (environ 5–12 ans). Ariko adapte la difficulté à chaque enfant, et tu choisis son niveau dans le profil.",
+      faq_q4:"Est-ce aligné sur le programme de mon pays ?",
+      faq_a4:"Oui — Ariko adapte les niveaux, matières et standards à ton pays. Voir la section <a href='#curriculum'>Programme par pays</a> ci-dessus (standards des États américains, National Curriculum britannique, Australian Curriculum, LOMLOE espagnol par communauté, etc.).",
+      faq_q5:"Quelles langues Ariko prend-il en charge ?",
+      faq_a5:"L'interface est en <strong>anglais, espagnol, français et allemand</strong>. En Espagne, le contenu est aussi disponible dans les langues co-officielles — <strong>català, galego et valencià</strong> — et <strong>euskara et aranés</strong> sont proposés comme matière de langue.",
+      faq_q6:"Est-ce sûr pour les enfants ? Quelles données collectez-vous ?",
+      faq_a6:"Ariko est conçu pour les enfants : <strong>sans publicité, sans chat, sans liens externes</strong>. Les progrès restent sur l'appareil et dans ton iCloud privé. Nous ne vendons pas de données et ne créons pas de profils publicitaires ; les réglages sensibles sont protégés par une vérification adulte.",
+      faq_q7:"Comment fonctionnent l'essai gratuit et les tarifs ?",
+      faq_a7:"Chaque famille reçoit <strong>15 jours de Ariko Pro gratuits — sans carte</strong>. Ensuite, garde une quantité gratuite de pratique quotidienne, ou abonne-toi (mensuel ou annuel). Annulable à tout moment dans les Réglages.",
+      faq_q8:"Combien d'enfants puis-je ajouter ?",
+      faq_a8:"Jusqu'à <strong>3 profils</strong> avec Pro — chacun avec son niveau, ses progrès et sa langue.",
+      faq_q9:"Comment fonctionne le scan des devoirs ?",
+      faq_a9:"Prends une photo d'une fiche. Ariko la lit et crée <strong>une pratique similaire au niveau de ton enfant</strong> — pour qu'il apprenne la compétence, pas seulement la réponse.",
+      faq_q10:"Puis-je changer le niveau de mon enfant ? Perd-il ses progrès ?",
+      faq_a10:"Oui, et <strong>aucun progrès n'est perdu</strong>. Chaque niveau garde son propre parcours — ce qui a été fait en 1re est sauvegardé si tu passes en 2e, et tout est là si tu reviens. Une confirmation rapide apparaît au changement de niveau.",
+      faq_q11:"Qu'est-ce qui empêche un enfant de changer les réglages ?",
+      faq_a11:"Les réglages sensibles (pays, niveau, langue, abonnement, réinitialisation) sont protégés par une <strong>vérification adulte</strong> — un petit calcul et l'année de naissance d'un adulte — pour que les enfants ne les changent pas seuls.",
+      faq_q12:"Fonctionne-t-il hors ligne ? Sur quels appareils ?",
+      faq_a12:"La pratique principale fonctionne <strong>hors ligne</strong> ; le scan des devoirs et l'aide IA en direct nécessitent une connexion. Ariko fonctionne sur <strong>iPhone et iPad</strong>, d'autres plateformes à venir.",
+      _title:"Ariko — Les devoirs deviennent un jeu"
+    },
+    de: {
+      nav_cta:"App holen",
+      hero_h1:"Hausaufgaben, die sich <em>wie Spielen anfühlen.</em>",
+      hero_sub:"Ein KI-Tutor für Kinder der Klassen K–6. Fotografiere ein beliebiges Arbeitsblatt und Ariko macht daraus spielerische, persönliche Übungen.",
+      dl_appstore:"Im App Store laden",
+      hero_trial:"15 Tage Ariko Pro gratis — keine Karte nötig",
+      feat_eyebrow:"Warum Ariko",
+      feat_h2:"Alles, was Hausaufgabenhilfe sein sollte",
+      feat_lead:"Ruhig, bunt und an echten Lerninhalten der Schule orientiert — damit ein paar Minuten am Tag wirklich etwas bringen.",
+      f1_t:"Jede Hausaufgabe scannen",
+      f1_d:"Fotografiere ein Arbeitsblatt und Ariko erstellt sofort ähnliche Übungen auf dem Niveau deines Kindes — damit es die Fähigkeit lernt, nicht nur die Antwort.",
+      f2_t:"Ein geführter Lernpfad",
+      f2_d:"Tag für Tag durch Mathe, Lesen, Sachkunde und Gesellschaft — kurze Fragen mit freundlichen Erklärungen und Bildern.",
+      f3_t:"Fit für die Prüfung",
+      f3_d:"Übungstests im F.A.S.T.-Stil geben Sicherheit für den Prüfungstag, abgestimmt auf die Klassenstufe.",
+      f4_t:"Zweisprachige ESOL-Unterstützung",
+      f4_d:"Volle Unterstützung in Englisch, Spanisch, Französisch und Deutsch — eine Brücke für Kinder, die noch Englisch lernen.",
+      f5_t:"Serien &amp; Abzeichen",
+      f5_d:"Tagesziele, Serien und eine Reihe ermutigender Figuren machen Üben zu etwas, zu dem Kinder gern zurückkommen.",
+      f6_t:"Ruhig &amp; kindersicher",
+      f6_d:"Keine Werbung, kein Chat, keine externen Links. Der Fortschritt bleibt auf dem Gerät. Gemacht für Konzentration, nicht für Bildschirmzeit.",
+      how_eyebrow:"So funktioniert's",
+      how_h2:"Drei Tipps bis zur Übung",
+      s1_t:"Foto machen", s1_d:"Richte die Kamera auf ein Arbeitsblatt oder eine Hausaufgabenseite.",
+      s2_t:"Ariko erstellt Übungen", s2_d:"Es erstellt lustige Fragen auf dem richtigen Niveau, mit Tipps und Bildern.",
+      s3_t:"Täglich ein bisschen lernen", s3_d:"Kurze Einheiten, Serien und sichtbarer Fortschritt für dein Kind.",
+      loved_eyebrow:"Von Familien geliebt",
+      loved_h2:"Vom Hausaufgaben-Streit zu &ldquo;darf ich noch eine machen?&rdquo;",
+      loved_quote:"Meine Tochter weinte wegen der Matheaufgaben. Jetzt möchte sie nach dem Abendessen üben.",
+      loved_role:"Mutter · 3. Klasse · Miami-Dade",
+      stat1_l:"Alle Klassen", stat2_l:"Fächer", stat3_l:"Sprachen",
+      price_eyebrow:"Einfache Preise",
+      price_h2:"Alles 15 Tage gratis testen",
+      price_lead:"Jede neue Familie erhält 15 Tage lang das volle Ariko Pro — ohne Karte. Danach bleibt eine kostenlose Menge täglicher Übungen, oder du wechselst zu Pro.",
+      price_free:"✓ 15 Tage gratis · keine Karte",
+      price_monthly:"Monatlich",
+      price_annual:"Jährlich <strong style='color:var(--sage-deep)'>· bester Wert</strong>",
+      per_month:"/Monat", per_year:"/Jahr",
+      price_autoren:"Automatische Verlängerung · Jederzeit in den Einstellungen kündbar",
+      pl1_t:"Unbegrenzte Übungen &amp; KI-Fragen", pl1_s:"in jedem Fach, jedes Mal neu",
+      pl2:"Unbegrenzte Hausaufgaben-Scans",
+      pl3:"Bis zu 3 Lernprofile",
+      pl4:"Begabten-Modus &amp; F.A.S.T.-Ergebnisse",
+      fam_eyebrow:"Für Familien gemacht",
+      fam_h2:"Sorgenfrei von Anfang an",
+      fam_lead:"Bis zu drei Kinder, vier Sprachen und ein ruhiges Erlebnis ohne Sorgen.",
+      chip1:"Keine Werbung", chip2:"Kein Chat", chip3:"Fortschritt auf dem Gerät", chip_grades:"Klassen K–6",
+      cta_h2:"Bereit, wenn sie es sind.",
+      cta_p:"15 Tage Ariko Pro, gratis. Keine Karte nötig.",
+      cta_btn:"Ariko holen →",
+      foot_by:"Ein Produkt von <a href='/'>Matteria Technologies</a> — Vorstellungskraft wird Wirklichkeit.",
+      foot_features:"Funktionen", foot_pricing:"Preise", foot_privacy:"Datenschutz", foot_terms:"AGB", foot_contact:"Kontakt",
+      nav_faq:"FAQ", foot_curriculum:"Lehrplan", foot_faq:"FAQ",
+      cur_eyebrow:"Lehrplan",
+      cur_h2:"Was Ariko in deinem Land abdeckt",
+      cur_lead:"Ariko passt Klassenbezeichnungen, Fächer und Standards an das Schulsystem deines Kindes an. Wir erkennen dein Land automatisch — wähle unten ein anderes zum Vergleichen.",
+      cur_tab_us:"USA", cur_tab_gb:"Vereinigtes Königreich", cur_tab_ca:"Kanada", cur_tab_au:"Australien", cur_tab_es:"Spanien",
+      cur_us:"<h3>USA</h3><ul><li><strong>Klassen K–6</strong> — Kindergarten bis 6. Klasse.</li><li>Aufgebaut auf <strong>bundesstaatlichen Standards</strong>, mit prüfungsnaher Übung nach <strong>F.A.S.T.</strong> (Florida), <strong>STAAR</strong> (Texas) u. a.</li><li>Mathe, Lesen (ELA), Sachkunde und Sozialkunde.</li><li>Englisch, mit zweisprachiger Unterstützung in Spanisch, Französisch und Deutsch.</li></ul>",
+      cur_gb:"<h3>Vereinigtes Königreich</h3><ul><li><strong>Reception + Years 1–6</strong>.</li><li>Ausgerichtet am <strong>National Curriculum</strong> (Key Stages 1–2).</li><li>Mathe, Englisch und Naturwissenschaften.</li><li>Oberfläche auf Englisch.</li></ul>",
+      cur_ca:"<h3>Kanada</h3><ul><li><strong>Kindergarten + Klassen 1–6</strong>.</li><li>Kernkompetenzen nach <strong>provinziellen Lehrplänen</strong>.</li><li>Mathe, Lesen, Naturwissenschaften und Sozialkunde.</li><li>Oberfläche auf Englisch (Französisch verfügbar).</li></ul>",
+      cur_au:"<h3>Australien</h3><ul><li><strong>Foundation + Years 1–6</strong>.</li><li>Ausgerichtet am <strong>Australian Curriculum (v9)</strong>.</li><li>Mathe, Englisch und Naturwissenschaften.</li><li>Oberfläche auf Englisch.</li></ul>",
+      cur_es:"<h3>Spanien</h3><ul><li><strong>Infantil + 1.º–6.º de Primaria</strong> (<strong>LOMLOE</strong>).</li><li>Angepasst <strong>nach autonomer Region</strong> (Katalonien, Galicien, Valencia, Baskenland u. a.).</li><li>Ko-offizielle Sprachen: <strong>català, galego, valencià</strong> als Inhaltssprache; <strong>euskara und aranés</strong> als Sprachfach.</li><li>Mathe, Sprache, Sachkunde und Englisch.</li></ul>",
+      cur_note:"Arikos Übungen orientieren sich an diesen Rahmenwerken. Ariko ist eine unabhängige Lernhilfe, ohne Verbindung zu oder Billigung durch ein Ministerium, eine Bildungsbehörde oder eine Prüfungsstelle.",
+      faq_eyebrow:"FAQ",
+      faq_h2:"Fragen von Eltern",
+      faq_lead:"Alles zu Fortschritt, Datenschutz, Lehrplan und Preisen — an einem Ort.",
+      faq_q1:"Verliert mein Kind den Fortschritt, wenn ich die App lösche oder das Handy wechsle?",
+      faq_a1:"<strong>Nein.</strong> Ariko sichert den Fortschritt jedes Kindes automatisch in der iCloud deiner Familie — ohne Anmeldung. Wenn du die App löschst und neu installierst oder ein neues iPhone/iPad mit derselben Apple-ID einrichtest, kommen Lernweg, Level und Verlauf zurück. Der Fortschritt synchronisiert auch zwischen den Geräten der Familie.",
+      faq_q2:"Muss ich ein Konto erstellen oder mich anmelden?",
+      faq_a2:"Nein. Keine Benutzernamen, keine Passwörter. Ariko funktioniert sofort und nutzt die iCloud des Geräts (sofern verfügbar), um den Fortschritt zu sichern.",
+      faq_q3:"Für welches Alter und welche Klassen ist Ariko?",
+      faq_a3:"Kinder vom <strong>Kindergarten/Infantil bis zur 6. Klasse</strong> (etwa 5–12 Jahre). Ariko passt den Schwierigkeitsgrad an jedes Kind an, und du legst die Klasse im Profil fest.",
+      faq_q4:"Ist es auf den Lehrplan meines Landes abgestimmt?",
+      faq_a4:"Ja — Ariko passt Klassen, Fächer und Standards an dein Land an. Siehe den Abschnitt <a href='#curriculum'>Lehrplan nach Land</a> oben (US-Standards, britisches National Curriculum, Australian Curriculum, Spaniens LOMLOE nach Region u. a.).",
+      faq_q5:"Welche Sprachen unterstützt Ariko?",
+      faq_a5:"Die Oberfläche gibt es auf <strong>Englisch, Spanisch, Französisch und Deutsch</strong>. In Spanien sind Inhalte auch in den ko-offiziellen Sprachen verfügbar — <strong>català, galego und valencià</strong> — und <strong>euskara und aranés</strong> werden als Sprachfach angeboten.",
+      faq_q6:"Ist es sicher für Kinder? Welche Daten erhebt ihr?",
+      faq_a6:"Ariko ist kindersicher: <strong>keine Werbung, kein Chat, keine externen Links</strong>. Der Fortschritt bleibt auf dem Gerät und in deiner privaten iCloud. Wir verkaufen keine Daten und erstellen keine Werbeprofile; sensible Einstellungen sind durch eine Erwachsenenprüfung geschützt.",
+      faq_q7:"Wie funktionieren Testphase und Preise?",
+      faq_a7:"Jede Familie erhält <strong>15 Tage Ariko Pro gratis — ohne Karte</strong>. Danach behältst du eine kostenlose Menge täglicher Übung oder abonnierst (monatlich oder jährlich). Jederzeit in den Einstellungen kündbar.",
+      faq_q8:"Wie viele Kinder kann ich hinzufügen?",
+      faq_a8:"Bis zu <strong>3 Lernprofile</strong> mit Pro — jedes mit eigener Klasse, eigenem Fortschritt und eigener Sprache.",
+      faq_q9:"Wie funktioniert das Scannen der Hausaufgaben?",
+      faq_a9:"Mach ein Foto von einem Arbeitsblatt. Ariko liest es und erstellt <strong>ähnliche Übungen auf dem Niveau deines Kindes</strong> — damit es die Fähigkeit lernt, nicht nur die Antwort abschreibt.",
+      faq_q10:"Kann ich die Klasse meines Kindes ändern? Geht Fortschritt verloren?",
+      faq_a10:"Ja, und es geht <strong>nichts verloren</strong>. Jede Klasse behält ihren eigenen Lernweg — was in Klasse 1 gemacht wurde, bleibt gespeichert, wenn du zu Klasse 2 wechselst, und ist beim Zurückwechseln wieder da. Beim Klassenwechsel erscheint eine kurze Bestätigung.",
+      faq_q11:"Was hindert ein Kind daran, Einstellungen zu ändern?",
+      faq_a11:"Sensible Einstellungen (Land, Klasse, Sprache, Abo, Zurücksetzen) sind durch eine <strong>Erwachsenenprüfung</strong> geschützt — eine kurze Rechenaufgabe plus das Geburtsjahr eines Erwachsenen — damit Kinder sie nicht allein ändern.",
+      faq_q12:"Funktioniert es offline? Auf welchen Geräten?",
+      faq_a12:"Die Kernübungen funktionieren <strong>offline</strong>; das Scannen von Hausaufgaben und die Live-KI-Hilfe brauchen eine Verbindung. Ariko läuft auf <strong>iPhone und iPad</strong>, weitere Plattformen folgen.",
+      _title:"Ariko — Hausaufgaben wie Spielen"
+    }
+  };
+  var SUPPORTED = ["en","es","fr","de"];
+  function apply(lang){
+    if(SUPPORTED.indexOf(lang) < 0) lang = "en";
+    var dict = I18N[lang];
+    document.documentElement.lang = lang;
+    if(dict._title) document.title = dict._title;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      if(dict[k] != null) el.innerHTML = dict[k];
+    });
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.classList.toggle("on", b.getAttribute("data-lang") === lang);
+    });
+    try{ localStorage.setItem("mt_lang", lang); }catch(e){}
+  }
+  function init(){
+    var saved = null;
+    try{ saved = localStorage.getItem("mt_lang"); }catch(e){}
+    var lang = saved || (navigator.language || "en").slice(0,2).toLowerCase();
+    if(SUPPORTED.indexOf(lang) < 0) lang = "en";
+    apply(lang);
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.addEventListener("click", function(){ apply(b.getAttribute("data-lang")); });
+    });
+    initCurriculumTabs();
+    initFaq();
+  }
+  // Curriculum tabs — default to the visitor's country (from navigator.language
+  // region, no server geo needed); fall back to the US.
+  function detectCountry(){
+    try{
+      var l = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+      var m = /[-_]([A-Za-z]{2})\b/.exec(l);
+      var reg = m ? m[1].toUpperCase() : "";
+      var map = { US:"us", GB:"gb", UK:"gb", CA:"ca", AU:"au", ES:"es" };
+      if(map[reg]) return map[reg];
+      var lang = (l.slice(0,2)||"").toLowerCase();
+      if(lang==="es"||lang==="ca"||lang==="gl") return "es";   // Spanish-language visitor
+    }catch(e){}
+    return "us";
+  }
+  function initCurriculumTabs(){
+    var tabs = document.querySelectorAll(".cur-tab");
+    var panels = document.querySelectorAll(".cur-panel");
+    if(!tabs.length) return;
+    function show(country){
+      tabs.forEach(function(t){ t.classList.toggle("on", t.getAttribute("data-country")===country); });
+      panels.forEach(function(p){ p.classList.toggle("on", p.getAttribute("data-country")===country); });
+    }
+    tabs.forEach(function(t){ t.addEventListener("click", function(){ show(t.getAttribute("data-country")); }); });
+    show(detectCountry());
+  }
+  function initFaq(){
+    document.querySelectorAll("#faqList .faq-q").forEach(function(q){
+      q.addEventListener("click", function(){ q.parentElement.classList.toggle("open"); });
+    });
+  }
+  if(document.readyState !== "loading") init();
+  else document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
+
+</body>
+</html>

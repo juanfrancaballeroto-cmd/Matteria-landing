@@ -1,4 +1,12 @@
 {
   "trailingSlash": true,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/kibo", "destination": "/ariko", "permanent": true },
+    { "source": "/kibo/", "destination": "/ariko/", "permanent": true },
+    { "source": "/kibo/privacy", "destination": "/ariko/privacy", "permanent": true },
+    { "source": "/kibo/privacy/", "destination": "/ariko/privacy/", "permanent": true },
+    { "source": "/kibo/terms", "destination": "/ariko/terms", "permanent": true },
+    { "source": "/kibo/terms/", "destination": "/ariko/terms/", "permanent": true }
+  ]
 }

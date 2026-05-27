@@ -3,63 +3,104 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Terms of Service — Matteria Technologies</title>
-<meta name="description" content="Terms of Service for Matteria Technologies LLC and its products, including Ariko." />
-<link rel="canonical" href="https://matteriatech.com/terms-of-service" />
+<title>Ariko — Terms of Service</title>
+<meta name="description" content="Terms of Service for Ariko, the AI homework tutor for grades K–6 by Matteria Technologies LLC." />
+<meta name="theme-color" content="#D4785A" />
+<link rel="canonical" href="https://matteriatech.com/ariko/terms" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@200;300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#F0EDE8; --card:#FAF8F5; --ink:#2C2820; --mid:#7A7060; --faint:#B5AFA5;
+    --line:rgba(44,40,32,.10); --sage:#7BA394; --sage-deep:#5E8676; --terra:#D4785A; --terra-deep:#C0633F;
+    --sun:#F2B705; --sky:#5BA3D0;
+    --sans:'Poppins',-apple-system,system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  ::selection{background:var(--terra);color:#fff}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(240,237,232,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+  .nav .logo{height:30px}
+  .nav .logo img{height:100%}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang-switch{display:flex;gap:2px;background:rgba(44,40,32,.06);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang-switch button{border:none;background:none;cursor:pointer;font-family:inherit;font-weight:700;font-size:.78rem;color:var(--mid);padding:5px 9px;border-radius:999px;line-height:1;transition:background .15s ease,color .15s ease}
+  .lang-switch button:hover{color:var(--ink)}
+  .lang-switch button.on{background:var(--terra);color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:1rem;border-radius:999px;padding:9px 16px;cursor:pointer;border:none;transition:transform .15s ease, background .15s ease;background:var(--terra);color:#fff;box-shadow:0 8px 22px rgba(212,120,90,.32)}
+  .btn:hover{background:var(--terra-deep)}
+  .btn:active{transform:scale(.97)}
+
+  .legal-hero{background:radial-gradient(120% 120% at 80% 0%, #E08A66 0%, var(--terra) 48%, var(--terra-deep) 100%);color:#fff;border-radius:0 0 36px 36px}
+  .legal-hero-in{max-width:880px;margin:0 auto;padding:56px 22px 48px}
+  .legal-hero .eyebrow{font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+  .legal-hero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:900;letter-spacing:-.02em;margin-top:10px;line-height:1.05}
+  .legal-hero .meta{margin-top:14px;font-weight:600;font-size:.92rem;color:rgba(255,255,255,.9)}
+
+  .legal-body{max-width:780px;margin:0 auto;padding:54px 22px 80px}
+  .legal-lead{font-size:1.12rem;color:var(--mid);font-weight:500;padding-bottom:30px;border-bottom:1px solid var(--line)}
+  .sec{padding:30px 0;border-bottom:1px solid var(--line)}
+  .sec:last-child{border-bottom:none}
+  .sec h2{font-size:1.18rem;font-weight:800;letter-spacing:-.01em;margin-bottom:12px}
+  .sec h2 .n{color:var(--terra);font-weight:700;margin-right:10px}
+  .sec p{color:#5b5346;margin-bottom:12px}
+  .sec p:last-child{margin-bottom:0}
+  .sec ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin:4px 0 4px}
+  .sec li{position:relative;padding-left:22px;color:#5b5346}
+  .sec li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--terra)}
+  .sec a{color:var(--terra-deep);font-weight:600;border-bottom:1px solid rgba(192,99,63,.35)}
+  .sec a:hover{border-bottom-color:var(--terra-deep)}
+  .sec strong{color:var(--ink);font-weight:700}
+
+  .price-sheet{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);margin:6px 0 16px}
+  .price-row{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
+  .price-row:last-child{border-bottom:none}
+  .price-row .k{font-weight:600;color:var(--mid)}
+  .price-row .v{font-weight:800;font-size:1.1rem}
+
+  .footer{background:var(--ink);color:rgba(244,239,231,.66);margin-top:8px;border-radius:36px 36px 0 0}
+  .footer-in{max-width:1080px;margin:0 auto;padding:44px 22px 28px}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:flex-start}
+  .footer .logo img{height:28px}
+  .footer .by{margin-top:12px;font-weight:500;font-size:.9rem;max-width:34ch}
+  .footer .by a{color:#fff;font-weight:700;border-bottom:1px solid var(--terra)}
+  .footer nav{display:flex;gap:24px;flex-wrap:wrap}
+  .footer nav a{font-weight:600;color:rgba(244,239,231,.8)}
+  .footer nav a:hover{color:#fff}
+  .footer-base{max-width:1080px;margin:28px auto 0;padding:18px 22px 0;border-top:1px solid rgba(255,255,255,.1);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media(max-width:560px){.nav-in{gap:8px}.nav .btn{padding:8px 12px;font-size:.85rem}.lang-switch button{padding:5px 7px;font-size:.74rem}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<div class="top-bar">
-  <div class="top-bar-left">
-    <span class="dot"></span>
-    <span>Matteria Technologies LLC</span>
-  </div>
-  <div class="top-bar-right">
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button type="button" data-lang="en">EN</button>
-      <button type="button" data-lang="es">ES</button>
-      <button type="button" data-lang="fr">FR</button>
-      <button type="button" data-lang="de">DE</button>
-    </div>
-    <a href="mailto:hello@matteriatech.com" class="hide-mobile">hello@matteriatech.com</a>
-  </div>
-</div>
-
-<nav class="main-nav">
-  <div class="nav-inner">
-    <a href="/" class="logo">
-      <div class="logo-mark">
-        <span class="m-char">M</span>
-        <span class="orbit-ring"></span>
-      </div>
-      <span class="logo-text">Matteria Technologies</span>
-    </a>
-    <ul class="nav-center">
-      <li><a href="/#ventures" data-i18n="nav_ventures">Ventures</a></li>
-      <li><a href="/#philosophy" data-i18n="nav_philosophy">Philosophy</a></li>
-      <li><a href="/#company" data-i18n="nav_company">Company</a></li>
-      <li><a href="/#contact" data-i18n="nav_contact">Contact</a></li>
-    </ul>
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="/ariko" aria-label="Ariko"><img src="../assets/ariko-logo-ink.svg" alt="Ariko"/></a>
     <div class="nav-right">
-      <a href="/" class="nav-search" aria-label="Home">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
-      </a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+      <a class="btn" href="/ariko" data-i18n="back">← Back to Ariko</a>
     </div>
   </div>
-</nav>
+</header>
 
 <header class="legal-hero">
-  <div class="bg"></div>
-  <div class="inner">
-    <div class="legal-eyebrow"><span class="bar"></span><span data-i18n="eyebrow">Legal › 01 / 02</span></div>
-    <h1 class="legal-title" data-i18n="title">Terms of Service</h1>
-    <div class="legal-meta" data-i18n="meta">Effective May 21, 2026 · Matteria Technologies LLC</div>
+  <div class="legal-hero-in">
+    <div class="eyebrow" data-i18n="eyebrow">Legal · Ariko</div>
+    <h1 data-i18n="title">Terms of Service</h1>
+    <div class="meta" data-i18n="meta">Effective May 21, 2026 · Matteria Technologies LLC</div>
   </div>
 </header>
 
@@ -70,23 +111,23 @@
     downloading or using Ariko, you agree to these Terms.
   </p>
 
-  <section class="legal-sec"><div class="n">01</div><div>
-    <h2 data-i18n="s1_h">Acceptance</h2>
+  <section class="sec">
+    <h2><span class="n">01</span><span data-i18n="s1_h">Acceptance</span></h2>
     <p data-i18n="s1_p">By downloading or using Ariko, you agree to these Terms. Ariko is intended for use by children under the supervision of a parent or guardian. If the user is under 13, a parent or guardian must accept these Terms on the child's behalf and supervise their use.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">02</div><div>
-    <h2 data-i18n="s2_h">Description of Service</h2>
+  <section class="sec">
+    <h2><span class="n">02</span><span data-i18n="s2_h">Description of Service</span></h2>
     <p data-i18n="s2_p">Ariko is an AI-powered educational app for K–6 students. It provides personalized practice questions, homework scanning, a guided learning path, and progress tracking across core subjects — Math, English Language Arts, Science, Social Studies, and ESOL.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">03</div><div>
-    <h2 data-i18n="s3_h">Free Trial</h2>
+  <section class="sec">
+    <h2><span class="n">03</span><span data-i18n="s3_h">Free Trial</span></h2>
     <p data-i18n="s3_p">New users receive <strong>15 days of full access to Ariko Pro at no cost and with no payment method required</strong>. No charge is made during the trial. When the 15-day trial ends, the app continues on a free tier with daily practice limits; to keep unlimited access you may subscribe to Ariko Pro.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">04</div><div>
-    <h2 data-i18n="s4_h">Subscriptions &amp; Billing</h2>
+  <section class="sec">
+    <h2><span class="n">04</span><span data-i18n="s4_h">Subscriptions &amp; Billing</span></h2>
     <p data-i18n="s4_p0">Ariko Pro is offered as an auto-renewing subscription:</p>
     <div class="price-sheet">
       <div class="price-row"><span class="k" data-i18n="price_monthly">Monthly</span><span class="v">$7.99 / month</span></div>
@@ -96,116 +137,96 @@
     <p data-i18n="s4_p2"><strong>Auto-renewal.</strong> Your subscription renews automatically at the end of each billing period and your Apple ID is charged for the renewal, unless you cancel at least 24 hours before the end of the current period.</p>
     <p data-i18n="s4_p3"><strong>Managing your subscription.</strong> You can manage or cancel at any time in your device's Settings → Apple ID → Subscriptions. Cancelling stops future renewals; you keep Pro access until the end of the period you already paid for.</p>
     <p data-i18n="s4_p4"><strong>Refunds.</strong> Unused portions of a billing period are non-refundable except as required by applicable law or Apple's refund policies. Refund requests are handled by Apple.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">05</div><div>
-    <h2 data-i18n="s5_h">Free Tier Limits</h2>
+  <section class="sec">
+    <h2><span class="n">05</span><span data-i18n="s5_h">Free Tier Limits</span></h2>
     <p data-i18n="s5_p">After the trial, the free tier includes a limited number of practice questions per day and a limited number of homework scans per week. These limits may change over time. Ariko Pro removes the daily and weekly limits.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">06</div><div>
-    <h2 data-i18n="s6_h">Accounts &amp; Profiles</h2>
+  <section class="sec">
+    <h2><span class="n">06</span><span data-i18n="s6_h">Accounts &amp; Profiles</span></h2>
     <p data-i18n="s6_p">You are responsible for the device and Apple ID used with Ariko. The free tier supports one learner profile; Ariko Pro supports up to three learner profiles within a single household. Do not share your subscription outside your household.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">07</div><div>
-    <h2 data-i18n="s7_h">Acceptable Use</h2>
+  <section class="sec">
+    <h2><span class="n">07</span><span data-i18n="s7_h">Acceptable Use</span></h2>
     <p data-i18n="s7_p">You agree not to:</p>
     <ul data-i18n="s7_list">
       <li>Attempt to bypass content filters or use the homework-scan feature to generate inappropriate content.</li>
       <li>Reverse-engineer, copy, or resell any part of Ariko.</li>
       <li>Use Ariko for any purpose other than personal, non-commercial education.</li>
     </ul>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">08</div><div>
-    <h2 data-i18n="s8_h">Content &amp; AI</h2>
+  <section class="sec">
+    <h2><span class="n">08</span><span data-i18n="s8_h">Content &amp; AI</span></h2>
     <p data-i18n="s8_p">Ariko uses AI to generate practice questions and to interpret homework photos. AI-generated content may occasionally contain errors. Do not rely on the app as the sole source of academic instruction. Always verify important information with a teacher or qualified professional.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">09</div><div>
-    <h2 data-i18n="s9_h">Intellectual Property</h2>
+  <section class="sec">
+    <h2><span class="n">09</span><span data-i18n="s9_h">Intellectual Property</span></h2>
     <p data-i18n="s9_p">All software, content, branding, and design of Ariko are owned by Matteria Technologies LLC and protected by applicable intellectual-property laws. We grant you a limited, non-exclusive, non-transferable license to use Ariko for personal, non-commercial purposes.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">10</div><div>
-    <h2 data-i18n="s10_h">Disclaimer of Warranties</h2>
+  <section class="sec">
+    <h2><span class="n">10</span><span data-i18n="s10_h">Disclaimer of Warranties</span></h2>
     <p data-i18n="s10_p">Ariko is provided "as is" and "as available" without warranties of any kind. We do not guarantee uninterrupted service, error-free content, or that the app will meet your specific educational requirements.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">11</div><div>
-    <h2 data-i18n="s11_h">Limitation of Liability</h2>
+  <section class="sec">
+    <h2><span class="n">11</span><span data-i18n="s11_h">Limitation of Liability</span></h2>
     <p data-i18n="s11_p">To the maximum extent permitted by law, Matteria Technologies LLC shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of, or inability to use, Ariko.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">12</div><div>
-    <h2 data-i18n="s12_h">Governing Law</h2>
+  <section class="sec">
+    <h2><span class="n">12</span><span data-i18n="s12_h">Governing Law</span></h2>
     <p data-i18n="s12_p">These Terms are governed by the laws of the State of Florida, USA, without regard to its conflict-of-laws principles. Any dispute shall be resolved in the state or federal courts located in Miami-Dade County, Florida.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">13</div><div>
-    <h2 data-i18n="s13_h">Changes to These Terms</h2>
+  <section class="sec">
+    <h2><span class="n">13</span><span data-i18n="s13_h">Changes to These Terms</span></h2>
     <p data-i18n="s13_p">We may update these Terms from time to time. We will indicate material changes by updating the effective date above. Continued use of Ariko after changes are posted constitutes acceptance of the updated Terms.</p>
-  </div></section>
+  </section>
 
-  <section class="legal-sec"><div class="n">14</div><div>
-    <h2 data-i18n="s14_h">Contact</h2>
+  <section class="sec">
+    <h2><span class="n">14</span><span data-i18n="s14_h">Contact</span></h2>
     <p data-i18n="s14_p1">For questions about these Terms, your subscription, or billing:</p>
-    <p data-i18n="s14_addr"><strong>Matteria Technologies LLC</strong><br/>Miami, Florida — USA · DUNS 146138580<br/><a href="mailto:hello@matteriatech.com">hello@matteriatech.com</a></p>
-    <p data-i18n="s14_p3">For privacy questions, see our <a href="/privacy-policy">Privacy Policy</a>.</p>
-  </div></section>
+    <p data-i18n="s14_addr">
+      <strong>Matteria Technologies LLC</strong><br/>
+      Miami, Florida — USA · DUNS 146138580<br/>
+      <a href="mailto:hello@matteriatech.com">hello@matteriatech.com</a>
+    </p>
+    <p data-i18n="s14_p3">For privacy questions, see our <a href="/ariko/privacy">Privacy Policy</a>.</p>
+  </section>
 </article>
 
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand-block">
-      <div class="footer-rings">
-        <span class="m-char">M</span>
-        <span class="orbit-ring"></span>
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-top">
+      <div>
+        <a class="logo" href="/ariko" aria-label="Ariko"><img src="../assets/ariko-logo.svg" alt="Ariko"/></a>
+        <div class="by" data-i18n="foot_by">A product of <a href="/">Matteria Technologies</a> — engineering imagination into reality.</div>
       </div>
-      <div class="footer-tagline">Engineering<br/>imagination<br/>into reality.</div>
+      <nav>
+        <a href="/ariko#features" data-i18n="foot_features">Features</a>
+        <a href="/ariko#get" data-i18n="foot_pricing">Pricing</a>
+        <a href="/ariko/privacy" data-i18n="foot_privacy">Privacy</a>
+        <a href="/ariko/terms" aria-current="page" data-i18n="foot_terms">Terms</a>
+        <a href="mailto:hello@matteriatech.com" data-i18n="foot_contact">Contact</a>
+      </nav>
     </div>
-    <div class="footer-col">
-      <h4 data-i18n="nav_ventures">Ventures</h4>
-      <ul>
-        <li><a href="/#ventures">Matter.ia</a></li>
-        <li><a href="/ariko">Ariko</a></li>
-        <li><a href="/#ventures">Research</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="nav_company">Company</h4>
-      <ul>
-        <li><a href="/#philosophy" data-i18n="nav_philosophy">Philosophy</a></li>
-        <li><a href="/#company" data-i18n="foot_spec">Specification</a></li>
-        <li><a href="/#contact" data-i18n="nav_contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="foot_legal">Legal</h4>
-      <ul>
-        <li><a href="/privacy-policy" data-i18n="foot_privacy">Privacy Policy</a></li>
-        <li><a href="/terms-of-service" aria-current="page" data-i18n="foot_terms">Terms of Service</a></li>
-        <li><a href="#" data-i18n="foot_imprint">Imprint</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div data-i18n="foot_rights">© 2026 Matteria Technologies LLC · All rights reserved</div>
-    <div class="legal">
-      <span>DUNS · 146138580</span>
-      <span>Miami · Florida</span>
+    <div class="footer-base">
+      <span>© 2026 Matteria Technologies LLC</span>
+      <span>Miami, Florida — USA</span>
     </div>
   </div>
 </footer>
 
-<script src="../assets/site.js"></script>
 <script>
 (function(){
   var I18N = {
-    en:{ nav_ventures:"Ventures", nav_philosophy:"Philosophy", nav_company:"Company", nav_contact:"Contact",
-      foot_spec:"Specification", foot_legal:"Legal", foot_privacy:"Privacy Policy", foot_terms:"Terms of Service", foot_imprint:"Imprint", foot_rights:"© 2026 Matteria Technologies LLC · All rights reserved",
-      eyebrow:"Legal › 01 / 02", title:"Terms of Service", meta:"Effective May 21, 2026 · Matteria Technologies LLC",
+    en:{ back:"← Back to Ariko", eyebrow:"Legal · Ariko", title:"Terms of Service", meta:"Effective May 21, 2026 · Matteria Technologies LLC",
       lead:"These Terms of Service (\"Terms\") govern your use of Ariko, the AI homework-tutor app for children in grades K–6, operated by Matteria Technologies LLC (\"Matteria\", \"we\", \"our\", or \"us\"). By downloading or using Ariko, you agree to these Terms.",
       s1_h:"Acceptance", s1_p:"By downloading or using Ariko, you agree to these Terms. Ariko is intended for use by children under the supervision of a parent or guardian. If the user is under 13, a parent or guardian must accept these Terms on the child's behalf and supervise their use.",
       s2_h:"Description of Service", s2_p:"Ariko is an AI-powered educational app for K–6 students. It provides personalized practice questions, homework scanning, a guided learning path, and progress tracking across core subjects — Math, English Language Arts, Science, Social Studies, and ESOL.",
@@ -226,11 +247,11 @@
       s13_h:"Changes to These Terms", s13_p:"We may update these Terms from time to time. We will indicate material changes by updating the effective date above. Continued use of Ariko after changes are posted constitutes acceptance of the updated Terms.",
       s14_h:"Contact", s14_p1:"For questions about these Terms, your subscription, or billing:",
       s14_addr:"<strong>Matteria Technologies LLC</strong><br/>Miami, Florida — USA · DUNS 146138580<br/><a href=\"mailto:hello@matteriatech.com\">hello@matteriatech.com</a>",
-      s14_p3:"For privacy questions, see our <a href=\"/privacy-policy\">Privacy Policy</a>.",
-      _title:"Terms of Service — Matteria Technologies" },
-    es:{ nav_ventures:"Proyectos", nav_philosophy:"Filosofía", nav_company:"Empresa", nav_contact:"Contacto",
-      foot_spec:"Especificación", foot_legal:"Legal", foot_privacy:"Política de privacidad", foot_terms:"Términos del servicio", foot_imprint:"Aviso legal", foot_rights:"© 2026 Matteria Technologies LLC · Todos los derechos reservados",
-      eyebrow:"Legal › 01 / 02", title:"Términos del servicio", meta:"En vigor el 21 de mayo de 2026 · Matteria Technologies LLC",
+      s14_p3:"For privacy questions, see our <a href=\"/ariko/privacy\">Privacy Policy</a>.",
+      foot_by:"A product of <a href=\"/\">Matteria Technologies</a> — engineering imagination into reality.",
+      foot_features:"Features", foot_pricing:"Pricing", foot_privacy:"Privacy", foot_terms:"Terms", foot_contact:"Contact",
+      _title:"Ariko — Terms of Service" },
+    es:{ back:"← Volver a Ariko", eyebrow:"Legal · Ariko", title:"Términos del servicio", meta:"En vigor el 21 de mayo de 2026 · Matteria Technologies LLC",
       lead:"Estos Términos del servicio (\"Términos\") rigen tu uso de Ariko, la app de tutoría de tareas con IA para niños de K–6, operada por Matteria Technologies LLC (\"Matteria\", \"nosotros\"). Al descargar o usar Ariko, aceptas estos Términos.",
       s1_h:"Aceptación", s1_p:"Al descargar o usar Ariko, aceptas estos Términos. Ariko está pensada para uso de niños bajo la supervisión de un padre, madre o tutor. Si el usuario es menor de 13 años, un padre, madre o tutor debe aceptar estos Términos en su nombre y supervisar su uso.",
       s2_h:"Descripción del servicio", s2_p:"Ariko es una app educativa con IA para estudiantes de K–6. Ofrece preguntas de práctica personalizadas, escaneo de tareas, una ruta de aprendizaje guiada y seguimiento del progreso en las materias principales — Matemáticas, Lengua y Literatura, Ciencias, Estudios Sociales y ESOL.",
@@ -251,11 +272,11 @@
       s13_h:"Cambios en estos Términos", s13_p:"Podemos actualizar estos Términos de vez en cuando. Indicaremos los cambios importantes actualizando la fecha de entrada en vigor anterior. El uso continuado de Ariko tras la publicación de los cambios constituye la aceptación de los Términos actualizados.",
       s14_h:"Contacto", s14_p1:"Para preguntas sobre estos Términos, tu suscripción o la facturación:",
       s14_addr:"<strong>Matteria Technologies LLC</strong><br/>Miami, Florida — EE. UU. · DUNS 146138580<br/><a href=\"mailto:hello@matteriatech.com\">hello@matteriatech.com</a>",
-      s14_p3:"Para preguntas sobre privacidad, consulta nuestra <a href=\"/privacy-policy\">Política de privacidad</a>.",
-      _title:"Términos del servicio — Matteria Technologies" },
-    fr:{ nav_ventures:"Projets", nav_philosophy:"Philosophie", nav_company:"Entreprise", nav_contact:"Contact",
-      foot_spec:"Spécification", foot_legal:"Légal", foot_privacy:"Confidentialité", foot_terms:"Conditions d'utilisation", foot_imprint:"Mentions légales", foot_rights:"© 2026 Matteria Technologies LLC · Tous droits réservés",
-      eyebrow:"Légal › 01 / 02", title:"Conditions d'utilisation", meta:"En vigueur le 21 mai 2026 · Matteria Technologies LLC",
+      s14_p3:"Para preguntas sobre privacidad, consulta nuestra <a href=\"/ariko/privacy\">Política de privacidad</a>.",
+      foot_by:"Un producto de <a href=\"/\">Matteria Technologies</a> — convertimos la imaginación en realidad.",
+      foot_features:"Funciones", foot_pricing:"Precios", foot_privacy:"Privacidad", foot_terms:"Términos", foot_contact:"Contacto",
+      _title:"Ariko — Términos del servicio" },
+    fr:{ back:"← Retour à Ariko", eyebrow:"Légal · Ariko", title:"Conditions d'utilisation", meta:"En vigueur le 21 mai 2026 · Matteria Technologies LLC",
       lead:"Ces Conditions d'utilisation (\"Conditions\") régissent ton utilisation de Ariko, l'app de tutorat des devoirs par IA pour les enfants de la maternelle au CM2, exploitée par Matteria Technologies LLC (\"Matteria\", \"nous\"). En téléchargeant ou en utilisant Ariko, tu acceptes ces Conditions.",
       s1_h:"Acceptation", s1_p:"En téléchargeant ou en utilisant Ariko, tu acceptes ces Conditions. Ariko est destinée à être utilisée par des enfants sous la supervision d'un parent ou tuteur. Si l'utilisateur a moins de 13 ans, un parent ou tuteur doit accepter ces Conditions en son nom et superviser son utilisation.",
       s2_h:"Description du service", s2_p:"Ariko est une app éducative dotée d'IA pour les élèves de la maternelle au CM2. Elle propose des exercices personnalisés, le scan des devoirs, un parcours d'apprentissage guidé et un suivi des progrès dans les matières principales — maths, français, sciences, histoire-géo et ESOL.",
@@ -276,11 +297,11 @@
       s13_h:"Modifications de ces Conditions", s13_p:"Nous pouvons mettre à jour ces Conditions de temps à autre. Nous indiquerons les changements importants en mettant à jour la date d'entrée en vigueur ci-dessus. L'utilisation continue de Ariko après la publication des changements vaut acceptation des Conditions mises à jour.",
       s14_h:"Contact", s14_p1:"Pour toute question sur ces Conditions, ton abonnement ou la facturation :",
       s14_addr:"<strong>Matteria Technologies LLC</strong><br/>Miami, Floride — États-Unis · DUNS 146138580<br/><a href=\"mailto:hello@matteriatech.com\">hello@matteriatech.com</a>",
-      s14_p3:"Pour les questions de confidentialité, consulte notre <a href=\"/privacy-policy\">Politique de confidentialité</a>.",
-      _title:"Conditions d'utilisation — Matteria Technologies" },
-    de:{ nav_ventures:"Projekte", nav_philosophy:"Philosophie", nav_company:"Unternehmen", nav_contact:"Kontakt",
-      foot_spec:"Spezifikation", foot_legal:"Rechtliches", foot_privacy:"Datenschutz", foot_terms:"Nutzungsbedingungen", foot_imprint:"Impressum", foot_rights:"© 2026 Matteria Technologies LLC · Alle Rechte vorbehalten",
-      eyebrow:"Rechtliches › 01 / 02", title:"Nutzungsbedingungen", meta:"Gültig ab 21. Mai 2026 · Matteria Technologies LLC",
+      s14_p3:"Pour les questions de confidentialité, consulte notre <a href=\"/ariko/privacy\">Politique de confidentialité</a>.",
+      foot_by:"Un produit de <a href=\"/\">Matteria Technologies</a> — l'imagination devient réalité.",
+      foot_features:"Fonctions", foot_pricing:"Tarifs", foot_privacy:"Confidentialité", foot_terms:"Conditions", foot_contact:"Contact",
+      _title:"Ariko — Conditions d'utilisation" },
+    de:{ back:"← Zurück zu Ariko", eyebrow:"Rechtliches · Ariko", title:"Nutzungsbedingungen", meta:"Gültig ab 21. Mai 2026 · Matteria Technologies LLC",
       lead:"Diese Nutzungsbedingungen (\"Bedingungen\") regeln deine Nutzung von Ariko, der KI-Hausaufgaben-App für Kinder der Klassen K–6, betrieben von Matteria Technologies LLC (\"Matteria\", \"wir\"). Mit dem Herunterladen oder Nutzen von Ariko stimmst du diesen Bedingungen zu.",
       s1_h:"Annahme", s1_p:"Mit dem Herunterladen oder Nutzen von Ariko stimmst du diesen Bedingungen zu. Ariko ist für die Nutzung durch Kinder unter Aufsicht eines Elternteils oder Erziehungsberechtigten bestimmt. Ist der Nutzer unter 13, muss ein Elternteil oder Erziehungsberechtigter diese Bedingungen im Namen des Kindes annehmen und die Nutzung beaufsichtigen.",
       s2_h:"Beschreibung des Dienstes", s2_p:"Ariko ist eine KI-gestützte Lern-App für Schülerinnen und Schüler der Klassen K–6. Sie bietet personalisierte Übungsfragen, das Scannen von Hausaufgaben, einen geführten Lernpfad und die Fortschrittsverfolgung in den Kernfächern — Mathe, Sprache, Naturwissenschaften, Sachkunde und ESOL.",
@@ -301,8 +322,10 @@
       s13_h:"Änderungen dieser Bedingungen", s13_p:"Wir können diese Bedingungen von Zeit zu Zeit aktualisieren. Wesentliche Änderungen kennzeichnen wir durch Aktualisierung des oben genannten Datums. Die fortgesetzte Nutzung von Ariko nach Veröffentlichung der Änderungen gilt als Annahme der aktualisierten Bedingungen.",
       s14_h:"Kontakt", s14_p1:"Bei Fragen zu diesen Bedingungen, deinem Abo oder der Abrechnung:",
       s14_addr:"<strong>Matteria Technologies LLC</strong><br/>Miami, Florida — USA · DUNS 146138580<br/><a href=\"mailto:hello@matteriatech.com\">hello@matteriatech.com</a>",
-      s14_p3:"Bei Datenschutzfragen siehe unsere <a href=\"/privacy-policy\">Datenschutzerklärung</a>.",
-      _title:"Nutzungsbedingungen — Matteria Technologies" }
+      s14_p3:"Bei Datenschutzfragen siehe unsere <a href=\"/ariko/privacy\">Datenschutzerklärung</a>.",
+      foot_by:"Ein Produkt von <a href=\"/\">Matteria Technologies</a> — Vorstellungskraft wird Wirklichkeit.",
+      foot_features:"Funktionen", foot_pricing:"Preise", foot_privacy:"Datenschutz", foot_terms:"AGB", foot_contact:"Kontakt",
+      _title:"Ariko — Nutzungsbedingungen" }
   };
   var SUPPORTED=["en","es","fr","de"];
   function apply(lang){
@@ -323,5 +346,6 @@
   if(document.readyState!=="loading") init(); else document.addEventListener("DOMContentLoaded",init);
 })();
 </script>
+
 </body>
 </html>
